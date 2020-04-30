@@ -1,0 +1,45 @@
+/*
+0 - 600px: Phone
+600 - 900px: Tablet Portrait
+900 - 1200px: Tablet Landscape
+[1200 - 1800px] Big desktop
+1800px + : 4k
+*/
+/*
+- phone
+- tab-port
+- tab-land
+- big-desktop
+- 4k
+*/
+@import url("https://fonts.googleapis.com/css?family=Karla:400,700&display=swap");
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%; }
+  @media (min-width: 160em) {
+    html {
+      font-size: 87.5%; } }
+  @media (max-width: 112.5em) {
+    html {
+      font-size: 75%; } }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (max-width: 37.5em) {
+    html {
+      font-size: 43%; } }
+
+body {
+  font-family: 'Karla', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.7; }
