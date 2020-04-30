@@ -4,15 +4,25 @@ DEBUG = False
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': '12345abhiraj',
+        'HOST': 'database-beta.cbjmo0koiyrt.us-east-2.rds.amazonaws.com',
+        'PORT': '5432',
+        # 'OPTIONS': {
+        #         'sslmode':'verify-full',
+        #         'sslrootcert': os.path.join(BASE_DIR, 'psql-ssl/server-ca.pem'),
+        #         'sslcert': os.path.join(BASE_DIR, 'psql-ssl/client-cert.pem'),
+        #         'sslkey': os.path.join(BASE_DIR, 'psql-ssl/client-key.pem'),
+        #     }
     }
 }
 #db setting for heroku
-import dj_database_url
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
-DATABASES['default']['CONN_MAX_AGE'] = 500
+# import dj_database_url
+# db_from_env = dj_database_url.config()
+# DATABASES['default'].update(db_from_env)
+# DATABASES['default']['CONN_MAX_AGE'] = 500
 
 #django mail admins sends error reports over mail to admin
 ADMINS = (
