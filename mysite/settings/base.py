@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     'rest_framework_swagger', # swagger
 
     #local apps
-    'resume'
+    'resume',
+    'contact'
     
 ]
 
