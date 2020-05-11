@@ -34,6 +34,8 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     #DRF
     path('api-auth/', include('rest_framework.urls')),
+    #Resume
+    path('resume/api/', include('resume.urls', namespace='resume')),
     #Contact
     path('contact/api/', include('contact.urls', namespace='contact')),
         
