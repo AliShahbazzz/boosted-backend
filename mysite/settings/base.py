@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))
 
 
 # Quick-start development settings - unsuitable for production
@@ -39,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
-    #rest framework
+    # rest framework
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
@@ -48,13 +49,13 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
 
-    #api docs
-    'rest_framework_swagger', # swagger
+    # api docs
+    'rest_framework_swagger',  # swagger
 
-    #local apps
+    # local apps
     'resume',
     'contact'
-    
+
 ]
 
 SITE_ID = 1
@@ -88,7 +89,6 @@ TEMPLATES = [
         },
     },
 ]
-
 
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
@@ -137,7 +137,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-## CORS=====================================================================================================================
+# CORS=====================================================================================================================
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
@@ -156,11 +156,12 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         # 'rest_framework_simplejwt.authentication.JWTAuthentication',
-        # 'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ),
 }
 
-REST_FRAMEWORK = {  'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'}
 # All Auth settings =======================================================================================================
 
 AUTHENTICATION_BACKENDS = (
@@ -171,8 +172,8 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-ACCOUNT_EMAIL_REQUIRED = True
+#ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+#ACCOUNT_EMAIL_REQUIRED = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
@@ -180,7 +181,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "build/static"),   
+    os.path.join(BASE_DIR, "build/static"),
 )
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")

@@ -28,21 +28,24 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-docs/', schema_view),
     path('docs/', include_docs_urls(title='API DOCS')),
-    #rest auth
+    # rest auth
     path('rest-auth/', include('rest_auth.urls')),
-    #all auth
+    path('rest-auth/registration/', include('rest_auth.registration.urls')),
+    # all auth
     path('accounts/', include('allauth.urls')),
-    #DRF
+    # DRF
     path('api-auth/', include('rest_framework.urls')),
-    #Resume
+    # Resume
     path('resume/api/', include('resume.urls', namespace='resume')),
-    #Contact
+    # Contact
     path('contact/api/', include('contact.urls', namespace='contact')),
-        
-    #React urls
-    re_path(r'^.*', TemplateView.as_view(template_name='index.html')),
+
+    # React urls
+    #re_path(r'^.*', TemplateView.as_view(template_name='index.html')),
 ]
 
 
-urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
+urlpatterns = urlpatterns + \
+    static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns = urlpatterns + \
+    static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
