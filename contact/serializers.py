@@ -47,8 +47,8 @@ class ContactUsSerializer(serializers.ModelSerializer):
 class UserDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        # ('id', 'first_name', 'last_name','username', 'email', 'password')
-        fields = '__all__'
+        fields = ('id', 'first_name', 'last_name',
+                  'username', 'email', 'password')
 
 
 class UserLoginSerializer(serializers.ModelSerializer):

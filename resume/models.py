@@ -1,12 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.contrib.contenttypes.models import ContentType 
+from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 
 # local import  here..
 
 # ========================================================================================================
 # Abstract Classes
+
 
 class TimeStampBase(models.Model):
     created = models.DateTimeField(auto_now_add=True)
@@ -15,238 +16,338 @@ class TimeStampBase(models.Model):
     class Meta:
         abstract = True
 
-# Input Base
-class InputBase(models.Model):
-    title = models.CharField(max_length=100, 
-                                        null=True, 
-                                            blank=True, 
-                                                help_text="give it a name.")
 
-    class Meta:
-        abstract = True                                            
-
-# TextField Base
-class TextFieldBase(models.Model):
-    description = models.CharField(max_length=100, 
-                                        null=True, 
-                                            blank=True, 
-                                                help_text="give it a description.")
-
-    class Meta:
-        abstract = True   
-
-# Date Field Base
-class DateFieldBase(models.Model):
-    date = models.DateField(max_length=100, 
-                                        null=True, 
-                                            blank=True, 
-                                                help_text="give it a date.")
-
-    class Meta:
-        abstract = True 
-
-# Start End Date Field Base
-class StartEndDateFieldBase(models.Model):
-    start = models.DateField(max_length=100, 
-                                        null=True, 
-                                            blank=True, 
-                                                help_text="give it a  start date.")
-    end = models.DateField(max_length=100, 
-                                    null=True, 
-                                        blank=True, 
-                                            help_text="give it a end date.")                                            
-
-    class Meta:
-        abstract = True 
-
-
-# ===================================================================================================
 class UserResume(TimeStampBase):
-    user = models.ForeignKey(User, 
-                                null=True, 
-                                    blank=True, 
-                                        on_delete=models.CASCADE, 
-                                            related_name='resume')
-    name = models.CharField(max_length=80, 
-                                        null=True, 
-                                            blank=True, 
-                                                help_text="Full Name of the User")
-    age = models.DateField(null=True, 
-                                    blank=True, 
-                                            help_text="Age of the User")                                            
+    user = models.ForeignKey(User,
+                             null=True,
+                             blank=True,
+                             on_delete=models.CASCADE,
+                             related_name='resume')
 
+    resume_number = models.PositiveIntegerField(null=False,
+                                                blank=True,
+                                                help_text='Resume number')
 
-    position = models.CharField(max_length=100, 
-                                        null=True, 
-                                            blank=True, 
-                                                help_text="Position of the User")
+    name = models.CharField(max_length=80,
+                            null=True,
+                            blank=True,
+                            help_text="Full Name of the User")
+    age = models.PositiveIntegerField(null=True,
+                                      blank=True,
+                                      help_text="Age of the User")
 
-    profile = models.TextField(null=True, 
-                                            blank=True, 
-                                                help_text="Profile/ description of the User")  
+    position = models.CharField(max_length=100,
+                                null=True,
+                                blank=True,
+                                help_text="Position of the User")
 
+    profile = models.TextField(null=True,
+                               blank=True,
+                               help_text="Profile/ description of the User")
 
-    def __str__(self):
-        return self.name    
+    achievements = models.TextField(max_length=250, null=True, blank=True)
 
+    skills = models.TextField(max_length=250, null=True, blank=True)
 
-class Content(TimeStampBase):
-    resume = models.ForeignKey(UserResume, null=True, 
-                                                    blank=True, 
-                                                        on_delete=models.CASCADE, 
-                                                            related_name='option')
-    # order = OrderField(blank=True, for_fields=['resume'], help_text='Leave this field empty.')                                                         
-    content_type = models.ForeignKey(ContentType, 
+    interests = models.TextField(max_length=250, null=True, blank=True)
+
+    email = models.EmailField(max_length=80,
+                              null=True,
+                              blank=True,
+                              help_text="Email of the User")
+
+    phone = models.CharField(max_length=20,
+                             null=True,
+                             blank=True,
+                             help_text="Phone no of the User")
+
+    url = models.URLField(null=True,
+                          blank=True,
+                          help_text="Portfolio Url")
+
+    address = models.TextField(null=True,
+                               blank=True,
+                               help_text="Address of the User")
+
+    education_institute = models.CharField(max_length=80,
+                                           null=True,
+                                           blank=True,
+                                           help_text="Name of the Institute.")
+
+    education_start = models.CharField(max_length=10,
+                                       null=True,
+                                       blank=True,
+                                       help_text="give it a  start date.")
+
+    education_end = models.CharField(max_length=10,
+                                     null=True,
+                                     blank=True,
+                                     help_text="give it a end date.")
+
+    education_course = models.CharField(max_length=80,
+                                        null=True,
+                                        blank=True,
+                                        help_text="Name of the course.")
+
+    education_score = models.IntegerField(null=True,
+                                          blank=True,
+                                          help_text="GPA/SCORE.")
+
+    intern_company = models.CharField(max_length=80,
+                                      null=True,
+                                      blank=True,
+                                      help_text="Name of the Company")
+
+    intern_position = models.CharField(max_length=80,
+                                       null=True,
+                                       blank=True,
+                                       help_text="Position of the User")
+
+    intern_start = models.CharField(max_length=10,
+                                    null=True,
+                                    blank=True,
+                                    help_text="give it a  start date.")
+
+    intern_end = models.CharField(max_length=10,
+                                  null=True,
+                                  blank=True,
+                                  help_text="give it a end date.")
+
+    intern_description = models.TextField(max_length=250,
+                                          null=True,
+                                          blank=True,
+                                          help_text="give it a description.")
+
+    experience_company_1 = models.CharField(max_length=80,
+                                            null=True,
+                                            blank=True,
+                                            help_text="Name of the Company")
+
+    experience_position_1 = models.CharField(max_length=100,
+                                             null=True,
+                                             blank=True,
+                                             help_text="Position of the User")
+
+    experience_start_1 = models.CharField(max_length=10,
+                                          null=True,
+                                          blank=True,
+                                          help_text="give it a  start date.")
+
+    experience_end_1 = models.CharField(max_length=10,
+                                        null=True,
+                                        blank=True,
+                                        help_text="give it a end date.")
+
+    experience_description_1 = models.TextField(max_length=250,
                                                 null=True,
-                                                        blank=True,
-                                                            on_delete=models.CASCADE,
-                                                                limit_choices_to={'model__in':(
-                                                                                        'contactdetail',
-                                                                                        'achievement',
-                                                                                        'skill',
-                                                                                        'interest',
-                                                                                        'internship',
-                                                                                        'education',
-                                                                                        'experience',
-                                                                                        'project',
-                                                                                        'certification',
-                                                                                        'recommendation'
-                                                                                        )})
-    object_id = models.PositiveIntegerField(null=True,
-                                                        blank=True)
-    item = GenericForeignKey('content_type', 'object_id')   
-                                                                                          
-                                                        
-    # class Meta:
-    #     ordering = ['order']
-
-    def __str__(self):
-        return '{}'.format(self.item)
-
-
-# =====================================================================================================
-# Content type Models
-
-# contact details
-class ContactDetail(models.Model):
-    email = models.EmailField(max_length=80, 
-                                    null=True, 
-                                        blank=True, 
-                                            help_text="Email of the User")
-    phone = models.PositiveIntegerField(null=True, 
-                                                blank=True, 
-                                                    help_text="Phone no of the User")   
-    url = models.URLField(null=True, 
-                                    blank=True, 
-                                                help_text="Portfolio Url")
-    address = models.TextField(null=True, 
-                                        blank=True, 
-                                                help_text="Address of the User") 
-
-
-    def __str__(self):
-        return self.email                                                    
-
-
- 
-# Achievement
-class Achievement(InputBase):
-    pass
-
-    def __str__(self):
-        return self.title 
-
-
-# skills
-class Skill(InputBase):
-    pass
-
-    def __str__(self):
-        return self.title 
-
-
-#  hobbies/Interest
-class Interest(InputBase):
-    pass
-
-    def __str__(self):
-        return self.title 
-
-
-# Internship
-class Internship(InputBase, StartEndDateFieldBase):
-    position = models.CharField(max_length=100, 
-                                        null=True, 
-                                            blank=True, 
-                                                help_text="Position of the User")
-
-    description = models.CharField(max_length=100, 
-                                        null=True, 
-                                            blank=True, 
+                                                blank=True,
                                                 help_text="give it a description.")
 
-    def __str__(self):
-        return self.title 
+    experience_company_2 = models.CharField(max_length=80,
+                                            null=True,
+                                            blank=True,
+                                            help_text="Name of the Company")
 
-# Education
-class Education(InputBase, StartEndDateFieldBase):
-    course = models.CharField(max_length=100, 
-                                        null=True, 
-                                            blank=True, 
-                                                help_text="Name of the course.")
-    score = models.IntegerField(
-                                        null=True, 
-                                            blank=True, 
-                                                help_text="GPA/SCORE.")
+    experience_position_2 = models.CharField(max_length=100,
+                                             null=True,
+                                             blank=True,
+                                             help_text="Position of the User")
 
-    def __str__(self):
-        return self.title 
+    experience_start_2 = models.CharField(max_length=10,
+                                          null=True,
+                                          blank=True,
+                                          help_text="give it a  start date.")
 
-# experience
-class Experience(InputBase, StartEndDateFieldBase):
-    position = models.CharField(max_length=100, 
-                                        null=True, 
-                                            blank=True, 
-                                                help_text="Position of the User")
+    experience_end_2 = models.CharField(max_length=10,
+                                        null=True,
+                                        blank=True,
+                                        help_text="give it a end date.")
 
-    description = models.CharField(max_length=100, 
-                                        null=True, 
-                                            blank=True, 
+    experience_description_2 = models.TextField(max_length=250,
+                                                null=True,
+                                                blank=True,
                                                 help_text="give it a description.")
+
+    experience_company_3 = models.CharField(max_length=80,
+                                            null=True,
+                                            blank=True,
+                                            help_text="Name of the Company")
+
+    experience_position_3 = models.CharField(max_length=100,
+                                             null=True,
+                                             blank=True,
+                                             help_text="Position of the User")
+
+    experience_start_3 = models.CharField(max_length=10,
+                                          null=True,
+                                          blank=True,
+                                          help_text="give it a  start date.")
+
+    experience_end_3 = models.CharField(max_length=10,
+                                        null=True,
+                                        blank=True,
+                                        help_text="give it a end date.")
+
+    experience_description_3 = models.TextField(max_length=250,
+                                                null=True,
+                                                blank=True,
+                                                help_text="give it a description.")
+
+    experience_company_4 = models.CharField(max_length=80,
+                                            null=True,
+                                            blank=True,
+                                            help_text="Name of the Company")
+
+    experience_position_4 = models.CharField(max_length=100,
+                                             null=True,
+                                             blank=True,
+                                             help_text="Position of the User")
+
+    experience_start_4 = models.CharField(max_length=10,
+                                          null=True,
+                                          blank=True,
+                                          help_text="give it a  start date.")
+
+    experience_end_4 = models.CharField(max_length=10,
+                                        null=True,
+                                        blank=True,
+                                        help_text="give it a end date.")
+
+    experience_description_4 = models.TextField(max_length=250,
+                                                null=True,
+                                                blank=True,
+                                                help_text="give it a description.")
+
+    project_name_1 = models.CharField(max_length=80,
+                                      null=True,
+                                      blank=True,
+                                      help_text="Name of the Project")
+
+    project_role_1 = models.TextField(max_length=250,
+                                      null=True,
+                                      blank=True,
+                                      help_text="Role in the Project")
+
+    project_start_1 = models.CharField(max_length=10,
+                                       null=True,
+                                       blank=True,
+                                       help_text="give it a  start date.")
+
+    project_end_1 = models.CharField(max_length=10,
+                                     null=True,
+                                     blank=True,
+                                     help_text="give it a end date.")
+
+    project_name_2 = models.CharField(max_length=80,
+                                      null=True,
+                                      blank=True,
+                                      help_text="Name of the Project")
+
+    project_role_2 = models.TextField(max_length=250,
+                                      null=True,
+                                      blank=True,
+                                      help_text="Role in the Project")
+
+    project_start_2 = models.CharField(max_length=10,
+                                       null=True,
+                                       blank=True,
+                                       help_text="give it a  start date.")
+
+    project_end_2 = models.CharField(max_length=10,
+                                     null=True,
+                                     blank=True,
+                                     help_text="give it a end date.")
+
+    project_name_3 = models.CharField(max_length=100,
+                                      null=True,
+                                      blank=True,
+                                      help_text="Name of the Project")
+
+    project_role_3 = models.TextField(max_length=250,
+                                      null=True,
+                                      blank=True,
+                                      help_text="Role in the Project")
+
+    project_start_3 = models.CharField(max_length=10,
+                                       null=True,
+                                       blank=True,
+                                       help_text="give it a  start date.")
+
+    project_end_3 = models.CharField(max_length=10,
+                                     null=True,
+                                     blank=True,
+                                     help_text="give it a end date.")
+
+    certificate_name_1 = models.CharField(max_length=80,
+                                          null=True,
+                                          blank=True,
+                                          help_text="Name of the Certificate")
+    certifying_center_1 = models.CharField(max_length=80,
+                                           null=True,
+                                           blank=True,
+                                           help_text="Name of the Cerifying Center")
+    certification_description_1 = models.TextField(max_length=250,
+                                                   null=True,
+                                                   blank=True,
+                                                   help_text="Describe your certification")
+    certificate_obtainment_date_1 = models.CharField(max_length=10,
+                                                     null=True,
+                                                     blank=True,
+                                                     help_text="Date of obtainment")
+
+    certificate_name_2 = models.CharField(max_length=80,
+                                          null=True,
+                                          blank=True,
+                                          help_text="Name of the Certificate")
+    certifying_center_2 = models.CharField(max_length=80,
+                                           null=True,
+                                           blank=True,
+                                           help_text="Name of the Cerifying Center")
+    certification_description_2 = models.TextField(max_length=250,
+                                                   null=True,
+                                                   blank=True,
+                                                   help_text="Describe your certification")
+    certificate_obtainment_date_2 = models.CharField(max_length=10,
+                                                     null=True,
+                                                     blank=True,
+                                                     help_text="Date of obtainment")
+
+    certificate_name_3 = models.CharField(max_length=80,
+                                          null=True,
+                                          blank=True,
+                                          help_text="Name of the Certificate")
+    certifying_center_3 = models.CharField(max_length=80,
+                                           null=True,
+                                           blank=True,
+                                           help_text="Name of the Cerifying Center")
+    certification_description_3 = models.TextField(max_length=250,
+                                                   null=True,
+                                                   blank=True,
+                                                   help_text="Describe your certification")
+    certificate_obtainment_date_3 = models.CharField(max_length=10,
+                                                     null=True,
+                                                     blank=True,
+                                                     help_text="Date of obtainment")
+
+    recommendation_1 = models.TextField(max_length=250,
+                                        null=True,
+                                        blank=True)
+
+    recommendation_2 = models.TextField(max_length=250,
+                                        null=True,
+                                        blank=True)
+
+    recommendation_3 = models.TextField(max_length=250,
+                                        null=True,
+                                        blank=True)
+
+    recommendation_4 = models.TextField(max_length=250,
+                                        null=True,
+                                        blank=True)
+
+    recommendation_5 = models.TextField(max_length=250,
+                                        null=True,
+                                        blank=True)
+
     def __str__(self):
-        return self.title 
-
-# projects
-class Project(InputBase, DateFieldBase):
-    role = models.CharField(max_length=100, 
-                                        null=True, 
-                                            blank=True, 
-                                                help_text="Describe the role in the project.")
-
-    def __str__(self):
-        return self.title 
-
-# Certification
-class Certification(InputBase):
-    center = models.CharField(max_length=80, 
-                                        null=True, 
-                                            blank=True, 
-                                                help_text="Name of the Certifying Center")
-    description = models.TextField(
-                                        null=True, 
-                                            blank=True, 
-                                                help_text="Description of the certificate.")
-    date = models.DateField(null=True, 
-                                    blank=True, 
-                                            help_text="Date of obtainment")                                                                                                  
-
-
-    def __str__(self):
-        return self.title 
-
-# Recommendation
-class Recommendation(TextFieldBase):
-    pass
-
-#====================================================================================================== 
-
+        return str(self.name)

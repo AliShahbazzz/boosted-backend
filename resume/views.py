@@ -19,9 +19,13 @@ from core.mixins import UserMixin
 '''
 Resume List create api view.
 '''
-# class UserResumeListCreateAPIView(UserMixin, ListCreateAPIView):
-#     queryset = UserResume.objects.all()
-#     serializer_class = ResumeSerializer
+
+
+class UserResumeListCreateAPIView(
+    # UserMixin,
+        ListCreateAPIView):
+    queryset = UserResume.objects.all()
+    serializer_class = ResumeSerializer
 
 # def create(self, request, *args, **kwargs):
 #   serializer = self.get_serializer(data=request.data)
