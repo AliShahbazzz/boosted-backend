@@ -19,26 +19,6 @@ from .serializers import (
 from .models import ContactUs
 
 '''
-Signup api.
-'''
-
-
-# class UserCreate(CreateAPIView):
-#     queryset = User.objects.all()
-#     serializer_class = UserSerializer
-
-#     def create(self, request, *args, **kwargs):
-#         serializer = self.get_serializer(data=request.data)
-#         serializer.is_valid(raise_exception=True)
-#         self.perform_create(serializer)
-#         headers = self.get_success_headers(serializer.data)
-#         token, created = Token.objects.get_or_create(user=serializer.instance)
-#         return Response({'token': token.key, 'user': str(serializer.instance)},
-#                         headers=headers,
-#                         status=status.HTTP_201_CREATED)
-
-
-'''
 ContactUs api view.
 '''
 
