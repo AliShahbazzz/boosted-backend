@@ -1,0 +1,79 @@
+<html>
+
+<body>
+    <div class="resumeOne-root resumeOne-montserrat">
+        <div class="resumeOneMain resumeOne-orange-color">
+            <span name="full_name" class="resumeOne-capBox resumeOne-nameBox">
+                {{ data.name }}
+            </span>
+            <span name="position" class="resumeOne-capBox resumeOne-positionBox">
+                {{ data.position }}
+            </span>
+            <span name="profile" class="resumeOne-descriptionBox">
+                {{ data.profile }}
+            </span>
+            <div class="resumeOne-section-2">
+                <div class="resumeOne-left-section">
+                    <div>
+                        <p class="resumeOne-orange-section">ACHIEVEMENTS</p><span class="resumeOne-inputs">
+                            <div>Won Emerging Excellence Award 2018</div>
+                            <div>Won Marketing Award 2012</div>
+                            <div>Won Director Award 2016</div>
+                            <div>Outstanding Award 2018</div>
+                        </span>
+                    </div>
+                    <div class="resumeOne-section">
+                        <p class="resumeOne-orange-section">CONTACT DETAILS</p>
+                        <span class="resumeOne-inputs">
+                            <span>Email: {{ data.email }}</span>
+                            <span>Contact: {{ data.phone }}</span>
+                            <span>Portfolio URL: {{ data.url }}</span>
+                            <span>Address: {{ data.address}}</span>
+                        </span>
+                    </div>
+                    <div class="resumeOne-section">
+                        <p class="resumeOne-orange-section">CORE SKILLS</p>
+                        <span class="resumeOne-inputs">
+                            <span>Speaking Skills</span>
+                            <span>Project Management Skills</span>
+                            <span>Organizational Skills</span>
+                            <span>Critical Thinking Skills</span>
+                        </span>
+                    </div>
+                    <div class="resumeOne-section">
+                        <p class="resumeOne-orange-section">HOBBIES &amp; INTERESTS</p>
+                        <span class="resumeOne-inputs">
+                            <span>Playing Games</span>
+                            <span>Passionate in Coding</span>
+                            <span>Designing</span>
+                            <span>Drawing</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="resumeOne-right-section">
+                    <p class="resumeOne-orange-section">EDUCATION DETAILS</p>
+                    <span class="resumeOne-inputs">
+                        <span>{{ data.education_institute }}</span>
+                        <span>{{ data.education_degree }}</span>
+                        <span>{{ data.education_course }}</span>
+                        <span>Start: {{ data.education_start }}</span>
+                        <span>End: {{ data.education_end }}</span>
+                        <span>Score: {{ data.education_score }}</span>
+                    </span>
+                    <div class="resumeOne-section">
+                        <p class="resumeOne-orange-section">INTERNSHIP/COURSES</p>
+                        <span class="resumeOne-inputs">
+                            <span>Company Name</span>
+                            <span>Domain/Platform</span>
+                            <span>Start: 10 May 2014</span>
+                            <span>End: 31 Dec 2014</span>
+                            <span>Tell us about your cool Internship</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

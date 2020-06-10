@@ -60,9 +60,10 @@ class UserResume(models.Model):
                              blank=True,
                              help_text="Phone no of the User")
 
-    url = models.URLField(null=True,
-                          blank=True,
-                          help_text="Portfolio Url")
+    url = models.CharField(max_length=50,
+                           null=True,
+                           blank=True,
+                           help_text="Portfolio Url")
 
     address = models.TextField(null=True,
                                blank=True,

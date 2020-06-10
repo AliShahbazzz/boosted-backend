@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
+@page {
+      size: A4;
+      margin: -10px;
+}
+
+.resumeOne-montserrat div, input, textarea {
+      font-family: 'Montserrat';
+}
+
+.resumeOne-cursive div, input, textarea {
+      font-family: cursive;
+      font-size: 15px;
+}
+
+.resumeOne-orange-color {
+      border: 15px solid #FF7900;
+}
+
+.resumeOne-orange-section {
+      color: #FF7900;
+      font-weight: 700;
+}
+
+.resumeOne-green-color {
+      border: 15px solid #b93aa8;
+}
+
+.resumeOne-green-section {
+      color: #b93aa8;
+      font-weight: 700;
+}
+
+.resumeOneP2Root {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10%;
+}
+
+.resumeOneMain {
+      background-color: white;
+      width: 766px;
+      height: 1096px;
+      display: flex;
+      flex-direction: column;
+      justify-items: center;
+}
+
+.resumeOneMain input, textarea {
+      border-style: hidden;
+      outline: none;
+}
+
+.resumeOne-section-2 {
+      display: flex;
+      flex-direction: row;
+      margin-top: 38px;
+}
+
+.resumeOne-nameBox {
+      font-size: 2.5em;
+      font-weight: bold;
+      align-self: center;
+      text-align: center;
+      padding-top: 45px;
+      width: 730px;
+}
+
+.resumeOne-positionBox {
+      font-size: 0.8em;
+      margin-top: 5px;
+      align-self: center;
+      text-align: center;
+      width: 610px;
+      color: #FF7900;
+      letter-spacing: 2px;
+}
+
+.resumeOne-descriptionBox {
+      font-size: 1em;
+      align-self: center;
+      text-align: center;
+      margin-top: 40px;
+      width: 690px;
+      resize: none;
+      overflow: hidden;
+}
+
+.resumeOne-capBox {
+      text-transform: uppercase;
+}
+
+.resumeOne-inputs {
+      display: flex;
+      flex-direction: column;
+}
+
+.resumeOne-section {
+      margin-top: 25px;
+}
+
+.resumeOne-left-section {
+      width: 382px;
+      border-right: solid black;
+      text-align: right;
+      padding-right: 25px;
+      padding-left: 25px;
+      font-size: 15px;
+}
+
+.resumeOne-left-section input {
+      text-align: right;
+}
+
+.resumeOne-right-section {
+      width: 382px;
+      padding-left: 25px;
+      padding-right: 25px;
+      font-size: 15px;
+}
+
+.resumeOne-certificate-ul, .resumeOne-project-ul {
+      direction: rtl;
+}
+
+.resumeOne-recommendation-list textarea {
+      width: 100%;
+      text-align: right;
+}

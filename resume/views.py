@@ -1,13 +1,13 @@
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.generics import (
+    ListAPIView,
     ListCreateAPIView,
     RetrieveUpdateDestroyAPIView,
 )
-from rest_framework import status
-from rest_framework.views import APIView
 from weasyprint import HTML, CSS
 from weasyprint.fonts import FontConfiguration
+from django.shortcuts import render
 
 # Local Import her
 from .serializers import (
@@ -18,6 +18,7 @@ from .serializers import (
 from .models import *
 from core.mixins import UserMixin
 from mysite.settings import BASE_DIR
+from django.template.loader import render_to_string
 
 
 '''
@@ -29,37 +30,76 @@ class UserResumeListCreateAPIView(ListCreateAPIView):
     queryset = UserResume.objects.all()
     serializer_class = ResumeSerializer
 
-
-'''
-Resume Retrieve and update delete api. 
-'''
-
-
-class UserResumeRetrieveUpdateDeleteApiView(UserMixin, RetrieveUpdateDestroyAPIView):
-    queryset = UserResume.objects.all()
-    serializer_class = ResumeRetrieveUpdateDeleteSerializer
-
-
-class PDFGenerator(APIView):
-
     def post(self, request):
+        resumeData = ResumeSerializer(data=request.data)
+        name = request.data['name']
+        resume_number = request.data['resume_number']
 
-        htmlObject = HTML(BASE_DIR+'/resumes/resume1.html')
-        # htmlObject = HTML(string=request.data['html'])
-        cssStyle = CSS(BASE_DIR+'/resumes/resume1.css')
-        font_config = FontConfiguration()
+        if resumeData.is_valid():
+            resumeDataInstance = resumeData.save()
 
-        # pdfURL = 'http://localhost:8000/media/'+request.data['username'] +'_Resume.pdf';
-        # pdfPath = BASE_DIR+'/media/'+request.data['username'] +'_Resume.pdf';
-        pdfURL = 'http://localhost:8000/media/shahbaz_Resume.pdf'
-        pdfPath = BASE_DIR+'/media/shahbaz_Resume.pdf'
+            htmlobj = render_to_string(
+                'resume' + resume_number + '.html', {'data': resumeDataInstance})
+            htmlObject = HTML(string=htmlobj)
+            cssStyle = CSS(BASE_DIR+'/templates/resume' +
+                           resume_number + '.css')
+            font_config = FontConfiguration()
 
-        htmlObject.write_pdf(
-            pdfPath,
-            stylesheets=[cssStyle],
-            font_config=font_config)
+            pdfCreatePath = BASE_DIR+'/media/resumes/' + name + \
+                '_' + resume_number + '_' + 'Resume.pdf'
+            pdfURL = 'http://localhost:8000/media/resumes/' + \
+                name + '_' + resume_number + '_' + 'Resume.pdf'
 
-        return Response({
-            'message': 'Success! PDF has been generated.',
-            'directory': pdfURL
-        }, status=status.HTTP_200_OK)
+            htmlObject.write_pdf(
+                pdfCreatePath,
+                stylesheets=[cssStyle],
+                font_config=font_config)
+
+            pngCreatePath = BASE_DIR+'/media/thumbnails/' + name + \
+                '_' + resume_number + '_' + 'Resume.png'
+            pngURL = 'http://localhost:8000/media/thumbnails/' + \
+                name + '_' + resume_number + '_' + 'Resume.png'
+
+            htmlObject.write_png(
+                pngCreatePath,
+                resolution=60,
+                stylesheets=[cssStyle],
+                font_config=font_config)
+
+            return Response({
+                'message': 'Success! PDF has been generated.',
+                'directory': pdfURL,
+            }, status=status.HTTP_200_OK)
+
+        return Response({'details': resumeData.errors})
+
+    # def get(self, request):
+
+    #     user = request.data['user']  # 'loganpaul@youtube.com'
+    #     resume_number = request.data['resume_number']
+    #     qs = UserResume.objects.filter(
+    #         user=user, resume_number=resume_number).order_by('created').last()
+    #     data = ResumeSerializer(qs).data
+    #     return Response({
+    #         'data': data
+    #     })
+
+
+'''
+Resume Retrieve PNG api. 
+'''
+
+
+# class UserResumePNGView(ListAPIView):
+
+#     def get(self, request):
+#         name = 'Both Testing'
+#         pngPath = []
+#         for resume_number in range(1, 16):
+#             pngPath[resume_number] = 'http://localhost:8000/media/thumnails/' + \
+#                 name + '_' + str(resume_number) + '_' + 'Resume.png'
+#             return Response({
+#                 'pngPath': pngPath
+#             })
+
+#         return Response({'success'})
