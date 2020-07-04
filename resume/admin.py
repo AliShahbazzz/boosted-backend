@@ -10,3 +10,9 @@ class FeedbackFormAdmin(admin.ModelAdmin):
     list_filter = ['user', 'position', 'created']
     #prepopulated_fields = {'slug':('title',)}
     search_fields = ['name']
+
+
+@admin.register(ResumeThumbnails)
+class ResumeThumb(admin.ModelAdmin):
+    list_display = ['user', 'resume_number', 'path']
+

@@ -26,22 +26,22 @@ schema_view = get_swagger_view(title='API DOCS')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-docs/', schema_view),
-    path('docs/', include_docs_urls(title='API DOCS')),
+    # path('api-docs/', schema_view),
+    # path('docs/', include_docs_urls(title='API DOCS')),
     # rest auth
-    path('rest-auth/', include('rest_auth.urls')),
-    path('rest-auth/registration/', include('rest_auth.registration.urls')),
+    # path('rest-auth/', include('rest_auth.urls')),
+    # path('rest-auth/registration/', include('rest_auth.registration.urls')),
     # all auth
-    path('accounts/', include('allauth.urls')),
+    # path('accounts/', include('allauth.urls')),
     # DRF
-    path('api-auth/', include('rest_framework.urls')),
+    # path('api-auth/', include('rest_framework.urls')),
     # Resume
     path('resume/api/', include('resume.urls', namespace='resume')),
     # Contact
     path('contact/api/', include('contact.urls', namespace='contact')),
 
     # React urls
-    #re_path(r'^.*', TemplateView.as_view(template_name='index.html')),
+    # re_path(r'^.*', TemplateView.as_view(template_name='index.html')),
 ]
 
 

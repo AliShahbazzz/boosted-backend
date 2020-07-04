@@ -1,0 +1,309 @@
+{% load split %}
+<html>
+
+<body>
+    <div class="resumeOne-root resumeOne-montserrat">
+        <div class="resumeOneMain resumeOne-orange-color">
+            <div>
+                <img src="{{ data.user_resume_image }}" class="resumeOne-image" />
+            </div>
+            <span name="full_name" class="resumeOne-capBox resumeOne-nameBox">
+                {{ data.name }}
+            </span>
+            <span name="position" class="resumeOne-capBox resumeOne-positionBox">
+                {{ data.position }}
+            </span>
+            <div name="profile" class="resumeOne-descriptionBox">
+                <span>{{ data.profile }}</span>
+            </div>
+            <div class="resumeOne-section-2">
+                <div class="resumeOne-left-section">
+                    <div>
+                        <p class="resumeOne-orange-section">ACHIEVEMENTS</p>
+                        <span class="resumeOne-inputs">
+                            {% with data.achievements|split:"," as lists %}
+                            {% for item in lists %}
+                            <div>{{ item }}</div>
+                            {% endfor %}
+                            {% endwith %}
+                        </span>
+                    </div>
+                    <div class="resumeOne-section">
+                        <p class="resumeOne-orange-section">CONTACT DETAILS</p>
+                        <span class="resumeOne-inputs">
+                            <span>{{ data.email }}</span>
+                            <span>{{ data.phone }}</span>
+                            <span>{{ data.url }}</span>
+                            <span>{{ data.address}}</span>
+                        </span>
+                    </div>
+                    <div class="resumeOne-section">
+                        <p class="resumeOne-orange-section">CORE SKILLS</p>
+                        <span class="resumeOne-inputs">
+                            {% with data.skills|split:"," as lists %}
+                            {% for item in lists %}
+                            <div>{{ item }}</div>
+                            {% endfor %}
+                            {% endwith %}
+                        </span>
+                    </div>
+                    <div class="resumeOne-section">
+                        <p class="resumeOne-orange-section">HOBBIES &amp; INTERESTS</p>
+                        <span class="resumeOne-inputs">
+                            {% with data.interests|split:"," as lists %}
+                            {% for item in lists %}
+                            <div>{{ item }}</div>
+                            {% endfor %}
+                            {% endwith %}
+                        </span>
+                    </div>
+                </div>
+                <div class="resumeOne-right-section">
+                    <p class="resumeOne-orange-section">EDUCATION DETAILS</p>
+                    <span class="resumeOne-inputs">
+                        <span>{{ data.education_institute }}</span>
+                        <span>{{ data.education_degree }}</span>
+                        <span>{{ data.education_course }}</span>
+                        <div class="resumeOne-dates">
+                            <span class="resumeOne-date">{{ data.education_start }}</span>
+                            <span class="resumeOne-date">{{ data.education_end }}</span>
+                        </div>
+                        <span>GPA: {{ data.education_score }}</span>
+                    </span>
+                    <div class="resumeOne-section">
+                        {% if data.internActive == 'true' %}
+                        <p class="resumeOne-orange-section">INTERNSHIP/COURSES</p>
+                        <span class="resumeOne-inputs">
+                            <span>{{ data.intern_company }}</span>
+                            <span>{{ data.intern_position }}</span>
+                            <div class="resumeOne-dates">
+                                <span class="resumeOne-date">{{ data.intern_start }}</span>
+                                <span class="resumeOne-date">{{ data.intern_end }}</span>
+                            </div>
+                            <ul>
+                                {% with data.intern_description|split:",," as lists %}
+                                {% for item in lists %}
+                                {% if item != '' %}
+                                <li>{{ item }}</li>
+                                {% endif %}
+                                {% endfor %}
+                                {% endwith %}
+                            </ul>
+                        </span>
+                        {% else %}
+                        <p class="resumeOne-orange-section">WORK EXPERIENCE</p>
+                        {% for i in data.experienceNum|get_range %}
+                        <span class="resumeOne-inputs">
+                            {% with experience_company_|join:i as exp_company %}
+                            {% with experience_position_|join_var:i as exp_position %}
+                            {% with experience_start_|join_var:i as exp_start %}
+                            {% with experience_end_|join_var:i as exp_end %}
+                            <span>{{ data.exp_company }}</span>
+                            <span>{{ data.exp_position }}</span>
+                            <div>
+                                <span>{{ data.exp_start }}</span>
+                                <span>{{ data.exp_end }}</span>
+                            </div>
+                            <ul class="resumeOne-inputs">
+                                {% with experience_description_|join_var:i as exp_description %}
+                                {% with data.exp_description|split:",," as lists %}
+                                {% for item in lists %}
+                                {% if item != '' %}
+                                <li>{{ item }}</li>
+                                {% endif %}
+                                {% endfor %}
+                                {% endwith %}
+                                {% endwith %}
+                            </ul>
+                            {% endwith %}
+                            {% endwith %}
+                            {% endwith %}
+                            {% endwith %}
+                        </span>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if page2active == 'true' %}
+    <div class="resumeOne-root resumeOne-montserrat">
+        <div class="resumeOneMain resumeOne-orange-color">
+            <div class="resumeOne-section-2">
+                <div class="resumeOne-left-section">
+
+                    {% if data.projectActive == 'true' %}
+                    <p class="resumeOne-orange-section">PROJECTS</p>
+                    {% for i in data.projectNum|get_range %}
+                    {% if i == 1 %}
+                    <span class="resumeOne-inputs">
+                        <span>{{ data.project_name_1 }}</span>
+                        <div>
+                            <span>{{ data.project_start_1 }}</span>
+                            <span>{{ data.project_end_1 }}</span>
+                        </div>
+                        <ul class="resumeOne-left-ul">
+                            {% with data.project_description_1|split:",," as lists %}
+                            {% for item in lists %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                            {% endwith %}
+                        </ul>
+                    </span>
+                    {% elif i == 2 %}
+                    <span class="resumeOne-inputs">
+                        <span>{{ data.project_name_2 }}</span>
+                        <div>
+                            <span>{{ data.project_start_2 }}</span>
+                            <span>{{ data.project_end_2 }}</span>
+                        </div>
+                        <ul class="resumeOne-left-ul">
+                            {% with data.project_description_2|split:",," as lists %}
+                            {% for item in lists %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                            {% endwith %}
+                        </ul>
+                    </span>
+                    {% elif i == 3 %}
+                    <span class="resumeOne-inputs">
+                        <span>{{ data.project_name_3 }}</span>
+                        <div>
+                            <span>{{ data.project_start_3 }}</span>
+                            <span>{{ data.project_end_3 }}</span>
+                        </div>
+                        <ul class="resumeOne-left-ul">
+                            {% with data.project_description_3|split:",," as lists %}
+                            {% for item in lists %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                            {% endwith %}
+                        </ul>
+                    </span>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+
+
+                    {% if data.certificateActive == 'true' %}
+                    <p class="resumeOne-orange-section">CERTIFICATES</p>
+                    {% for i in data.certificateNum|get_range %}
+                    {% if i == 1 %}
+                    <span class="resumeOne-inputs">
+                        <span>{{ data.certificate_name_1 }}</span>
+                        <span>{{ data.certifying_center_1 }}</span>
+                        <ul class="resumeOne-left-ul">
+                            {% with data.certificate_description_1|split:"," as lists %}
+                            {% for item in lists %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                            {% endwith %}
+                        </ul>
+                        <span>{{ data.certificate_obtainment_date_1 }}</span>
+                    </span>
+                    {% elif i == 2 %}
+                    <span class="resumeOne-inputs">
+                        <span>{{ data.certificate_name_2 }}</span>
+                        <span>{{ data.certifying_center_2 }}</span>
+                        <ul class="resumeOne-left-ul">
+                            {% with data.certificate_description_2|split:"," as lists %}
+                            {% for item in lists %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                            {% endwith %}
+                        </ul>
+                        <span>{{ data.certificate_obtainment_date_2 }}</span>
+                    </span>
+                    {% elif i == 3 %}
+                    <span class="resumeOne-inputs">
+                        <span>{{ data.certificate_name_3 }}</span>
+                        <span>{{ data.certifying_center_3 }}</span>
+                        <ul class="resumeOne-left-ul">
+                            {% with data.certificate_description_3|split:"," as lists %}
+                            {% for item in lists %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                            {% endwith %}
+                        </ul>
+                        <span>{{ data.certificate_obtainment_date_3 }}</span>
+                    </span>
+
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+
+
+                    {% if data.recommendationActive == 'true' %}
+                    <p class="resumeOne-orange-section">RECOMMENDATION</p>
+                    <span class="resumeOne-inputs">
+                        <span>{{ data.recommendation_1 }}</span>
+                        <span>{{ data.recommendation_2 }}</span>
+                        <span>{{ data.recommendation_3 }}</span>
+                        <span>{{ data.recommendation_4 }}</span>
+                        <span>{{ data.recommendation_5 }}</span>
+                    </span>
+                    {% endif %}
+                </div>
+                <div class="resumeOne-right-section">
+                    {% for i in data.experienceNum|get_range %}
+                    {% if i == 3 %}
+                    <span class="resumeOne-inputs">
+                        <span>{{ data.experience_company_3 }}</span>
+                        <span>{{ data.experience_position_3 }}</span>
+                        <div>
+                            <span>{{ data.experience_start_3 }}</span>
+                            <span>{{ data.experience_end_3 }}</span>
+                        </div>
+                        <ul class="resumeOne-inputs">
+                            {% with data.experience_description_3|split:",," as lists %}
+                            {% for item in lists %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                            {% endwith %}
+                        </ul>
+                    </span>
+                    {% elif  i == 4 %}
+                    <span class="resumeOne-inputs">
+                        <span>{{ data.experience_company_4 }}</span>
+                        <span>{{ data.experience_position_4 }}</span>
+                        <div>
+                            <span>{{ data.experience_start_4 }}</span>
+                            <span>{{ data.experience_end_4 }}</span>
+                        </div>
+                        <ul class="resumeOne-inputs">
+                            {% with data.experience_description_4|split:",," as lists %}
+                            {% for item in lists %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                            {% endwith %}
+                        </ul>
+                    </span>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div></div>
+    {% endif %}
+</body>
+
+</html>

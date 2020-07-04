@@ -1,6 +1,5 @@
 from rest_framework import serializers
 
-
 # local import here.
 from .models import *
 
@@ -12,8 +11,7 @@ class ResumeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ResumeRetrieveUpdateDeleteSerializer(serializers.ModelSerializer):
+class ResumeThumbnailSerializer(serializers.ModelSerializer):
     class Meta:
-        model = UserResume
-        #fields = ['id', 'age', 'position', 'profile']
+        model = ResumeThumbnails
         fields = '__all__'

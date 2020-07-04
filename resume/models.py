@@ -3,15 +3,27 @@ from django.db import models
 # local import  here..
 
 # ========================================================================================================
-# Abstract Classes
 
 
-class TimeStampBase(models.Model):
+class ResumeThumbnails(models.Model):
     created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
 
-    class Meta:
-        abstract = True
+    user = models.CharField(max_length=80,
+                            null=True,
+                            blank=True,
+                            help_text="Full Name of the User")
+
+    resume_number = models.PositiveIntegerField(null=False,
+                                                blank=True,
+                                                help_text='Resume number')
+
+    path = models.CharField(max_length=800,
+                            null=False,
+                            blank=True,
+                            help_text='Thumbnail path')
+
+    def __str__(self):
+        return str(self.user)
 
 
 class UserResume(models.Model):
@@ -25,6 +37,11 @@ class UserResume(models.Model):
     resume_number = models.PositiveIntegerField(null=False,
                                                 blank=True,
                                                 help_text='Resume number')
+
+    resume_image = models.ImageField(upload_to='user_resume_image',
+                                     default='default.jpg',
+                                     null=True,
+                                     blank=True)
 
     name = models.CharField(max_length=80,
                             null=True,
@@ -118,7 +135,7 @@ class UserResume(models.Model):
                                   blank=True,
                                   help_text="give it a end date.")
 
-    intern_description = models.TextField(max_length=300,
+    intern_description = models.TextField(max_length=800,
                                           null=True,
                                           blank=True,
                                           help_text="give it a description.")
@@ -143,7 +160,7 @@ class UserResume(models.Model):
                                         blank=True,
                                         help_text="give it a end date.")
 
-    experience_description_1 = models.TextField(max_length=300,
+    experience_description_1 = models.TextField(max_length=800,
                                                 null=True,
                                                 blank=True,
                                                 help_text="give it a description.")
@@ -168,7 +185,7 @@ class UserResume(models.Model):
                                         blank=True,
                                         help_text="give it a end date.")
 
-    experience_description_2 = models.TextField(max_length=300,
+    experience_description_2 = models.TextField(max_length=800,
                                                 null=True,
                                                 blank=True,
                                                 help_text="give it a description.")
@@ -193,7 +210,7 @@ class UserResume(models.Model):
                                         blank=True,
                                         help_text="give it a end date.")
 
-    experience_description_3 = models.TextField(max_length=300,
+    experience_description_3 = models.TextField(max_length=800,
                                                 null=True,
                                                 blank=True,
                                                 help_text="give it a description.")
@@ -218,7 +235,7 @@ class UserResume(models.Model):
                                         blank=True,
                                         help_text="give it a end date.")
 
-    experience_description_4 = models.TextField(max_length=300,
+    experience_description_4 = models.TextField(max_length=800,
                                                 null=True,
                                                 blank=True,
                                                 help_text="give it a description.")
@@ -238,7 +255,7 @@ class UserResume(models.Model):
                                      blank=True,
                                      help_text="give it a end date.")
 
-    project_description_1 = models.TextField(max_length=300,
+    project_description_1 = models.TextField(max_length=800,
                                              null=True,
                                              blank=True,
                                              help_text="Decsribe Project")
@@ -258,7 +275,7 @@ class UserResume(models.Model):
                                      blank=True,
                                      help_text="give it a end date.")
 
-    project_description_2 = models.TextField(max_length=300,
+    project_description_2 = models.TextField(max_length=800,
                                              null=True,
                                              blank=True,
                                              help_text="Describe Project")
@@ -278,7 +295,7 @@ class UserResume(models.Model):
                                      blank=True,
                                      help_text="give it a end date.")
 
-    project_description_3 = models.TextField(max_length=300,
+    project_description_3 = models.TextField(max_length=800,
                                              null=True,
                                              blank=True,
                                              help_text="Describe Project")

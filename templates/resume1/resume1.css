@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
 @page {
       size: A4;
-      margin: -10px;
+      margin: -8px;
 }
 
 .resumeOne-montserrat div, input, textarea {
@@ -14,7 +14,8 @@
 }
 
 .resumeOne-orange-color {
-      border: 15px solid #FF7900;
+      /* border: 15px solid #FF7900; */
+      border: 30px solid #FF7900;
 }
 
 .resumeOne-orange-section {
@@ -31,24 +32,15 @@
       font-weight: 700;
 }
 
-.resumeOneP2Root {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 10%;
-}
-
 .resumeOneMain {
       background-color: white;
-      width: 766px;
-      height: 1096px;
+      /* width: 766px;
+      height: 1096px; */
+      width: 736px;
+      height: 1066px;
       display: flex;
       flex-direction: column;
       justify-items: center;
-}
-
-.resumeOneMain input, textarea {
-      border-style: hidden;
-      outline: none;
 }
 
 .resumeOne-section-2 {
@@ -57,33 +49,35 @@
       margin-top: 38px;
 }
 
+.resumeOne-image {
+      width: 100px;
+}
+
 .resumeOne-nameBox {
-      font-size: 2.5em;
+      font-size: 2.5rem;
       font-weight: bold;
       align-self: center;
       text-align: center;
       padding-top: 45px;
       width: 730px;
+      height: 60px;
 }
 
 .resumeOne-positionBox {
-      font-size: 0.8em;
-      margin-top: 5px;
+      margin-top: 10px;
       align-self: center;
       text-align: center;
       width: 610px;
       color: #FF7900;
       letter-spacing: 2px;
+      height: 45px;
 }
 
 .resumeOne-descriptionBox {
       font-size: 1em;
       align-self: center;
       text-align: center;
-      margin-top: 40px;
-      width: 690px;
-      resize: none;
-      overflow: hidden;
+      width: 685px;
 }
 
 .resumeOne-capBox {
@@ -108,8 +102,19 @@
       font-size: 15px;
 }
 
-.resumeOne-left-section input {
+.resumeOne-left-ul {
+      position: relative;
+      list-style: none;
+      padding-right: 1.2em;
       text-align: right;
+      margin-top: 2px;
+      margin-bottom: 3px;
+}
+
+.resumeOne-left-ul li:before {
+      content: "\2022";
+      position: absolute;
+      right: 0;
 }
 
 .resumeOne-right-section {
@@ -119,11 +124,11 @@
       font-size: 15px;
 }
 
-.resumeOne-certificate-ul, .resumeOne-project-ul {
-      direction: rtl;
+.resumeOne-dates {
+      display: flex;
 }
 
-.resumeOne-recommendation-list textarea {
-      width: 100%;
-      text-align: right;
+.resumeOne-date {
+      width: 100px;
+      margin-right: 10px;
 }
