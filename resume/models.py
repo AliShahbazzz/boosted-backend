@@ -39,7 +39,7 @@ class UserResume(models.Model):
                                                 help_text='Resume number')
 
     resume_image = models.ImageField(upload_to='user_resume_image',
-                                     default='default.jpg',
+                                     default='user_resume_image/default.jpg',
                                      null=True,
                                      blank=True)
 
@@ -48,9 +48,9 @@ class UserResume(models.Model):
                             blank=True,
                             help_text="Full Name of the User")
 
-    age = models.IntegerField(null=True,
-                              blank=True,
-                              help_text="Age of the User")
+    age = models.PositiveIntegerField(null=True,
+                                      blank=True,
+                                      help_text="Age of the User")
 
     position = models.CharField(max_length=100,
                                 null=True,
@@ -111,9 +111,9 @@ class UserResume(models.Model):
                                      blank=True,
                                      help_text="give it a end date.")
 
-    education_score = models.IntegerField(null=True,
-                                          blank=True,
-                                          help_text="GPA/SCORE.")
+    education_score = models.PositiveIntegerField(null=True,
+                                                  blank=True,
+                                                  help_text="GPA/SCORE.")
 
     intern_company = models.CharField(max_length=80,
                                       null=True,
@@ -373,3 +373,49 @@ class UserResume(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+
+class ResumeProperties(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+
+    user = models.CharField(max_length=80,
+                            null=True,
+                            blank=True,
+                            help_text='UserId')
+
+    resume_number = models.PositiveIntegerField(null=True,
+                                                blank=True,
+                                                help_text='Resume number')
+
+    page2active = models.CharField(max_length=10,
+                                   null=True,
+                                   blank=True)
+    internActive = models.CharField(max_length=10,
+                                    null=True,
+                                    blank=True)
+    projectActive = models.CharField(max_length=10,
+                                     null=True,
+                                     blank=True)
+    certificateActive = models.CharField(max_length=10,
+                                         null=True,
+                                         blank=True)
+    recommendationActive = models.CharField(max_length=10,
+                                            null=True,
+                                            blank=True)
+    achievementNum = models.PositiveIntegerField(null=True,
+                                                 blank=True)
+    skillNum = models.PositiveIntegerField(null=True,
+                                           blank=True)
+    interestNum = models.PositiveIntegerField(null=True,
+                                              blank=True)
+    experienceNum = models.PositiveIntegerField(null=True,
+                                                blank=True)
+    projectNum = models.PositiveIntegerField(null=True,
+                                             blank=True)
+    certificateNum = models.PositiveIntegerField(null=True,
+                                                 blank=True)
+    recommendationNum = models.PositiveIntegerField(null=True,
+                                                    blank=True)
+
+    def __str__(self):
+        return str(self.user)

@@ -16,3 +16,7 @@ class FeedbackFormAdmin(admin.ModelAdmin):
 class ResumeThumb(admin.ModelAdmin):
     list_display = ['user', 'resume_number', 'path']
 
+
+@admin.register(ResumeProperties)
+class ResumeThumb(admin.ModelAdmin):
+    list_display = ['user', 'resume_number', 'page2active']

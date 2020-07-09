@@ -15,3 +15,9 @@ class ResumeThumbnailSerializer(serializers.ModelSerializer):
     class Meta:
         model = ResumeThumbnails
         fields = '__all__'
+
+
+class ResumePropertySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ResumeProperties
+        fields = '__all__'

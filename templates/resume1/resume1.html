@@ -93,33 +93,43 @@
                         {% else %}
                         <p class="resumeOne-orange-section">WORK EXPERIENCE</p>
                         {% for i in data.experienceNum|get_range %}
+                        {% if i == 1 %}
                         <span class="resumeOne-inputs">
-                            {% with experience_company_|join:i as exp_company %}
-                            {% with experience_position_|join_var:i as exp_position %}
-                            {% with experience_start_|join_var:i as exp_start %}
-                            {% with experience_end_|join_var:i as exp_end %}
-                            <span>{{ data.exp_company }}</span>
-                            <span>{{ data.exp_position }}</span>
+                            <span>{{ data.experience_company_1 }}</span>
+                            <span>{{ data.experience_position_1 }}</span>
                             <div>
-                                <span>{{ data.exp_start }}</span>
-                                <span>{{ data.exp_end }}</span>
+                                <span>{{ data.experience_start_1 }}</span>
+                                <span>{{ data.experience_end_1 }}</span>
                             </div>
                             <ul class="resumeOne-inputs">
-                                {% with experience_description_|join_var:i as exp_description %}
-                                {% with data.exp_description|split:",," as lists %}
+                                {% with data.experience_description_1|split:",," as lists %}
                                 {% for item in lists %}
                                 {% if item != '' %}
                                 <li>{{ item }}</li>
                                 {% endif %}
                                 {% endfor %}
                                 {% endwith %}
+                            </ul>
+                        </span>
+                        {% elif  i == 2 %}
+                        <span class="resumeOne-inputs">
+                            <span>{{ data.experience_company_2 }}</span>
+                            <span>{{ data.experience_position_2 }}</span>
+                            <div>
+                                <span>{{ data.experience_start_2 }}</span>
+                                <span>{{ data.experience_end_2 }}</span>
+                            </div>
+                            <ul class="resumeOne-inputs">
+                                {% with data.experience_description_2|split:",," as lists %}
+                                {% for item in lists %}
+                                {% if item != '' %}
+                                <li>{{ item }}</li>
+                                {% endif %}
+                                {% endfor %}
                                 {% endwith %}
                             </ul>
-                            {% endwith %}
-                            {% endwith %}
-                            {% endwith %}
-                            {% endwith %}
                         </span>
+                        {% endif %}
                         {% endfor %}
                         {% endif %}
                     </div>

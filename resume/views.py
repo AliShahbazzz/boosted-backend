@@ -7,10 +7,7 @@ from rest_framework.generics import (
 )
 
 # Local Import her
-from .serializers import (
-    ResumeSerializer,
-    ResumeThumbnailSerializer
-)
+from .serializers import *
 
 from .models import *
 from core.mixins import UserMixin
@@ -41,6 +38,10 @@ class UserResumeListCreateAPIView(ListCreateAPIView):
 
         if resumeData.is_valid():
             resumeDataInstance = resumeData.save(resume_image=image)
+            resumeProp = ResumePropertySerializer(data=request.data)
+            resIns = ''
+            if resumeProp.is_valid():
+                resumeProp.save()
             pdfURL = pdf(request, name, resume_number)
             pngURL = png(request, name, resume_number)
 
@@ -58,11 +59,17 @@ class UserResumeListCreateAPIView(ListCreateAPIView):
         resume_number = self.request.query_params.get('resume_number')
         qs = UserResume.objects.filter(
             user=user, resume_number=resume_number).order_by('created').last()
+        prop_qs = ResumeProperties.objects.filter(
+            user=user, resume_number=resume_number).order_by('created').last()
         data = ResumeSerializer(qs).data
-        base64img = imgpath_to_base64(data['resume_image'])
+        propData = ResumePropertySerializer(prop_qs).data
+        base64img = ''
+        if data['resume_image']:
+            base64img = imgpath_to_base64(data['resume_image'])
         return Response({
             'data': data,
-            'image': base64img
+            'image': base64img,
+            'propData': propData
         })
 
 
