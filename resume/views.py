@@ -39,7 +39,7 @@ class UserResumeListCreateAPIView(ListCreateAPIView):
         if resumeData.is_valid():
             resumeDataInstance = resumeData.save(resume_image=image)
             resumeProp = ResumePropertySerializer(data=request.data)
-            resIns = ''
+
             if resumeProp.is_valid():
                 resumeProp.save()
             pdfURL = pdf(request, name, resume_number)

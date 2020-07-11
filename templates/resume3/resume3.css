@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
+@page :first {
+    size: A4;
+    margin: -10px;
+}
+
+@page {
+    size: A4;
+    margin-left: -10px;
+    margin-top: 0px;
+}
+
+span {
+    margin-bottom: 3px;
+}
+
+ul li {
+    margin-bottom: 4px;
+}
+
+.resumeThreeMain {
+    background-color: white;
+    margin-bottom: 15px;
+    width: 796px;
+    height: 1096px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
+.resumeThreeMain-P2 {
+    background-color: white;
+    width: 796px;
+    height: 1096px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
+.resumeThreeMain div, span, p {
+    font-family: 'Montserrat';
+    font-size: 15px;
+}
+
+.resumeThreeMain-P2 div, span, p {
+    font-family: 'Montserrat';
+    font-size: 15px;
+}
+
+.resumeThree-resumeHeader {
+    border: 10px solid #0E5F76;
+    padding: 38px;
+    display: flex;
+    flex-direction: row;
+}
+
+.resumeThree-Imageholder {
+    width: 130px;
+    height: 130px;
+    margin-right: 15px;
+}
+
+.resumeThree-Nameholder {
+    margin-left: 5px;
+}
+
+.resumeThree-nameBox {
+    color: #0E5F76;
+    font-size: 36px;
+    text-align: left;
+    width: 100%;
+    font-weight: 600;
+}
+
+.resumeThree-positionBox {
+    font-size: 16px;
+    letter-spacing: 5px;
+    font-weight: 600;
+    text-align: left;
+    margin-top: 2%;
+    width: 100%;
+}
+
+.resumeThree-descriptionBox {
+    color: white;
+    width: 266px;
+}
+
+.resumeThree-section-2 {
+    margin-top: 28px;
+    border: 10px solid #0E5F76;
+    display: flex;
+    flex-direction: row;
+}
+
+.resumeThree-section-2-P2 {
+    border: 10px solid #0E5F76;
+    display: flex;
+}
+
+.resumeThree-left-section {
+    width: 320px;
+    height: 808px;
+    padding: 25px;
+    background-color: #0E5F76;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.resumeThree-left-section-P2 {
+    width: 320px;
+    height: 1055px;
+    padding: 25px;
+    background-color: #0E5F76;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.resumeThree-left-section input {
+    color: white;
+}
+
+.resumeThree-right-section {
+    width: 426px;
+    height: 785px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.resumeThree-inputs {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.resumeThree-section {
+    margin-top: 25px;
+}
+
+.resumeThree-text-color {
+    color: #0E5F76;
+}
+
+.resumeThree-left-section-title {
+    color: white;
+    font-weight: 700;
+}
+
+.resumeThree-right-section-title {
+    color: #0E5F76;
+    font-weight: 700;
+}
+
+.resumeThree-capBox {
+    text-transform: uppercase;
+}
+
+.resumeThree-certificate-ul, .resumeThree-project-ul {
+    direction: ltr;
+    color: white;
+}
+
+.resumeThree-recommendation-list textarea {
+    width: 100%;
+    text-align: left;
+    color: white;
+}
+
+.resumeThree-dates {
+    display: flex;
+}
+
+.resumeThree-date {
+    width: 100px;
+    margin-right: 10px;
+}

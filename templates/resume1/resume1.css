@@ -1,7 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
+@page :first {
+      size: A4;
+      margin: -10px;
+}
+
 @page {
       size: A4;
-      margin: -8px;
+      margin-left: -10px;
+      margin-top: 0px;
+}
+
+span {
+      margin-bottom: 3px;
+}
+
+ul li {
+      margin-bottom: 4px;
 }
 
 .resumeOne-montserrat div, input, textarea {
@@ -78,6 +92,7 @@
       align-self: center;
       text-align: center;
       width: 685px;
+      height: 90px;
 }
 
 .resumeOne-capBox {
@@ -87,6 +102,12 @@
 .resumeOne-inputs {
       display: flex;
       flex-direction: column;
+}
+
+.resumeOne-inputs-margin {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
 }
 
 .resumeOne-section {
@@ -111,6 +132,10 @@
       margin-bottom: 3px;
 }
 
+.resumeOne-left-ul li {
+      margin-bottom: 4px;
+}
+
 .resumeOne-left-ul li:before {
       content: "\2022";
       position: absolute;
@@ -131,4 +156,9 @@
 .resumeOne-date {
       width: 100px;
       margin-right: 10px;
+}
+
+.resumeOne-date-left {
+      text-align: right;
+      width: 100px;
 }

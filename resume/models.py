@@ -111,9 +111,9 @@ class UserResume(models.Model):
                                      blank=True,
                                      help_text="give it a end date.")
 
-    education_score = models.PositiveIntegerField(null=True,
-                                                  blank=True,
-                                                  help_text="GPA/SCORE.")
+    education_score = models.FloatField(null=True,
+                                        blank=True,
+                                        help_text="GPA/SCORE.")
 
     intern_company = models.CharField(max_length=80,
                                       null=True,
@@ -351,25 +351,9 @@ class UserResume(models.Model):
                                                      blank=True,
                                                      help_text="Date of obtainment")
 
-    recommendation_1 = models.TextField(max_length=150,
-                                        null=True,
-                                        blank=True)
-
-    recommendation_2 = models.TextField(max_length=150,
-                                        null=True,
-                                        blank=True)
-
-    recommendation_3 = models.TextField(max_length=150,
-                                        null=True,
-                                        blank=True)
-
-    recommendation_4 = models.TextField(max_length=150,
-                                        null=True,
-                                        blank=True)
-
-    recommendation_5 = models.TextField(max_length=150,
-                                        null=True,
-                                        blank=True)
+    recommendations = models.TextField(max_length=500,
+                                       null=True,
+                                       blank=True)
 
     def __str__(self):
         return str(self.name)
