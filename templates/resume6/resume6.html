@@ -1,0 +1,320 @@
+<html>
+
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
+
+        @page :first {
+            size: A4;
+            margin: -10px;
+        }
+
+        @page {
+            size: A4;
+            margin-left: -10px;
+            margin-top: 0px;
+        }
+
+        span {
+            margin-bottom: 3px;
+            word-wrap: break-word;
+        }
+
+        ul li {
+            margin-bottom: 4px;
+        }
+
+        .resumeSixMain {
+            background-color: #e5fcff;
+            color: #212121;
+            width: 796px;
+            height: 1125px;
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+        }
+
+        .resumeSixMain div {
+            font-family: 'Montserrat';
+            font-size: 15px;
+        }
+
+        .resumeSix-resumeHeader {
+            text-align: center;
+            padding: 64px 40px;
+            border-bottom: 3px dashed #212121;
+        }
+
+        .resumeSix-nameBox {
+            font-size: 40px;
+            font-weight: 600;
+        }
+
+        .resumeSix-positionBox {
+            font-size: 1.2em;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-top: 2%;
+        }
+
+        .resumeSix-descriptionBox {
+            width: 310px;
+            font-size: 1em;
+        }
+
+        .resumeSix-section-2 {
+            display: flex;
+        }
+
+        .resumeSix-left-section {
+            height: 840px;
+            width: 383px;
+            border-right: 3px dashed #212121;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resumeSix-left-section-P2 {
+            height: 1050px;
+            width: 383px;
+            border-right: 3px dashed #212121;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resumeSix-right-section {
+            width: 383px;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resumeSix-inputs {
+            display: flex;
+            flex-direction: column;
+            width: 340px;
+        }
+
+        .resumeSix-section {
+            margin-top: 25px;
+        }
+
+        .resumeSix-section-title {
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .resumeSix-capBox {
+            text-transform: uppercase;
+        }
+
+        .resumeSix-dates {
+            display: flex;
+        }
+
+        .resumeSix-date {
+            width: 100px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="resumeSixMain">
+        <div class="resumeSix-resumeHeader">
+            <span class="resumeSix-capBox resumeSix-nameBox">
+                {{ data.name }}
+            </span>
+            <div class="resumeSix-capBox resumeSix-positionBox">
+                {{ data.position }}
+            </div>
+        </div>
+
+        <div class="resumeSix-section-2">
+            <div class="resumeSix-left-section">
+
+                <p class="resumeSix-section-title">PROFILE</p>
+                <span class="resumeSix-descriptionBox">
+                    {{ data.profile }}
+                </span>
+
+                <div class="resumeSix-section">
+                    <p class="resumeSix-section-title">CONTACT</p>
+                    <div class="resumeSix-inputs">
+                        <span>{{ data.email }}</span>
+                        <span>{{ data.phone }}</span>
+                        <span>{{ data.url }}</span>
+                        <span>{{ data.address}}</span>
+                    </div>
+                </div>
+
+
+                <div class="resumeSix-section">
+                    <p class="resumeSix-section-title">ACCOMPLISHMENTS</p>
+                    <span class="resumeSix-inputs">
+                        {% for item in achievements %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+
+            </div>
+            <div class="resumeSix-right-section">
+                <p class="resumeSix-section-title">SKILLS</p>
+                <span class="resumeSix-inputs">
+                    {% for item in skills %}
+                    <span>{{ item }}</span>
+                    {% endfor %}
+                </span>
+
+                <div class="resumeSix-section">
+                    <p class="resumeSix-section-title">EDUCATION</p>
+                    <span class="resumeSix-inputs">
+                        <span>{{ data.education_institute }}</span>
+                        <span>{{ data.education_degree }}</span>
+                        <span>{{ data.education_course }}</span>
+                        <div class="resumeSix-dates">
+                            <span class="resumeSix-date">{{ data.education_start }}</span>
+                            <span class="resumeSix-date">{{ data.education_end }}</span>
+                        </div>
+                        <span>GPA: {{ data.education_score }}</span>
+                    </span>
+                </div>
+
+                <div class='resumeSix-section'>
+                    {% if data.internActive == 'true' %}
+                    <p class="resumeSix-section-title">INTERNSHIP/COURSES</p>
+                    <span class="resumeSix-inputs">
+                        <span>{{ data.intern_position }}</span>
+                        <span class="resumeSix-text-color">{{ data.intern_company }}</span>
+                        <div class="resumeSix-dates">
+                            <span class="resumeSix-date">{{ data.intern_start }}</span>
+                            <span class="resumeSix-date">{{ data.intern_end }}</span>
+                        </div>
+                        <ul>
+                            {% for item in intern_description %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </span>
+                    {% else %}
+                    <p class="resumeSix-section-title">WORK EXPERIENCE</p>
+                    {% for i in experiences %}
+                    {% if loop.first %}
+                    <span class="resumeSix-inputs">
+                        <span>{{ i.position }}</span>
+                        <span class="resumeSix-text-color">{{ i.company }}</span>
+                        <div class="resumeSix-dates">
+                            <span class="resumeSix-date">{{ i.start }}</span>
+                            <span class="resumeSix-date">{{ i.end }}</span>
+                        </div>
+                        <ul class="resumeSix-inputs">
+                            {% for item in i.description %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </span>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if page2active == 'true' %}
+    <div class="resumeSixMain">
+        <div class="resumeSix-section-2">
+            <div class="resumeSix-left-section-P2">
+
+                {% if data.projectActive == 'true' %}
+                <p class="resumeSix-section-title">PROJECTS</p>
+                {% set num = data.projectNum %}
+                {% for i in range(0, num, 1) %}
+                <span class="resumeSix-inputs">
+                    <span>{{ projects[i].name }}</span>
+                    <div class="resumeSix-dates">
+                        <span class="resumeSix-date">{{ projects[i].start }}</span>
+                        <span class="resumeSix-date">{{ projects[i].end }}</span>
+                    </div>
+                    <ul>
+                        {% for item in projects[i].description %}
+                        {% if item != '' %}
+                        <li>{{ item }}</li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </span>
+                {% endfor %}
+                {% endif %}
+
+                {% if data.certificateActive == 'true' %}
+                <div class="resumeSix-section">
+                    <p class="resumeSix-section-title">CERTIFICATES</p>
+                    {% set num = data.certificateNum %}
+                    {% for i in range(0, num, 1) %}
+                    <span class="resumeSix-inputs">
+                        <span>{{ certificates[i].name }}</span>
+                        <span>{{ certificates[i].center }}</span>
+                        <ul>
+                            {% for item in certificates[i].description %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                        <p>Date of Obtainment:{{ certificates[i].obtainment }}</p>
+                    </span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                {% if data.recommendationActive == 'true' %}
+                <div class="resumeSix-section">
+                    <p class="resumeSix-section-title">RECOMMENDATIONS</p>
+                    <span class="resumeSix-inputs">
+                        {% for item in recommendations %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="resumeSix-right-section">
+                <div class="resumeSix-section">
+                    {% for i in experiences %}
+                    {% if not loop.first %}
+                    <span class="resumeSix-inputs">
+                        <span>{{ i.position }}</span>
+                        <span class="resumeSix-text-color">{{ i.company }}</span>
+                        <div class="resumeSix-dates">
+                            <span class="resumeSix-date">{{ i.start }}</span>
+                            <span class="resumeSix-date">{{ i.end }}</span>
+                        </div>
+                        <ul class="resumeSix-inputs">
+                            {% for item in i.description %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </span>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div></div>
+    {% endif %}
+</body>
+
+</html>

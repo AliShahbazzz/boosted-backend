@@ -1,9 +1,176 @@
 <html>
 
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
+
+        @page :first {
+            size: A4;
+            margin: -10px;
+        }
+
+        @page {
+            size: A4;
+            margin-left: -10px;
+            margin-top: 0px;
+        }
+
+        span {
+            margin-bottom: 3px;
+            word-wrap: break-word;
+        }
+
+        ul li {
+            margin-bottom: 4px;
+        }
+
+        .resumeThreeMain {
+            background-color: white;
+            width: 796px;
+            height: 1120px;
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+        }
+
+        .resumeThreeMain div,
+        span,
+        p {
+            font-size: 15px;
+            font-family: 'Montserrat';
+        }
+
+        .resumeThreeMain-P2 div,
+        span,
+        p {
+            font-size: 15px;
+            font-family: 'Montserrat';
+        }
+
+        .resumeThree-resumeHeader {
+            border: 10px solid #0E5F76;
+            padding: 38px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .resumeThree-Imageholder {
+            border: 1px solid #0E5F76;
+            width: 130px;
+            height: 130px;
+            margin-right: 15px;
+        }
+
+        .resumeThree-Nameholder {
+            margin-left: 5px;
+        }
+
+        .resumeThree-nameBox {
+            color: #0E5F76;
+            font-size: 36px;
+            text-align: left;
+            width: 100%;
+            font-weight: 600;
+        }
+
+        .resumeThree-positionBox {
+            font-size: 16px;
+            letter-spacing: 5px;
+            font-weight: 600;
+            text-align: left;
+            margin-top: 2%;
+            width: 100%;
+        }
+
+        .resumeThree-descriptionBox {
+            color: white;
+            width: 266px;
+        }
+
+        .resumeThree-section-2 {
+            margin-top: 28px;
+            border: 10px solid #0E5F76;
+            display: flex;
+            flex-direction: row;
+            height: 820px;
+        }
+
+        .resumeThree-section-2-P2 {
+            border: 10px solid #0E5F76;
+            display: flex;
+        }
+
+        .resumeThree-left-section {
+            width: 320px;
+            height: 800px;
+            padding: 25px;
+            background-color: #0E5F76;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resumeThree-left-section-P2 {
+            width: 320px;
+            height: 1055px;
+            padding: 25px;
+            background-color: #0E5F76;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resumeThree-right-section {
+            width: 426px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resumeThree-inputs {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+            width: 310px;
+        }
+
+        .resumeThree-section {
+            margin-top: 25px;
+        }
+
+        .resumeThree-text-color {
+            color: #0E5F76;
+        }
+
+        .resumeThree-left-section-title {
+            color: white;
+            font-weight: 700;
+        }
+
+        .resumeThree-right-section-title {
+            color: #0E5F76;
+            font-weight: 700;
+        }
+
+        .resumeThree-capBox {
+            text-transform: uppercase;
+        }
+
+        .resumeThree-dates {
+            display: flex;
+        }
+
+        .resumeThree-date {
+            width: 100px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
 <body>
     <div class="resumeThreeMain">
         <div class="resumeThree-resumeHeader">
-            <div>
+            <div class="resumeThree-Imageholder">
                 <img src="{{ data.user_resume_image }}" class="resumeThree-Imageholder" />
             </div>
             <div class="resumeThree-Nameholder">
@@ -37,8 +204,7 @@
                 <div class="resumeThree-section">
                     <p class="resumeThree-left-section-title">SKILLS AND ABILITIES</p>
                     <span class="resumeThree-inputs">
-                        {% set lists = data.skills|split(",,") %}
-                        {% for item in lists %}
+                        {% for item in skills %}
                         <span>{{ item }}</span>
                         {% endfor %}
                     </span>
@@ -47,8 +213,7 @@
                 <div class="resumeThree-section">
                     <p class="resumeThree-left-section-title">HOBBIES & INTERESTS</p>
                     <span class="resumeThree-inputs">
-                        {% set lists = data.interests|split(",,") %}
-                        {% for item in lists %}
+                        {% for item in interests %}
                         <span>{{ item }}</span>
                         {% endfor %}
                     </span>
@@ -69,67 +234,61 @@
                         </div>
                         <span>GPA: {{ data.education_score }}</span>
                     </span>
-                    <div>
 
-                        <div class='resumeThree-section'>
-                            {% if data.internActive == 'true' %}
-                            <p class="resumeThree-right-section-title">INTERNSHIP/COURSES</p>
-                            <span class="resumeThree-inputs">
-                                <span>{{ data.intern_company }}</span>
-                                <span>{{ data.intern_position }}</span>
-                                <div class="resumeThree-dates">
-                                    <span class="resumeThree-date">{{ data.intern_start }}</span>
-                                    <span class="resumeThree-date">{{ data.intern_end }}</span>
-                                </div>
-                                <ul>
-                                    {% set lists = data.intern_description|split(",,") %}
-                                    {% for item in lists %}
-                                    {% if item != '' %}
-                                    <li>{{ item }}</li>
-                                    {% endif %}
-                                    {% endfor %}
-                                </ul>
-                            </span>
-                            {% else %}
-                            <p class="resumeThree-right-section-title">WORK EXPERIENCE</p>
-                            {% set experiences = data|get_experience %}
-                            {% for i in experiences %}
-                            {% if loop.first %}
-                            <span class="resumeThree-inputs">
-                                <span>{{ i.company }}</span>
-                                <span>{{ i.position }}</span>
-                                <div class="resumeThree-dates">
-                                    <span class="resumeThree-date">{{ i.start }}</span>
-                                    <span class="resumeThree-date">{{ i.end }}</span>
-                                </div>
-                                <ul class="resumeThree-inputs">
-                                    {% set lists = i.description|split(",,") %}
-                                    {% for item in lists %}
-                                    {% if item != '' %}
-                                    <li>{{ item }}</li>
-                                    {% endif %}
-                                    {% endfor %}
-                                </ul>
-                            </span>
-                            {% endif %}
-                            {% endfor %}
-                            {% endif %}
-                        </div>
+                    <div class='resumeThree-section'>
+                        {% if data.internActive == 'true' %}
+                        <p class="resumeThree-right-section-title">INTERNSHIP/COURSES</p>
+                        <span class="resumeThree-inputs">
+                            <span>{{ data.intern_position }}</span>
+                            <span class="resumeThree-text-color">{{ data.intern_company }}</span>
+                            <div class="resumeThree-dates">
+                                <span class="resumeThree-date">{{ data.intern_start }}</span>
+                                <span class="resumeThree-date">{{ data.intern_end }}</span>
+                            </div>
+                            <ul>
+                                {% for item in intern_description %}
+                                {% if item != '' %}
+                                <li>{{ item }}</li>
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </span>
+                        {% else %}
+                        <p class="resumeThree-right-section-title">WORK EXPERIENCE</p>
+                        {% for i in experiences %}
+                        {% if loop.first %}
+                        <span class="resumeThree-inputs">
+                            <span>{{ i.position }}</span>
+                            <span class="resumeThree-text-color">{{ i.company }}</span>
+                            <div class="resumeThree-dates">
+                                <span class="resumeThree-date">{{ i.start }}</span>
+                                <span class="resumeThree-date">{{ i.end }}</span>
+                            </div>
+                            <ul class="resumeThree-inputs">
+                                {% for item in i.description %}
+                                {% if item != '' %}
+                                <li>{{ item }}</li>
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </span>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </div>
     </div>
     {% if page2active == 'true' %}
-    <div class="resumeThreeMain-P2">
+    <div class="resumeThreeMain">
         <div class="resumeThree-section-2-P2">
-
             <div class="resumeThree-left-section-P2">
+
                 {% if data.projectActive == 'true' %}
                 <p class="resumeThree-left-section-title">PROJECTS</p>
-                {% set num = data.projectNum|get_range %}
-                {% set projects = data|get_project %}
-                {% for i in num %}
+                {% set num = data.projectNum %}
+                {% for i in range(0, num, 1) %}
                 <span class="resumeThree-inputs">
                     <span>{{ projects[i].name }}</span>
                     <div class="resumeThree-dates">
@@ -137,8 +296,7 @@
                         <span class="resumeThree-date">{{ projects[i].end }}</span>
                     </div>
                     <ul>
-                        {% set lists = projects[i].description|split(",,") %}
-                        {% for item in lists %}
+                        {% for item in projects[i].description %}
                         {% if item != '' %}
                         <li>{{ item }}</li>
                         {% endif %}
@@ -151,15 +309,13 @@
                 {% if data.certificateActive == 'true' %}
                 <div class="resumeThree-section">
                     <p class="resumeThree-left-section-title">CERTIFICATES</p>
-                    {% set num = data.certificateNum|get_range %}
-                    {% set certificates = data|get_certificate %}
-                    {% for i in num %}
+                    {% set num = data.certificateNum %}
+                    {% for i in range(0, num, 1) %}
                     <span class="resumeThree-inputs">
                         <span>{{ certificates[i].name }}</span>
                         <span>{{ certificates[i].center }}</span>
                         <ul>
-                            {% set lists = certificates[i].description|split(",,") %}
-                            {% for item in lists %}
+                            {% for item in certificates[i].description %}
                             {% if item != '' %}
                             <li>{{ item }}</li>
                             {% endif %}
@@ -168,15 +324,14 @@
                         <p>Date of Obtainment:{{ certificates[i].obtainment }}</p>
                     </span>
                     {% endfor %}
-                    {% endif %}
                 </div>
+                {% endif %}
 
                 {% if data.recommendationActive == 'true' %}
                 <div class="resumeThree-section">
                     <p class="resumeThree-left-section-title">RECOMMENDATIONS</p>
                     <span class="resumeThree-inputs">
-                        {% set lists = data.recommendations|split(",,") %}
-                        {% for item in lists %}
+                        {% for item in recommendations %}
                         <span>{{ item }}</span>
                         {% endfor %}
                     </span>
@@ -186,19 +341,17 @@
 
             <div class="resumeThree-right-section">
                 <div class="resumeThree-section">
-                    {% set experiences = data|get_experience %}
                     {% for i in experiences %}
                     {% if not loop.first %}
                     <span class="resumeThree-inputs">
-                        <span>{{ i.company }}</span>
                         <span>{{ i.position }}</span>
+                        <span class="resumeThree-text-color">{{ i.company }}</span>
                         <div class="resumeThree-dates">
                             <span class="resumeThree-date">{{ i.start }}</span>
                             <span class="resumeThree-date">{{ i.end }}</span>
                         </div>
                         <ul class="resumeThree-inputs">
-                            {% set lists = i.description|split(",,") %}
-                            {% for item in lists %}
+                            {% for item in i.description %}
                             {% if item != '' %}
                             <li>{{ item }}</li>
                             {% endif %}

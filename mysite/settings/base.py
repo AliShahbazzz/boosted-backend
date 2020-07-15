@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     # api docs
     'rest_framework_swagger',  # swagger
 
+    'wkhtmltopdf',
     # local apps
     'resume',
     'contact'
@@ -79,11 +80,11 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.jinja2.Jinja2',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
-        'OPTIONS': {'environment': 'mysite.jinja.jinja2.environment', },
+        'OPTIONS': {'environment': 'mysite.jinja2.environment', },
     },
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

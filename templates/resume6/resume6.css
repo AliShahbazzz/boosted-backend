@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
+@page :first {
+    size: A4;
+    margin: -10px;
+}
+
+@page {
+    size: A4;
+    margin-left: -10px;
+    margin-top: 0px;
+}
+
+span {
+    margin-bottom: 3px;
+    word-wrap: break-word;
+}
+
+ul li {
+    margin-bottom: 4px;
+}
+
+.resumeSixRoot {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
+.resumeSixP2Root {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10%;
+}
+
+.resumeSixMain {
+    background-color: #e5fcff;
+    color: #212121;
+    width: 796px;
+    height: 1125px;
+    /* width: 736px;
+    height: 1066px; */
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
+.resumeSixMain div {
+    font-family: 'Montserrat';
+    font-size: 15px;
+}
+
+.resumeSix-resumeHeader {
+    text-align: center;
+    padding: 64px 40px;
+    border-bottom: 3px dashed #212121;
+}
+
+.resumeSix-nameBox {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.resumeSix-positionBox {
+    font-size: 1.2em;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-top: 2%;
+}
+
+.resumeSix-descriptionBox {
+    width: 310px;
+    font-size: 1em;
+}
+
+.resumeSix-section-2 {
+    display: flex;
+}
+
+.resumeSix-left-section {
+    height: 840px;
+    width: 383px;
+    border-right: 3px dashed #212121;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+}
+
+.resumeSix-left-section-P2 {
+    height: 1050px;
+    width: 383px;
+    border-right: 3px dashed #212121;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+}
+
+.resumeSix-right-section {
+    width: 383px;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+}
+
+.resumeSix-inputs {
+    display: flex;
+    flex-direction: column;
+    width: 340px;
+}
+
+.resumeSix-section {
+    margin-top: 25px;
+}
+
+.resumeSix-section-title {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.resumeSix-capBox {
+    text-transform: uppercase;
+}
+
+.resumeSix-certificate-ul, .resumeSix-project-ul {
+    direction: ltr;
+}
+
+.resumeSix-recommendation-list textarea {
+    width: 100%;
+}
+
+.resumeSix-dates {
+    display: flex;
+}
+
+.resumeSix-date {
+    width: 100px;
+    margin-right: 10px;
+}

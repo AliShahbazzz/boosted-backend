@@ -1,5 +1,162 @@
 <html>
 
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
+
+        @page :first {
+            size: A4;
+            margin: -10px;
+        }
+
+        @page {
+            size: A4;
+            margin-left: -10px;
+            margin-top: 0px;
+        }
+
+        span {
+            margin-bottom: 3px;
+            word-wrap: break-word;
+        }
+
+        li {
+            margin-bottom: 3px;
+        }
+
+        .resumeOne-montserrat div,
+        span,
+        p {
+            font-family: 'Montserrat';
+            font-size: 15px;
+        }
+
+        .resumeOne-orange-color {
+            border: 30px solid #FF7900;
+        }
+
+        .resumeOne-orange-section {
+            color: #FF7900;
+            font-weight: 700;
+        }
+
+        .resumeOneMain {
+            background-color: white;
+            display: flex;
+            width: 736px;
+            height: 1066px;
+            flex-direction: column;
+            justify-items: center;
+        }
+
+        .resumeOne-section-2 {
+            display: flex;
+            flex-direction: row;
+            margin-top: 38px;
+        }
+
+        .resumeOne-image {
+            width: 100px;
+        }
+
+        .resumeOne-nameBox {
+            font-size: 2.5rem;
+            font-weight: bold;
+            align-self: center;
+            text-align: center;
+            padding-top: 45px;
+            width: 730px;
+            height: 60px;
+        }
+
+        .resumeOne-positionBox {
+            margin-top: 10px;
+            align-self: center;
+            text-align: center;
+            width: 610px;
+            color: #FF7900;
+            letter-spacing: 2px;
+            height: 45px;
+        }
+
+        .resumeOne-descriptionBox {
+            font-size: 1em;
+            align-self: center;
+            text-align: center;
+            width: 685px;
+            height: 90px;
+        }
+
+        .resumeOne-capBox {
+            text-transform: uppercase;
+        }
+
+        .resumeOne-inputs {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resumeOne-inputs-margin {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .resumeOne-section {
+            margin-top: 25px;
+        }
+
+        .resumeOne-left-section {
+            width: 50%;
+            border-right: solid black;
+            text-align: right;
+            padding-right: 25px;
+            padding-left: 25px;
+            font-size: 15px;
+        }
+
+        .resumeOne-left-ul {
+            position: relative;
+            list-style: none;
+            padding-right: 1.2em;
+            text-align: right;
+            margin-top: 2px;
+            margin-bottom: 3px;
+        }
+
+        .resumeOne-left-ul li {
+            margin-bottom: 4px;
+        }
+
+        .resumeOne-left-ul li:before {
+            content: "\2022";
+            position: absolute;
+            right: 0;
+        }
+
+        .resumeOne-right-section {
+            width: 50%;
+            padding-left: 25px;
+            padding-right: 25px;
+            font-size: 15px;
+        }
+
+        .resumeOne-dates {
+            display: flex;
+        }
+
+        .resumeOne-date {
+            width: 100px;
+            margin-right: 10px;
+        }
+
+        .resumeOne-date-left {
+            text-align: right;
+            width: 100px;
+        }
+    </style>
+</head>
+
 <body>
     <div class="resumeOne-root resumeOne-montserrat">
         <div class="resumeOneMain resumeOne-orange-color">
@@ -18,9 +175,8 @@
                     <div>
                         <p class="resumeOne-orange-section">ACHIEVEMENTS</p>
                         <span class="resumeOne-inputs">
-                            {% set lists = data.achievements|split(",,") %}
-                            {% for item in lists %}
-                            <div>{{ item }}</div>
+                            {% for item in achievements %}
+                            <span>{{ item }}</span>
                             {% endfor %}
                         </span>
                     </div>
@@ -36,18 +192,16 @@
                     <div class="resumeOne-section">
                         <p class="resumeOne-orange-section">CORE SKILLS</p>
                         <span class="resumeOne-inputs">
-                            {% set lists = data.skills|split(",,") %}
-                            {% for item in lists %}
-                            <div>{{ item }}</div>
+                            {% for item in skills %}
+                            <span>{{ item }}</span>
                             {% endfor %}
                         </span>
                     </div>
                     <div class="resumeOne-section">
                         <p class="resumeOne-orange-section">HOBBIES &amp; INTERESTS</p>
                         <span class="resumeOne-inputs">
-                            {% set lists = data.interests|split(",,") %}
-                            {% for item in lists %}
-                            <div>{{ item }}</div>
+                            {% for item in interests %}
+                            <span>{{ item }}</span>
                             {% endfor %}
                         </span>
                     </div>
@@ -75,8 +229,7 @@
                                 <span class="resumeOne-date">{{ data.intern_end }}</span>
                             </div>
                             <ul>
-                                {% set lists = data.intern_description|split(",,") %}
-                                {% for item in lists %}
+                                {% for item in intern_description %}
                                 {% if item != '' %}
                                 <li>{{ item }}</li>
                                 {% endif %}
@@ -85,7 +238,6 @@
                         </span>
                         {% else %}
                         <p class="resumeOne-orange-section">WORK EXPERIENCE</p>
-                        {% set experiences = data|get_experience %}
                         {% for i in experiences %}
                         {% if loop.first %}
                         <span class="resumeOne-inputs">
@@ -95,9 +247,8 @@
                                 <span class="resumeOne-date">{{ i.start }}</span>
                                 <span class="resumeOne-date">{{ i.end }}</span>
                             </div>
-                            <ul class="resumeOne-inputs">
-                                {% set lists = i.description|split(",,") %}
-                                {% for item in lists %}
+                            <ul>
+                                {% for item in i.description %}
                                 {% if item != '' %}
                                 <li>{{ item }}</li>
                                 {% endif %}
@@ -120,9 +271,8 @@
 
                     {% if data.projectActive == 'true' %}
                     <p class="resumeOne-orange-section">PROJECTS</p>
-                    {% set num = data.projectNum|get_range %}
-                    {% set projects = data|get_project %}
-                    {% for i in num %}
+                    {% set num = data.projectNum %}
+                    {% for i in range(0, num, 1) %}
                     <span class="resumeOne-inputs-margin">
                         <span>{{ projects[i].name }}</span>
                         <div class="resumeOne-dates">
@@ -130,8 +280,7 @@
                             <span class="resumeOne-date-left">{{ projects[i].end }}</span>
                         </div>
                         <ul class="resumeOne-left-ul">
-                            {% set lists = projects[i].description|split(",,") %}
-                            {% for item in lists %}
+                            {% for item in projects[i].description %}
                             {% if item != '' %}
                             <li>{{ item }}</li>
                             {% endif %}
@@ -144,15 +293,13 @@
 
                     {% if data.certificateActive == 'true' %}
                     <p class="resumeOne-orange-section">CERTIFICATES</p>
-                    {% set num = data.certificateNum|get_range %}
-                    {% set certificates = data|get_certificate %}
-                    {% for i in num %}
+                    {% set num = data.certificateNum %}
+                    {% for i in range(0, num, 1) %}
                     <span class="resumeOne-inputs-margin">
                         <span>{{ certificates[i].name }}</span>
                         <span>{{ certificates[i].center }}</span>
                         <ul class="resumeOne-left-ul">
-                            {% set lists = certificates[i].description|split(",,") %}
-                            {% for item in lists %}
+                            {% for item in certificates[i].description %}
                             {% if item != '' %}
                             <li>{{ item }}</li>
                             {% endif %}
@@ -163,20 +310,18 @@
                     {% endfor %}
                     {% endif %}
 
-
                     {% if data.recommendationActive == 'true' %}
                     <p class="resumeOne-orange-section">RECOMMENDATION</p>
                     <span class="resumeOne-inputs">
-                        {% set lists = data.recommendations|split(",,") %}
-                        {% for item in lists %}
+                        {% for item in recommendations %}
                         <span>{{ item }}</span>
                         {% endfor %}
                     </span>
                     {% endif %}
                 </div>
                 <div class="resumeOne-right-section">
+                    {% if data.experienceNum > 1 %}
                     <div>
-                        {% set experiences = data|get_experience %}
                         {% for i in experiences %}
                         {% if not loop.first %}
                         <div class="resumeOne-inputs-margin">
@@ -187,8 +332,7 @@
                                 <span class="resumeOne-date">{{ i.end }}</span>
                             </div>
                             <ul class="resumeOne-inputs">
-                                {% set lists = i.description|split(",,") %}
-                                {% for item in lists %}
+                                {% for item in i.description %}
                                 {% if item != '' %}
                                 <li>{{ item }}</li>
                                 {% endif %}
@@ -198,6 +342,7 @@
                         {% endif %}
                         {% endfor %}
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

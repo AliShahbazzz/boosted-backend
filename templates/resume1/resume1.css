@@ -12,23 +12,19 @@
 
 span {
       margin-bottom: 3px;
+      word-wrap: break-word;
 }
 
-ul li {
-      margin-bottom: 4px;
+li {
+      margin-bottom: 3px;
 }
 
-.resumeOne-montserrat div, input, textarea {
+.resumeOne-montserrat div, span, p {
       font-family: 'Montserrat';
-}
-
-.resumeOne-cursive div, input, textarea {
-      font-family: cursive;
       font-size: 15px;
 }
 
 .resumeOne-orange-color {
-      /* border: 15px solid #FF7900; */
       border: 30px solid #FF7900;
 }
 
@@ -37,22 +33,11 @@ ul li {
       font-weight: 700;
 }
 
-.resumeOne-green-color {
-      border: 15px solid #b93aa8;
-}
-
-.resumeOne-green-section {
-      color: #b93aa8;
-      font-weight: 700;
-}
-
 .resumeOneMain {
       background-color: white;
-      /* width: 766px;
-      height: 1096px; */
+      display: flex;
       width: 736px;
       height: 1066px;
-      display: flex;
       flex-direction: column;
       justify-items: center;
 }
@@ -115,7 +100,7 @@ ul li {
 }
 
 .resumeOne-left-section {
-      width: 382px;
+      width: 50%;
       border-right: solid black;
       text-align: right;
       padding-right: 25px;
@@ -143,7 +128,7 @@ ul li {
 }
 
 .resumeOne-right-section {
-      width: 382px;
+      width: 50%;
       padding-left: 25px;
       padding-right: 25px;
       font-size: 15px;

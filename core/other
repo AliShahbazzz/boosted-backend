@@ -1,0 +1,20 @@
+    # options = {
+    #     'disable-smart-shrinking': '',
+    #     'page-size': 'A4',
+    #     'margin-top': '0mm',
+    #     'margin-right': '0mm',
+    #     'margin-bottom': '0mm',
+    #     'margin-left': '0mm',
+    #     'encoding': "UTF-8",
+    #     'no-outline': None
+    # }
+    # config = pdfkit.configuration(
+    #     wkhtmltopdf='C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe')
+    # pdfkit.from_string(html, pdfCreatePath,
+    #                    configuration=config, options=options)
+
+    # result_file = open(pdfCreatePath, "w+b")
+    # pisa_status = pisa.CreatePDF(html, dest=result_file)
+    # result_file.close()
+    # if pisa_status.err:
+    #     return HttpResponse('We had some errors <pre>' + html + '</pre>')

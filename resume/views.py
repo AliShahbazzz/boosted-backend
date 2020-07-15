@@ -35,16 +35,18 @@ class UserResumeListCreateAPIView(ListCreateAPIView):
             image = img_size_reducer(image_data, name, resume_number)
 
         resumeData = ResumeSerializer(data=request.data)
-
+        print("converted")
         if resumeData.is_valid():
             resumeDataInstance = resumeData.save(resume_image=image)
             resumeProp = ResumePropertySerializer(data=request.data)
 
             if resumeProp.is_valid():
                 resumeProp.save()
+            print("generating")
             pdfURL = pdf(request, name, resume_number)
+            print("pdf ok")
             pngURL = png(request, name, resume_number)
-
+            print("generated")
             pngInstance = ResumeThumbnails.objects.create(
                 user=user, resume_number=resume_number, path=pngURL)
             return Response({
