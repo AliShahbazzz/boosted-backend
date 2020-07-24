@@ -42,17 +42,25 @@ class UserResumeListCreateAPIView(ListCreateAPIView):
 
             if resumeProp.is_valid():
                 resumeProp.save()
-            print("generating")
-            pdfURL = pdf(request, name, resume_number)
-            print("pdf ok")
+                request_type = request.data['type']
+                if request_type == 'pdf':
+                    print("generating")
+                    pdfURL = pdf(request, name, resume_number)
+                    print("pdf ok")
+                    print("generated")
+                    return Response({
+                        'message': 'Success! PDF has been generated.',
+                        'directory': pdfURL
+                    }, status=status.HTTP_200_OK)
+            print("generating png")
             pngURL = png(request, name, resume_number)
-            print("generated")
             pngInstance = ResumeThumbnails.objects.create(
                 user=user, resume_number=resume_number, path=pngURL)
+            print("png ok generated")
             return Response({
-                'message': 'Success! PDF has been generated.',
-                'directory': pdfURL
+                'message': 'Success! PNG has been generated.',
             }, status=status.HTTP_200_OK)
+
         return Response({'details': resumeData.errors})
 
     def get(self, request, *args, **kwargs):

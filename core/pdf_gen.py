@@ -81,6 +81,13 @@ def pdf(request, name, resume_number):
             'start': request.data['experience_start_4'],
             'end': request.data['experience_end_4'],
             'description': request.data['experience_description_4'].split(",,")
+        },
+        {
+            'company': request.data['experience_company_5'],
+            'position': request.data['experience_position_5'],
+            'start': request.data['experience_start_5'],
+            'end': request.data['experience_end_5'],
+            'description': request.data['experience_description_5'].split(",,")
         }]
     htmlobj = render_to_string(
         'resume' + resume_number + '/resume' + resume_number + '.html', {'data': request.data,
@@ -126,7 +133,14 @@ def png(request, name, resume_number):
             'start': request.data['experience_start_1'],
             'end': request.data['experience_end_1'],
             'description': request.data['experience_description_1'].split(",,")
-        }]
+        },
+        {
+            'company': request.data['experience_company_2'],
+            'position': request.data['experience_position_2'],
+            'start': request.data['experience_start_2'],
+            'end': request.data['experience_end_2'],
+            'description': request.data['experience_description_2'].split(",,")
+        }, ]
     htmlobj = render_to_string(
         'resume' + resume_number + '/resume' + resume_number + '.html', {'data': request.data,
                                                                          'achievements': achievements,

@@ -1,0 +1,365 @@
+<html>
+
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
+
+        @page :first {
+            size: A4;
+            margin: -10px;
+        }
+
+        @page {
+            size: A4;
+            margin-left: -10px;
+            margin-top: 0px;
+        }
+
+        span {
+            word-wrap: break-word;
+        }
+
+        ul li {
+            margin-bottom: 4px;
+        }
+
+        .resumeTwoMain {
+            font-family: 'Montserrat';
+            font-size: 13px;
+            background-color: white;
+            width: 796px;
+            height: 1125px;
+            line-height: 1.3;
+        }
+
+        .resumeTwo-resumeHeader {
+            height: 180px;
+            margin-top: 36px;
+            padding: 8px 48px;
+            display: flex;
+            background-color: #eff9ff;
+            border-bottom: 15px solid #d3e4ef;
+            border-radius: 0px 150px 150px 0px;
+            margin-right: 15px;
+            padding-right: 12px;
+        }
+
+        .resumeTwo-image {
+            border-radius: 50%;
+            width: 200px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .resumeTwo-Imageholder {
+            border: 1px solid #5666ad;
+            height: 180px;
+            width: 180px;
+            border-radius: 50%;
+        }
+
+        .resumeTwo-name-position {
+            display: flex;
+            flex-direction: column;
+            width: 566px;
+            align-self: center;
+        }
+
+        .resumeTwo-nameBox {
+            line-height: normal;
+            color: #5666ad;
+            font-size: 46px;
+            width: 550px;
+            font-weight: 600;
+        }
+
+        .resumeTwo-positionBox {
+            font-size: 1.2em;
+            color: #5666ad;
+            letter-spacing: 2px;
+            width: 550px;
+        }
+
+        .resumeTwo-section-2 {
+            display: flex;
+        }
+
+        .resumeTwo-left-section {
+            width: 344px;
+            padding: 38px 48px;
+        }
+
+        .resumeTwo-left-section div {
+            display: block;
+        }
+
+        .resumeTwo-right-section {
+            width: 275px;
+            height: 790px;
+            background-color: #f6fafd;
+            margin-top: 25px;
+            margin-right: 25px;
+            padding: 15px 25px;
+            border-radius: 2%;
+        }
+
+        .resumeTwo-right-section div {
+            display: block;
+        }
+
+        .resumeTwo-right-section-P2 {
+            width: 275px;
+            height: 1030px;
+            background-color: #f6fafd;
+            margin-top: 25px;
+            margin-right: 25px;
+            padding: 15px 25px;
+            border-radius: 2%;
+        }
+
+        .resumeTwo-right-section-P2 div {
+            display: block;
+        }
+
+        .resumeTwo-inputs span {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .resumeTwo-section {
+            margin-top: 25px;
+        }
+
+        .resumeTwo-section-title {
+            width: 410px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .resumeTwo-capBox {
+            text-transform: uppercase;
+        }
+
+        .resumeTwo-text-color {
+            color: #5666ad;
+        }
+
+        .resumeTwo-dates span {
+            display: inline-block;
+        }
+
+        .resumeTwo-date {
+            width: 100px;
+            margin-right: 10px;
+        }
+
+        .resumeTwo-position {
+            font-size: 15px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="resumeTwoMain">
+        <div class="resumeTwo-resumeHeader">
+
+            <div class="resumeTwo-name-position">
+                <span class="resumeTwo-capBox resumeTwo-nameBox">
+                    {{ data.name }}
+                </span>
+                <span class="resumeTwo-capBox resumeTwo-positionBox">
+                    {{ data.position }}
+                </span>
+            </div>
+            <div class="resumeTwo-image">
+                <img src="{{ data.user_resume_image }}" class="resumeTwo-Imageholder" />
+            </div>
+        </div>
+
+        <div class="resumeTwo-section-2">
+            <div class="resumeTwo-left-section">
+                <p class="resumeTwo-section-title">CORE COMPETENCIES</p>
+                <span class="resumeTwo-inputs">
+                    {% for item in skills %}
+                    <span>{{ item }}</span>
+                    {% endfor %}
+                </span>
+
+                <div class='resumeTwo-section'>
+                    <p class="resumeTwo-section-title">ACADEMIC PROFILE</p>
+                    <span class="resumeTwo-inputs">
+                        <span>{{ data.education_institute }}</span>
+                        <span>{{ data.education_degree }}</span>
+                        <span>{{ data.education_course }}</span>
+                        <div class="resumeTwo-dates">
+                            <span class="resumeTwo-date">{{ data.education_start }}</span>
+                            <span class="resumeTwo-date">{{ data.education_end }}</span>
+                        </div>
+                        <span>GPA: {{ data.education_score }}</span>
+                    </span>
+                </div>
+
+                <div class='resumeTwo-section'>
+                    {% if data.internActive == 'true' %}
+                    <p class="resumeTwo-section-title">INTERNSHIP/COURSES</p>
+                    <span class="resumeTwo-inputs">
+                        <span class="resumeTwo-position">{{ data.intern_position }}</span>
+                        <span class="resumeTwo-text-color">{{ data.intern_company }}</span>
+                        <div class="resumeTwo-dates">
+                            <span class="resumeTwo-date">{{ data.intern_start }}</span>
+                            <span class="resumeTwo-date">{{ data.intern_end }}</span>
+                        </div>
+                        <ul>
+                            {% for item in intern_description %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </span>
+                    {% else %}
+                    <p class="resumeTwo-section-title">WORK EXPERIENCE</p>
+                    {% for i in experiences %}
+                    {% if loop.index<3 %}
+                    <span class="resumeTwo-inputs">
+                        <span class="resumeTwo-position">{{ i.position }}</span>
+                        <span class="resumeTwo-text-color">{{ i.company }}</span>
+                        <div class="resumeTwo-dates">
+                            <span class="resumeTwo-date">{{ i.start }}</span>
+                            <span class="resumeTwo-date">{{ i.end }}</span>
+                        </div>
+                        <ul class="resumeTwo-inputs">
+                            {% for item in i.description %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </span>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </div>
+
+            </div>
+            <div class="resumeTwo-right-section">
+
+                <p class="resumeTwo-section-title">CAREER OVERVIEW</p>
+                <span class="resumeTwo-inputs">
+                    {{ data.profile }}
+                </span>
+
+                <div class="resumeTwo-section">
+                    <p class="resumeTwo-section-title">CONTACT INFO</p>
+                    <span class="resumeTwo-inputs">
+                        <span>{{ data.email }}</span>
+                        <span>{{ data.phone }}</span>
+                        <span>{{ data.url }}</span>
+                        <span>{{ data.address}}</span>
+                    </span>
+                </div>
+
+                <div class="resumeTwo-section">
+                    <p class="resumeTwo-section-title">INTERESTS</p>
+                    <span class="resumeTwo-inputs">
+                        {% for item in interests %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% if page2active == 'true' %}
+    <div class="resumeTwoMain">
+        <div class="resumeTwo-section-2">
+
+            <div class="resumeTwo-left-section">
+                <div class="resumeTwo-section">
+                    {% for i in experiences %}
+                    {% if loop.index>2%}
+                    <span class="resumeTwo-inputs">
+                        <span class="resumeTwo-position">{{ i.position }}</span>
+                        <span class="resumeTwo-text-color">{{ i.company }}</span>
+                        <div class="resumeTwo-dates">
+                            <span class="resumeTwo-date">{{ i.start }}</span>
+                            <span class="resumeTwo-date">{{ i.end }}</span>
+                        </div>
+                        <ul class="resumeTwo-inputs">
+                            {% for item in i.description %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </span>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="resumeTwo-right-section-P2">
+
+                {% if data.projectActive == 'true' %}
+                <p class="resumeTwo-section-title">PROJECTS</p>
+                {% set num = data.projectNum %}
+                {% for i in range(0, num, 1) %}
+                <span class="resumeTwo-inputs">
+                    <span>{{ projects[i].name }}</span>
+                    <div class="resumeTwo-dates">
+                        <span class="resumeTwo-date">{{ projects[i].start }}</span>
+                        <span class="resumeTwo-date">{{ projects[i].end }}</span>
+                    </div>
+                    <ul>
+                        {% for item in projects[i].description %}
+                        {% if item != '' %}
+                        <li>{{ item }}</li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </span>
+                {% endfor %}
+                {% endif %}
+
+                {% if data.certificateActive == 'true' %}
+                <div class="resumeTwo-section">
+                    <p class="resumeTwo-section-title">CERTIFICATES</p>
+                    {% set num = data.certificateNum %}
+                    {% for i in range(0, num, 1) %}
+                    <span class="resumeTwo-inputs">
+                        <span>{{ certificates[i].name }}</span>
+                        <span>{{ certificates[i].center }}</span>
+                        <ul>
+                            {% for item in certificates[i].description %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                        <p>Date of Obtainment:{{ certificates[i].obtainment }}</p>
+                    </span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                {% if data.recommendationActive == 'true' %}
+                <div class="resumeTwo-section">
+                    <p class="resumeTwo-section-title">RECOMMENDATIONS</p>
+                    <span class="resumeTwo-inputs">
+                        {% for item in recommendations %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div></div>
+    {% endif %}
+</body>
+
+</html>

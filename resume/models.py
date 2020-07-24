@@ -67,10 +67,10 @@ class UserResume(models.Model):
 
     interests = models.TextField(max_length=250, null=True, blank=True)
 
-    email = models.EmailField(max_length=80,
-                              null=True,
-                              blank=True,
-                              help_text="Email of the User")
+    email = models.CharField(max_length=80,
+                             null=True,
+                             blank=True,
+                             help_text="Email of the User")
 
     phone = models.CharField(max_length=20,
                              null=True,
@@ -135,7 +135,7 @@ class UserResume(models.Model):
                                   blank=True,
                                   help_text="give it a end date.")
 
-    intern_description = models.TextField(max_length=800,
+    intern_description = models.TextField(max_length=1000,
                                           null=True,
                                           blank=True,
                                           help_text="give it a description.")
@@ -160,7 +160,7 @@ class UserResume(models.Model):
                                         blank=True,
                                         help_text="give it a end date.")
 
-    experience_description_1 = models.TextField(max_length=800,
+    experience_description_1 = models.TextField(max_length=1000,
                                                 null=True,
                                                 blank=True,
                                                 help_text="give it a description.")
@@ -185,7 +185,7 @@ class UserResume(models.Model):
                                         blank=True,
                                         help_text="give it a end date.")
 
-    experience_description_2 = models.TextField(max_length=800,
+    experience_description_2 = models.TextField(max_length=1000,
                                                 null=True,
                                                 blank=True,
                                                 help_text="give it a description.")
@@ -210,7 +210,7 @@ class UserResume(models.Model):
                                         blank=True,
                                         help_text="give it a end date.")
 
-    experience_description_3 = models.TextField(max_length=800,
+    experience_description_3 = models.TextField(max_length=1000,
                                                 null=True,
                                                 blank=True,
                                                 help_text="give it a description.")
@@ -235,7 +235,32 @@ class UserResume(models.Model):
                                         blank=True,
                                         help_text="give it a end date.")
 
-    experience_description_4 = models.TextField(max_length=800,
+    experience_description_4 = models.TextField(max_length=1000,
+                                                null=True,
+                                                blank=True,
+                                                help_text="give it a description.")
+
+    experience_company_5 = models.CharField(max_length=80,
+                                            null=True,
+                                            blank=True,
+                                            help_text="Name of the Company")
+
+    experience_position_5 = models.CharField(max_length=100,
+                                             null=True,
+                                             blank=True,
+                                             help_text="Position of the User")
+
+    experience_start_5 = models.CharField(max_length=10,
+                                          null=True,
+                                          blank=True,
+                                          help_text="give it a  start date.")
+
+    experience_end_5 = models.CharField(max_length=10,
+                                        null=True,
+                                        blank=True,
+                                        help_text="give it a end date.")
+
+    experience_description_5 = models.TextField(max_length=1000,
                                                 null=True,
                                                 blank=True,
                                                 help_text="give it a description.")
@@ -255,7 +280,7 @@ class UserResume(models.Model):
                                      blank=True,
                                      help_text="give it a end date.")
 
-    project_description_1 = models.TextField(max_length=800,
+    project_description_1 = models.TextField(max_length=1000,
                                              null=True,
                                              blank=True,
                                              help_text="Decsribe Project")
@@ -275,7 +300,7 @@ class UserResume(models.Model):
                                      blank=True,
                                      help_text="give it a end date.")
 
-    project_description_2 = models.TextField(max_length=800,
+    project_description_2 = models.TextField(max_length=1000,
                                              null=True,
                                              blank=True,
                                              help_text="Describe Project")
@@ -295,7 +320,7 @@ class UserResume(models.Model):
                                      blank=True,
                                      help_text="give it a end date.")
 
-    project_description_3 = models.TextField(max_length=800,
+    project_description_3 = models.TextField(max_length=1000,
                                              null=True,
                                              blank=True,
                                              help_text="Describe Project")
@@ -308,7 +333,7 @@ class UserResume(models.Model):
                                            null=True,
                                            blank=True,
                                            help_text="Name of the Cerifying Center")
-    certificate_description_1 = models.TextField(max_length=300,
+    certificate_description_1 = models.TextField(max_length=1000,
                                                  null=True,
                                                  blank=True,
                                                  help_text="Describe your certification")
@@ -325,7 +350,7 @@ class UserResume(models.Model):
                                            null=True,
                                            blank=True,
                                            help_text="Name of the Cerifying Center")
-    certificate_description_2 = models.TextField(max_length=300,
+    certificate_description_2 = models.TextField(max_length=1000,
                                                  null=True,
                                                  blank=True,
                                                  help_text="Describe your certification")
@@ -342,7 +367,7 @@ class UserResume(models.Model):
                                            null=True,
                                            blank=True,
                                            help_text="Name of the Cerifying Center")
-    certificate_description_3 = models.TextField(max_length=300,
+    certificate_description_3 = models.TextField(max_length=1000,
                                                  null=True,
                                                  blank=True,
                                                  help_text="Describe your certification")

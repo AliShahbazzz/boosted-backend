@@ -16,7 +16,6 @@
         }
 
         span {
-            margin-bottom: 3px;
             word-wrap: break-word;
         }
 
@@ -28,23 +27,23 @@
             background-color: white;
             width: 796px;
             height: 1120px;
-            display: flex;
-            flex-direction: column;
-            justify-items: center;
+            line-height: 1.3;
         }
 
         .resumeThreeMain div,
         span,
         p {
-            font-size: 15px;
+            font-size: 13px;
             font-family: 'Montserrat';
+            line-height: 1.3;
         }
 
         .resumeThreeMain-P2 div,
         span,
         p {
-            font-size: 15px;
+            font-size: 13px;
             font-family: 'Montserrat';
+            line-height: 1.3;
         }
 
         .resumeThree-resumeHeader {
@@ -91,8 +90,7 @@
             margin-top: 28px;
             border: 10px solid #0E5F76;
             display: flex;
-            flex-direction: row;
-            height: 820px;
+            height: 850px;
         }
 
         .resumeThree-section-2-P2 {
@@ -101,37 +99,45 @@
         }
 
         .resumeThree-left-section {
-            width: 320px;
+            width: 280px;
             height: 800px;
             padding: 25px;
             background-color: #0E5F76;
             color: white;
-            display: flex;
-            flex-direction: column;
+        }
+
+        .resumeThree-left-section div {
+            display: block;
         }
 
         .resumeThree-left-section-P2 {
-            width: 320px;
+            width: 280px;
             height: 1055px;
             padding: 25px;
             background-color: #0E5F76;
             color: white;
-            display: flex;
-            flex-direction: column;
+        }
+
+        .resumeThree-left-section-P2 div {
+            display: block;
         }
 
         .resumeThree-right-section {
-            width: 426px;
+            width: 380px;
             padding: 25px;
-            display: flex;
-            flex-direction: column;
+        }
+
+        .resumeThree-right-section div {
+            display: block;
         }
 
         .resumeThree-inputs {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 15px;
             width: 310px;
+        }
+
+        .resumeThree-inputs span {
+            display: block;
+            margin-bottom: 3px;
         }
 
         .resumeThree-section {
@@ -156,13 +162,18 @@
             text-transform: uppercase;
         }
 
-        .resumeThree-dates {
-            display: flex;
+        .resumeThree-dates span {
+            display: inline-block;
         }
 
         .resumeThree-date {
             width: 100px;
             margin-right: 10px;
+        }
+
+        .resumeThree-position {
+            font-size: 15px;
+            font-weight: 500;
         }
     </style>
 </head>
@@ -187,9 +198,9 @@
             <div class="resumeThree-left-section">
                 <div>
                     <p class="resumeThree-left-section-title">PERSONAL PROFILE</p>
-                    <div class="resumeThree-descriptionBox">
+                    <span class="resumeThree-inputs">
                         {{ data.profile }}
-                    </div>
+                    </span>
                 </div>
                 <div class="resumeThree-section">
                     <p class="resumeThree-left-section-title">CONTACT DETAILS</p>
@@ -239,7 +250,7 @@
                         {% if data.internActive == 'true' %}
                         <p class="resumeThree-right-section-title">INTERNSHIP/COURSES</p>
                         <span class="resumeThree-inputs">
-                            <span>{{ data.intern_position }}</span>
+                            <span class="resumeThree-position">{{ data.intern_position }}</span>
                             <span class="resumeThree-text-color">{{ data.intern_company }}</span>
                             <div class="resumeThree-dates">
                                 <span class="resumeThree-date">{{ data.intern_start }}</span>
@@ -256,9 +267,9 @@
                         {% else %}
                         <p class="resumeThree-right-section-title">WORK EXPERIENCE</p>
                         {% for i in experiences %}
-                        {% if loop.first %}
+                        {% if loop.index<3 %}
                         <span class="resumeThree-inputs">
-                            <span>{{ i.position }}</span>
+                            <span class="resumeThree-position">{{ i.position }}</span>
                             <span class="resumeThree-text-color">{{ i.company }}</span>
                             <div class="resumeThree-dates">
                                 <span class="resumeThree-date">{{ i.start }}</span>
@@ -342,9 +353,9 @@
             <div class="resumeThree-right-section">
                 <div class="resumeThree-section">
                     {% for i in experiences %}
-                    {% if not loop.first %}
+                    {% if loop.index>2 %}
                     <span class="resumeThree-inputs">
-                        <span>{{ i.position }}</span>
+                        <span class="resumeThree-position">{{ i.position }}</span>
                         <span class="resumeThree-text-color">{{ i.company }}</span>
                         <div class="resumeThree-dates">
                             <span class="resumeThree-date">{{ i.start }}</span>

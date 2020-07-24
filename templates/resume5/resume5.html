@@ -1,0 +1,386 @@
+<html>
+
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
+
+        @page :first {
+            size: A4;
+            margin: -10px;
+        }
+
+        @page {
+            size: A4;
+            margin-left: -10px;
+            margin-top: 0px;
+        }
+
+        span {
+            margin-bottom: 3px;
+            word-wrap: break-word;
+        }
+
+        ul li {
+            margin-bottom: 4px;
+        }
+
+        .resumeFiveMain div {
+            font-family: 'Montserrat';
+            font-size: 12px;
+        }
+
+        .resumeFiveMain {
+            background-color: white;
+            width: 766px;
+            min-height: 1096px;
+            line-height: 1.3;
+        }
+
+        .resumeFive-resumeHeader {
+            padding: 61px 38px;
+            padding-bottom: 0;
+            display: flex;
+        }
+
+        .resumeFive-image {
+            width: 345px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .resumeFive-image-label {
+            border: 1px solid #f13180;
+            cursor: pointer;
+            height: 250px;
+            width: 250px;
+            border-radius: 50%;
+            align-items: center;
+        }
+
+        .resumeFive-Imageholder {
+            border-radius: 50%;
+            height: 250px;
+            width: 250px;
+        }
+
+        .resumeFive-name-position {
+            display: flex;
+            flex-direction: column;
+            width: 55%;
+            padding-left: 35px;
+            align-self: flex-end;
+        }
+
+        .resumeFive-nameBox {
+            line-height: normal;
+            color: #f13180;
+            font-size: 46px;
+            width: 341px;
+            font-weight: 600;
+        }
+
+        .resumeFive-positionBox {
+            font-size: 1.2em;
+            letter-spacing: 2px;
+            margin-top: 6px;
+            width: 341px;
+        }
+
+        .resumeFive-descriptionBox {
+            width: 100%;
+            resize: none;
+            overflow: hidden;
+            color: white;
+        }
+
+        .resumeFive-section-2 {
+            display: flex;
+        }
+
+        .resumeFive-section-2-P2 {
+            display: flex;
+        }
+
+        .resumeFive-left-section {
+            width: 247px;
+            height: 681px;
+            margin: 35px;
+            padding: 35px;
+            display: flex;
+            background-color: #f13180;
+            flex-direction: column;
+            text-align: center;
+            color: white;
+        }
+
+        .resumeFive-left-section-P2 {
+            width: 247px;
+            height: 988px;
+            margin: 35px;
+            padding: 35px;
+            padding-top: 25px;
+            display: flex;
+            background-color: #f13180;
+            flex-direction: column;
+            text-align: center;
+            color: white;
+        }
+
+        .resumeFive-right-section {
+            width: 378px;
+            padding: 70px 0;
+            padding-right: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resumeFive-section {
+            margin-top: 13px;
+        }
+
+        .resumeFive-section-title {
+            font-weight: 600;
+            color: white;
+        }
+
+        .resumeFive-right-section-title {
+            font-weight: 600;
+            color: #f13180;
+        }
+
+        .resumeFive-capBox {
+            text-transform: uppercase;
+        }
+
+        .resumeFive-text-color {
+            color: #f13180;
+        }
+
+        .resumeFive-inputs {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .resumeFive-dates {
+            display: flex;
+        }
+
+        .resumeFive-date {
+            width: 100px;
+            margin-right: 5px;
+        }
+
+        .resumeFive-section-certificate {
+            margin-bottom: 10px;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="resumeFiveMain">
+        <div class="resumeFive-resumeHeader">
+            <div class="resumeFive-image">
+                <label class="resumeFive-image-label">
+                    <img class="resumeFive-Imageholder" src="{{ data.user_resume_image }}" />
+                </label>
+            </div>
+
+            <div class="resumeFive-name-position">
+                <span class="resumeFive-capBox resumeFive-nameBox">
+                    {{ data.name }}
+                </span>
+                <span class="resumeFive-capBox resumeFive-positionBox">
+                    {{ data.position }}
+                </span>
+            </div>
+        </div>
+
+        <div class="resumeFive-section-2">
+            <div class="resumeFive-left-section">
+                <span class="resumeFive-section-title">PERSONAL PROFILE</span>
+                <span class="resumeFive-inputs">
+                    {{ data.profile }}
+                </span>
+
+                <div class="resumeFive-section">
+                    <p class="resumeFive-section-title">SPECIALIZATION</p>
+                    <span class="resumeFive-inputs">
+                        {% for item in interests %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+
+
+                <div class="resumeFive-section">
+                    <p class="resumeFive-section-title">CONTACT INFO</p>
+                    <span class="resumeFive-inputs">
+                        <span>{{ data.email }}</span>
+                        <span>{{ data.phone }}</span>
+                        <span>{{ data.url }}</span>
+                        <span>{{ data.address}}</span>
+                    </span>
+                </div>
+
+                <div class="resumeFive-section">
+                    <p class="resumeFive-section-title">SKILLS AND ABILITIES</p>
+                    <span class="resumeFive-inputs">
+                        {% for item in skills %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+
+            </div>
+            <div class="resumeFive-right-section">
+
+                <span class="resumeFive-right-section-title">ACADEMIC HISTORY</span>
+                <span class="resumeFive-inputs">
+                    <span>{{ data.education_institute }}</span>
+                    <span>{{ data.education_degree }}</span>
+                    <span>{{ data.education_course }}</span>
+                    <div class="resumeFive-dates">
+                        <span class="resumeFive-date">{{ data.education_start }}</span>
+                        <span class="resumeFive-date">{{ data.education_end }}</span>
+                    </div>
+                    <span>GPA: {{ data.education_score }}</span>
+                </span>
+
+                <div class="resumeFive-section">
+                    {% if data.internActive == 'true' %}
+                    <p class="resumeFive-right-section-title">INTERNSHIP / COURSE</p>
+                    <span class="resumeFive-inputs">
+                        <span>{{ data.intern_position }}</span>
+                        <span class="resumeFive-text-color">{{ data.intern_company }}</span>
+                        <div class="resumeFive-dates">
+                            <span class="resumeFive-date">{{ data.intern_start }}</span>
+                            <span class="resumeFive-date">{{ data.intern_end }}</span>
+                        </div>
+                        <ul>
+                            {% for item in intern_description %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </span>
+                    {% else %}
+                    <p class="resumeFive-right-section-title">WORK HISTORY</p>
+                    {% for i in experiences %}
+                    {% if loop.first %}
+                    <span class="resumeFive-inputs">
+                        <span>{{ i.position }}</span>
+                        <span class="resumeFive-text-color">{{ i.company }}</span>
+                        <div class="resumeFive-dates">
+                            <span class="resumeFive-date">{{ i.start }}</span>
+                            <span class="resumeFive-date">{{ i.end }}</span>
+                        </div>
+                        <ul class="resumeFive-inputs">
+                            {% for item in i.description %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if page2active == 'true' %}
+    <div class="resumeFiveMain">
+
+        <div class="resumeFive-section-2-P2">
+            <div class="resumeFive-left-section-P2">
+                {% if data.projectActive == 'true' %}
+                <p class="resumeFive-section-title">PROJECTS</p>
+                {% set num = data.projectNum %}
+                {% for i in range(0, num, 1) %}
+                <span class="resumeFive-inputs">
+                    <span>{{ projects[i].name }}</span>
+                    <div class="resumeFive-dates">
+                        <span class="resumeFive-date">{{ projects[i].start }}</span>
+                        <span class="resumeFive-date">{{ projects[i].end }}</span>
+                    </div>
+                    <ul>
+                        {% for item in projects[i].description %}
+                        {% if item != '' %}
+                        <li>{{ item }}</li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </span>
+                {% endfor %}
+                {% endif %}
+
+                {% if data.certificateActive == 'true' %}
+                <div class="resumeFive-section-certificate">
+                    <p class="resumeFive-section-title">CERTIFICATES</p>
+                    {% set num = data.certificateNum %}
+                    {% for i in range(0, num, 1) %}
+                    <span class="resumeFive-section-certificate">
+                        <span class="resumeFive-inputs">
+                            <span>{{ certificates[i].name }}</span>
+                            <span>{{ certificates[i].center }}</span>
+                            <ul>
+                                {% for item in certificates[i].description %}
+                                {% if item != '' %}
+                                <li>{{ item }}</li>
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
+                            <span>Date of Obtainment:</span>
+                            <span>{{ certificates[i].obtainment }}</span>
+                        </span>
+                    </span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                {% if data.recommendationActive == 'true' %}
+                <div class="resumeFive-section">
+                    <p class="resumeFive-section-title">RECOMMENDATIONS</p>
+                    <span class="resumeFive-inputs">
+                        {% for item in recommendations %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+                {% endif %}
+
+            </div>
+
+            <div class="resumeFive-right-section">
+                {% for i in experiences %}
+                {% if not loop.first %}
+                <span class="resumeFive-inputs">
+                    <span>{{ i.position }}</span>
+                    <span class="resumeFive-text-color">{{ i.company }}</span>
+                    <div class="resumeFive-dates">
+                        <span class="resumeFive-date">{{ i.start }}</span>
+                        <span class="resumeFive-date">{{ i.end }}</span>
+                    </div>
+                    <ul class="resumeFive-inputs">
+                        {% for item in i.description %}
+                        {% if item != '' %}
+                        <li>{{ item }}</li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </span>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div></div>
+    {% endif %}
+</body>
+
+</html>
