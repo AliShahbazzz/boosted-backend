@@ -1,0 +1,381 @@
+<html>
+
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
+
+        @page :first {
+            size: A4;
+            margin: -10px;
+        }
+
+        @page {
+            size: A4;
+            margin-left: -10px;
+            margin-top: 0px;
+        }
+
+        span {
+            word-wrap: break-word;
+        }
+
+        ul li {
+            margin-bottom: 4px;
+        }
+
+        .resumeFourMain {
+            font-family: 'Montserrat';
+            font-size: 13px;
+            background-color: white;
+            width: 796px;
+            height: 1086px;
+            border-top: 20px solid #c2331a;
+            border-bottom: 20px solid #c2331a;
+            line-height: 1.3;
+        }
+
+        .resumeFour-resumeHeader {
+            display: flex;
+            padding: 35px;
+            height: 180px;
+        }
+
+        .resumeFour-image {
+            border-radius: 50%;
+            width: 220px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .resumeFour-Imageholder {
+            border: 1px solid #c2331a;
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+        }
+
+        .resumeFour-name-position {
+            display: flex;
+            flex-direction: column;
+            width: 260px;
+        }
+
+        .resumeFour-nameBox {
+            line-height: normal;
+            font-size: 38px;
+            font-weight: 500;
+        }
+
+        .resumeFour-positionBox {
+            font-size: 1.2em;
+            font-weight: 600;
+            letter-spacing: 3px;
+            margin-top: 20px;
+        }
+
+        .resumeFour-contact-inputs {
+            width: 230px;
+            text-align: right;
+            margin-top: 15px;
+        }
+
+        .resumeFour-contact span {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .resumeFour-capBox {
+            text-transform: uppercase;
+        }
+
+        .resumeFour-text-color {
+            color: #c2331a;
+        }
+
+        .resumeFour-section-2 {
+            padding-left: 35px;
+        }
+
+        .resumeFour-section-2-P2 {
+            margin-top: 30px;
+        }
+
+        .resumeFour-section {
+            display: flex;
+            margin-bottom: 25px;
+        }
+
+        .resumeFour-section-title {
+            font-size: 15px;
+            font-weight: 600;
+            text-align: right;
+            width: 190px;
+        }
+
+        .resumeFour-input-section {
+            margin-left: 30px;
+            margin-top: 10px;
+            padding-top: 10px;
+            width: 540px;
+            border-top: 5px solid #c2331a;
+        }
+
+        .resumeFour-inputs {
+            width: 450px;
+        }
+
+        .resumeFour-inputs span {
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .resumeFour-experience-inputs {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+            margin-left: 40px;
+        }
+
+        .resumeFour-experience-inputs span {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .resumeFour-position {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .resumeFour-dates span {
+            display: inline-block;
+        }
+
+        .resumeFour-date {
+            width: 100px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="resumeFourMain">
+        <div class="resumeFour-resumeHeader">
+
+            <div class="resumeFour-image">
+                <div class="resumeFour-image-label">
+                    <img class="resumeFour-Imageholder" src="{{ data.user_resume_image }}" alt="" />
+                </div>
+            </div>
+            <div class="resumeFour-name-position">
+                <span class="resumeFour-capBox resumeFour-nameBox">
+                    {{ data.name }}
+                </span>
+                <span class="resumeFour-capBox resumeFour-positionBox">
+                    {{ data.position }}
+                </span>
+            </div>
+
+            <div class="resumeFour-contact-inputs">
+                <div class="resumeFour-contact">
+                    <span>{{ data.email }}</span>
+                    <span>{{ data.phone }}</span>
+                    <span>{{ data.url }}</span>
+                    <span>{{ data.address}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="resumeFour-section-2">
+            <div class="resumeFour-section">
+                <div class="resumeFour-section-title">
+                    PROFILE
+                </div>
+                <div class="resumeFour-input-section">
+                    <div class="resumeFour-inputs">
+                        {{ data.profile }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="resumeFour-section">
+
+                <div class="resumeFour-section-title">SKILLS</div>
+                <div class="resumeFour-input-section">
+                    <span class="resumeFour-inputs">
+                        {% for item in skills %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+            </div>
+
+            <div class="resumeFour-section">
+                <div class="resumeFour-section-title">ACHIEVEMENTS</div>
+                <div class="resumeFour-input-section">
+                    <span class="resumeFour-inputs">
+                        {% for item in achievements %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+            </div>
+
+            <div class="resumeFour-section">
+                <div class="resumeFour-section-title">EDUCATION</div>
+                <div class="resumeFour-input-section">
+                    <span class="resumeFour-inputs">
+                        <span>{{ data.education_institute }}</span>
+                        <span>{{ data.education_degree }}</span>
+                        <span>{{ data.education_course }}</span>
+                        <div class="resumeFour-dates">
+                            <span class="resumeFour-date">{{ data.education_start }}</span>
+                            <span class="resumeFour-date">{{ data.education_end }}</span>
+                        </div>
+                        <span>GPA: {{ data.education_score }}</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="resumeFour-section">
+                {% if data.internActive == 'true' %}
+                <p class="resumeFour-section-title">INTERNSHIP/COURSES</p>
+                <div class="resumeFour-input-section">
+                    <span class="resumeFour-inputs">
+                        <span class="resumeFour-position">{{ data.intern_position }}</span>
+                        <span class="resumeFour-text-color">{{ data.intern_company }}</span>
+                        <div class="resumeFour-dates">
+                            <span class="resumeFour-date">{{ data.intern_start }}</span>
+                            <span class="resumeFour-date">{{ data.intern_end }}</span>
+                        </div>
+                        <ul>
+                            {% for item in intern_description %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </span>
+                </div>
+                {% else %}
+                <p class="resumeFour-section-title">WORK EXPERIENCE</p>
+                <div class="resumeFour-input-section">
+                    {% for i in experiences %}
+                    {% if loop.first %}
+                    <span class="resumeFour-inputs">
+                        <span class="resumeFour-position">{{ i.position }}</span>
+                        <span class="resumeFour-text-color">{{ i.company }}</span>
+                        <div class="resumeFour-dates">
+                            <span class="resumeFour-date">{{ i.start }}</span>
+                            <span class="resumeFour-date">{{ i.end }}</span>
+                        </div>
+                        <ul class="resumeFour-inputs">
+                            {% for item in i.description %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </span>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% if page2active == 'true' %}
+    <div class="resumeFourMain">
+        <div class="resumeFour-section-2-P2">
+
+            <div class="resumeFour-section">
+                <div class="resumeFour-section-title"></div>
+                {% for i in experiences %}
+                {% if not loop.first %}
+                <span class="resumeFour-experience-inputs">
+                    <span class="resumeFour-position">{{ i.position }}</span>
+                    <span class="resumeFour-text-color">{{ i.company }}</span>
+                    <div class="resumeFour-dates">
+                        <span class="resumeFour-date">{{ i.start }}</span>
+                        <span class="resumeFour-date">{{ i.end }}</span>
+                    </div>
+                    <ul>
+                        {% for item in i.description %}
+                        {% if item != '' %}
+                        <li>{{ item }}</li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </span>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+            {% if data.projectActive == 'true' %}
+            <div class="resumeFour-section">
+                <div class="resumeFour-section-title">PROJECTS</div>
+                <div class="resumeFour-input-section">
+                    {% set num = data.projectNum %}
+                    {% for i in range(0, num, 1) %}
+                    <span class="resumeFour-inputs">
+                        <span>{{ projects[i].name }}</span>
+                        <div class="resumeFour-dates">
+                            <span class="resumeFour-date">{{ projects[i].start }}</span>
+                            <span class="resumeFour-date">{{ projects[i].end }}</span>
+                        </div>
+                        <ul>
+                            {% for item in projects[i].description %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            {% if data.certificateActive == 'true' %}
+            <div class="resumeFour-section">
+                <div class="resumeFour-section-title">CERTIFICATES</div>
+                <div class="resumeFour-input-section">
+                    {% set num = data.certificateNum %}
+                    {% for i in range(0, num, 1) %}
+                    <span class="resumeFour-inputs">
+                        <span>{{ certificates[i].name }}</span>
+                        <span>{{ certificates[i].center }}</span>
+                        <ul>
+                            {% for item in certificates[i].description %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                        <p>Date of Obtainment:{{ certificates[i].obtainment }}</p>
+                    </span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            {% if data.recommendationActive == 'true' %}
+            <div class="resumeFour-section">
+                <p class="resumeFour-section-title">RECOMMENDATIONS</p>
+                <div class="resumeFour-input-section">
+                    <span class="resumeFour-inputs">
+                        {% for item in recommendations %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+    {% else %}
+    <div></div>
+    {% endif %}
+</body>
+
+</html>

@@ -1,0 +1,366 @@
+<html>
+
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
+
+        @page :first {
+            size: A4;
+            margin: -10px;
+        }
+
+        @page {
+            size: A4;
+            margin-left: -10px;
+            margin-top: 0px;
+        }
+
+        span {
+            word-wrap: break-word;
+        }
+
+        li {
+            margin-bottom: 3px;
+        }
+
+        .resumeEight-orange-section {
+            font-weight: 700;
+            margin-top: 0;
+            font-size: 14px;
+        }
+
+        .resumeEightMain {
+            background-color: white;
+            width: 736px;
+            height: 1066px;
+            line-height: 1.3;
+        }
+
+        .resumeEightMain div {
+            font-family: 'Montserrat';
+            font-size: 13px;
+        }
+
+        .resumeEight-section-2 {
+            display: flex;
+        }
+
+        .resumeEight-nameBox {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: right;
+            display: inline-block;
+            padding-top: 10px;
+        }
+
+        .resumeEight-positionBox {
+            margin-top: 10px;
+            text-align: right;
+            letter-spacing: 2px;
+            font-size: 15px;
+        }
+
+        .resumeEight-capBox {
+            text-transform: uppercase;
+        }
+
+        .resumeEight-inputs span {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .resumeEight-inputs-margin {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .resumeEight-section {
+            margin-top: 25px;
+        }
+
+        .resumeEight-left-section {
+            width: 270px;
+            height: 1096px;
+            border-right: solid black;
+            text-align: right;
+            padding-top: 30px;
+            padding-right: 25px;
+            padding-left: 25px;
+            font-size: 15px;
+        }
+
+        .resumeEight-left-ul {
+            position: relative;
+            list-style: none;
+            padding-right: 1.2em;
+            text-align: right;
+            margin-top: 2px;
+            margin-bottom: 3px;
+        }
+
+        .resumeEight-left-ul li {
+            margin-bottom: 4px;
+        }
+
+        .resumeEight-left-ul li:before {
+            content: "\2022";
+            position: absolute;
+            right: 0;
+        }
+
+        .resumeEight-right-section {
+            width: 345px;
+            padding-left: 25px;
+            padding-right: 25px;
+            font-size: 15px;
+            padding-top: 115px;
+        }
+
+        .resumeEight-dates span {
+            display: inline-block;
+        }
+
+        .resumeEight-date {
+            width: 100px;
+            margin-right: 10px;
+        }
+
+        .resumeEight-date-left {
+            text-align: right;
+            width: 100px;
+        }
+
+        .resumeEight-image {
+            height: 60px;
+            float: left;
+        }
+
+        .resumeEight-image-section {
+            width: 100%;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="resumeEightMain">
+        <div class="resumeEight-section-2">
+            <div class="resumeEight-left-section">
+
+                <div class="resumeEight-image-section">
+                    <img src="{{ static('template-icons/resume8.png') }}" class="resumeEight-image" />
+                </div>
+
+                <div>
+                    <span name="full_name" class="resumeEight-capBox resumeEight-nameBox">
+                        {{ data.name }}
+                    </span>
+                </div>
+
+                <div class="resumeEight-section">
+                    <span name="position" class="resumeEight-capBox resumeEight-positionBox">
+                        {{ data.position }}
+                    </span>
+                </div>
+
+                <div class="resumeEight-section">
+                    <p class="resumeEight-orange-section">PROFILE SUMMARY</p>
+                    <span class="resumeEight-inputs">
+                        {{ data.profile }}
+                    </span>
+                </div>
+
+                <div class="resumeEight-section">
+                    <p class="resumeEight-orange-section">FIND ME HERE</p>
+                    <span class="resumeEight-inputs">
+                        <span>{{ data.email }}</span>
+                        <span>{{ data.phone }}</span>
+                        <span>{{ data.url }}</span>
+                        <span>{{ data.address}}</span>
+                    </span>
+                </div>
+
+                <div class="resumeEight-section">
+                    <p class="resumeEight-orange-section">ACHIEVEMENTS</p>
+                    <span class="resumeEight-inputs">
+                        {% for item in achievements %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+
+
+                <div class="resumeEight-section">
+                    <p class="resumeEight-orange-section">HOBBIES & INTEREST</p>
+                    <span class="resumeEight-inputs">
+                        {% for item in interests %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+            </div>
+            <div class="resumeEight-right-section">
+
+                <div>
+                    <p class="resumeEight-orange-section">CORE SKILLS</p>
+                    <span class="resumeEight-inputs">
+                        {% for item in skills %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+
+                <div class="resumeEight-section">
+                    <p class="resumeEight-orange-section">EDUCATION DETAILS</p>
+                    <span class="resumeEight-inputs">
+                        <span>{{ data.education_institute }}</span>
+                        <span class="resumeEight-text-color">{{ data.education_degree }}</span>
+                        <span>{{ data.education_course }}</span>
+                        <div class="resumeEight-dates">
+                            <span class="resumeEight-date">{{ data.education_start }}</span>
+                            <span class="resumeEight-date">{{ data.education_end }}</span>
+                        </div>
+                        <span>
+                            <span class="resumeEight-text-color">
+                                GPA:
+                            </span>
+                            {{ data.education_score }}
+                        </span>
+                    </span>
+                </div>
+
+                <div class="resumeEight-section">
+                    {% if data.internActive == 'true' %}
+                    <p class="resumeEight-orange-section">INTERNSHIP/COURSES</p>
+                    <span class="resumeEight-inputs">
+                        <span>{{ data.intern_position }}</span>
+                        <span class="resumeEight-text-color">{{ data.intern_company }}</span>
+                        <div class="resumeEight-dates">
+                            <span class="resumeEight-date">{{ data.intern_start }}</span>
+                            <span class="resumeEight-date">{{ data.intern_end }}</span>
+                        </div>
+                        <ul>
+                            {% for item in intern_description %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </span>
+                    {% else %}
+                    <p class="resumeEight-orange-section">WORK EXPERIENCE</p>
+                    {% for i in experiences %}
+                    {% if loop.first %}
+                    <span class="resumeEight-inputs">
+                        <span>{{ i.position }}</span>
+                        <span class="resumeEight-text-color">{{ i.company }}</span>
+                        <div class="resumeEight-dates">
+                            <span class="resumeEight-date">{{ i.start }}</span>
+                            <span class="resumeEight-date">{{ i.end }}</span>
+                        </div>
+                        <ul>
+                            {% for item in i.description %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </span>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if page2active == 'true' %}
+    <div class="resumeEight-root resumeEight-montserrat">
+        <div class="resumeEightMain resumeEight-orange-color">
+            <div class="resumeEight-section-2">
+                <div class="resumeEight-left-section">
+
+                    {% if data.projectActive == 'true' %}
+                    <p class="resumeEight-orange-section">PROJECTS</p>
+                    {% set num = data.projectNum %}
+                    {% for i in range(0, num, 1) %}
+                    <span class="resumeEight-inputs-margin">
+                        <span>{{ projects[i].name }}</span>
+                        <div class="resumeEight-dates">
+                            <span class="resumeEight-date-left">{{ projects[i].start }}</span>
+                            <span class="resumeEight-date-left">{{ projects[i].end }}</span>
+                        </div>
+                        <ul class="resumeEight-left-ul">
+                            {% for item in projects[i].description %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </span>
+                    {% endfor %}
+                    {% endif %}
+
+
+                    {% if data.certificateActive == 'true' %}
+                    <p class="resumeEight-orange-section">CERTIFICATES</p>
+                    {% set num = data.certificateNum %}
+                    {% for i in range(0, num, 1) %}
+                    <span class="resumeEight-inputs-margin">
+                        <span>{{ certificates[i].name }}</span>
+                        <span>{{ certificates[i].center }}</span>
+                        <ul class="resumeEight-left-ul">
+                            {% for item in certificates[i].description %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                        <span>Date of Obtainment: {{ certificates[i].obtainment }}</span>
+                    </span>
+                    {% endfor %}
+                    {% endif %}
+
+                    {% if data.recommendationActive == 'true' %}
+                    <p class="resumeEight-orange-section">RECOMMENDATION</p>
+                    <span class="resumeEight-inputs">
+                        {% for item in recommendations %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                    {% endif %}
+                </div>
+                <div class="resumeEight-right-section">
+                    {% if data.experienceNum > 1 %}
+                    <div>
+                        {% for i in experiences %}
+                        {% if not loop.first %}
+                        <div class="resumeEight-inputs-margin">
+                            <span>{{ i.company }}</span>
+                            <span class="resumeEight-text-color">{{ i.position }}</span>
+                            <div class="resumeEight-dates">
+                                <span class="resumeEight-date">{{ i.start }}</span>
+                                <span class="resumeEight-date">{{ i.end }}</span>
+                            </div>
+                            <ul class="resumeEight-inputs">
+                                {% for item in i.description %}
+                                {% if item != '' %}
+                                <li>{{ item }}</li>
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div></div>
+    {% endif %}
+</body>
+
+</html>

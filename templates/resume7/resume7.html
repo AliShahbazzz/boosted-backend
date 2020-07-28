@@ -16,7 +16,7 @@
         }
 
         span {
-            margin-bottom: 3px;
+            word-wrap: break-word;
         }
 
         ul li {
@@ -72,15 +72,19 @@
             border-right: 2px solid #303f3c;
             margin-bottom: 30px;
             padding: 0 45px;
-            display: flex;
-            flex-direction: column;
+        }
+
+        .resumeSeven-left-section div {
+            display: block;
         }
 
         .resumeSeven-right-section {
             width: 330px;
             padding: 0 45px;
-            display: flex;
-            flex-direction: column;
+        }
+
+        .resumeSeven-right-section div {
+            display: block;
         }
 
         .resumeSeven-section {
@@ -104,15 +108,18 @@
             text-transform: uppercase;
         }
 
-        .resumeSeven-inputs {
-            display: flex;
-            flex-direction: column;
+        .resumeSeven-inputs span {
+            display: block;
+            margin-bottom: 3px;
         }
 
-        .resumeSeven-inputs-1 {
-            display: flex;
-            flex-direction: column;
-            margin-top: 1rem;
+        .resumeSeven-dates span {
+            display: inline-block;
+        }
+
+        .resumeSeven-date {
+            width: 100px;
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -130,20 +137,13 @@
 
         <div class="resumeSeven-section-2">
             <div class="resumeSeven-left-section">
-                <span class="resumeSeven-section-title">Executive Profile</span>
-                <span class="resumeSeven-inputs-1">
-                    {{ data.profile }}
-                </span>
 
-                <div class="resumeSeven-section">
-                    <p class="resumeSeven-section-title">Field of Interest</p>
+                <div>
+                    <p class="resumeSeven-section-title">Executive Profile</p>
                     <span class="resumeSeven-inputs">
-                        {% for item in interests %}
-                        <span>{{ item }}</span>
-                        {% endfor %}
+                        {{ data.profile }}
                     </span>
                 </div>
-
 
                 <div class="resumeSeven-section">
                     <p class="resumeSeven-section-title">Contact Details</p>
@@ -152,6 +152,24 @@
                         <span>{{ data.phone }}</span>
                         <span>{{ data.url }}</span>
                         <span>{{ data.address}}</span>
+                    </span>
+                </div>
+
+                <div class="resumeSeven-section">
+                    <p class="resumeSeven-section-title">Skills</p>
+                    <span class="resumeSeven-inputs">
+                        {% for item in skills %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+
+                <div class="resumeSeven-section">
+                    <p class="resumeSeven-section-title">Hobbies</p>
+                    <span class="resumeSeven-inputs">
+                        {% for item in interests %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
                     </span>
                 </div>
 
@@ -168,17 +186,19 @@
             </div>
             <div class="resumeSeven-right-section">
 
-                <span class="resumeSeven-right-section-title">Education Background</span>
-                <span class="resumeSeven-inputs-1">
-                    <span>{{ data.education_institute }}</span>
-                    <span>{{ data.education_degree }}</span>
-                    <span>{{ data.education_course }}</span>
-                    <div class="resumeSeven-dates">
-                        <span class="resumeSeven-date">{{ data.education_start }}</span>
-                        <span class="resumeSeven-date">{{ data.education_end }}</span>
-                    </div>
-                    <span>GPA: {{ data.education_score }}</span>
-                </span>
+                <div>
+                    <p class="resumeSeven-right-section-title">Education Background</p>
+                    <span class="resumeSeven-inputs">
+                        <span>{{ data.education_institute }}</span>
+                        <span>{{ data.education_degree }}</span>
+                        <span>{{ data.education_course }}</span>
+                        <div class="resumeSeven-dates">
+                            <span class="resumeSeven-date">{{ data.education_start }}</span>
+                            <span class="resumeSeven-date">{{ data.education_end }}</span>
+                        </div>
+                        <span>GPA: {{ data.education_score }}</span>
+                    </span>
+                </div>
 
                 <div class="resumeSeven-section">
                     {% if data.internActive == 'true' %}

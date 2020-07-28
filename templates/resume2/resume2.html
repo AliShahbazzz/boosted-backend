@@ -179,12 +179,6 @@
 
         <div class="resumeTwo-section-2">
             <div class="resumeTwo-left-section">
-                <p class="resumeTwo-section-title">CORE COMPETENCIES</p>
-                <span class="resumeTwo-inputs">
-                    {% for item in skills %}
-                    <span>{{ item }}</span>
-                    {% endfor %}
-                </span>
 
                 <div class='resumeTwo-section'>
                     <p class="resumeTwo-section-title">ACADEMIC PROFILE</p>
@@ -261,9 +255,27 @@
                 </div>
 
                 <div class="resumeTwo-section">
+                    <p class="resumeTwo-section-title">COMPETENCIES</p>
+                    <span class="resumeTwo-inputs">
+                        {% for item in skills %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+
+                <div class="resumeTwo-section">
                     <p class="resumeTwo-section-title">INTERESTS</p>
                     <span class="resumeTwo-inputs">
                         {% for item in interests %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+
+                <div class="resumeTwo-section">
+                    <p class="resumeTwo-section-title">ACCOMPLISHMENTS</p>
+                    <span class="resumeTwo-inputs">
+                        {% for item in achievements %}
                         <span>{{ item }}</span>
                         {% endfor %}
                     </span>

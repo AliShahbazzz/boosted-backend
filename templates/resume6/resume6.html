@@ -16,7 +16,6 @@
         }
 
         span {
-            margin-bottom: 3px;
             word-wrap: break-word;
         }
 
@@ -29,14 +28,9 @@
             color: #212121;
             width: 796px;
             height: 1125px;
-            display: flex;
-            flex-direction: column;
-            justify-items: center;
-        }
-
-        .resumeSixMain div {
             font-family: 'Montserrat';
-            font-size: 15px;
+            font-size: 13px;
+            line-height: 1.3;
         }
 
         .resumeSix-resumeHeader {
@@ -57,44 +51,45 @@
             margin-top: 2%;
         }
 
-        .resumeSix-descriptionBox {
-            width: 310px;
-            font-size: 1em;
-        }
-
         .resumeSix-section-2 {
             display: flex;
         }
 
         .resumeSix-left-section {
-            height: 840px;
-            width: 383px;
+            height: 900px;
+            width: 385px;
             border-right: 3px dashed #212121;
-            padding: 35px;
-            display: flex;
-            flex-direction: column;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .resumeSix-left-section div {
+            display: block;
         }
 
         .resumeSix-left-section-P2 {
             height: 1050px;
             width: 383px;
             border-right: 3px dashed #212121;
-            padding: 35px;
+            padding-top: 20px;
+            padding-left: 35px;
             display: flex;
             flex-direction: column;
         }
 
         .resumeSix-right-section {
-            width: 383px;
-            padding: 35px;
-            display: flex;
-            flex-direction: column;
+            width: 378px;
+            padding-left: 30px;
+            padding-right: 30px;
         }
 
-        .resumeSix-inputs {
-            display: flex;
-            flex-direction: column;
-            width: 340px;
+        .resumeSix-right-section div {
+            display: block;
+        }
+
+        .resumeSix-inputs span {
+            display: block;
+            margin-bottom: 5px;
         }
 
         .resumeSix-section {
@@ -110,8 +105,8 @@
             text-transform: uppercase;
         }
 
-        .resumeSix-dates {
-            display: flex;
+        .resumeSix-dates span {
+            display: inline-block;
         }
 
         .resumeSix-date {
@@ -135,10 +130,12 @@
         <div class="resumeSix-section-2">
             <div class="resumeSix-left-section">
 
-                <p class="resumeSix-section-title">PROFILE</p>
-                <span class="resumeSix-descriptionBox">
-                    {{ data.profile }}
-                </span>
+                <div>
+                    <p class="resumeSix-section-title">PROFILE</p>
+                    <span class="resumeSix-descriptionBox">
+                        {{ data.profile }}
+                    </span>
+                </div>
 
                 <div class="resumeSix-section">
                     <p class="resumeSix-section-title">CONTACT</p>
@@ -160,16 +157,28 @@
                     </span>
                 </div>
 
-            </div>
-            <div class="resumeSix-right-section">
-                <p class="resumeSix-section-title">SKILLS</p>
-                <span class="resumeSix-inputs">
-                    {% for item in skills %}
-                    <span>{{ item }}</span>
-                    {% endfor %}
-                </span>
+                <div class="resumeSix-section">
+                    <p class="resumeSix-section-title">SKILLS</p>
+                    <span class="resumeSix-inputs">
+                        {% for item in skills %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
 
                 <div class="resumeSix-section">
+                    <p class="resumeSix-section-title">INTERESTS</p>
+                    <span class="resumeSix-inputs">
+                        {% for item in interests %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+
+            </div>
+            <div class="resumeSix-right-section">
+
+                <div>
                     <p class="resumeSix-section-title">EDUCATION</p>
                     <span class="resumeSix-inputs">
                         <span>{{ data.education_institute }}</span>

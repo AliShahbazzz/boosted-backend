@@ -16,7 +16,6 @@
         }
 
         span {
-            margin-bottom: 3px;
             word-wrap: break-word;
         }
 
@@ -66,16 +65,15 @@
         .resumeFive-name-position {
             display: flex;
             flex-direction: column;
-            width: 55%;
+            width: 52%;
             padding-left: 35px;
-            align-self: flex-end;
         }
 
         .resumeFive-nameBox {
             line-height: normal;
             color: #f13180;
-            font-size: 46px;
-            width: 341px;
+            font-size: 40px;
+            width: 330px;
             font-weight: 600;
         }
 
@@ -83,11 +81,11 @@
             font-size: 1.2em;
             letter-spacing: 2px;
             margin-top: 6px;
+            font-weight: 600;
             width: 341px;
         }
 
         .resumeFive-descriptionBox {
-            width: 100%;
             resize: none;
             overflow: hidden;
             color: white;
@@ -127,7 +125,7 @@
         }
 
         .resumeFive-right-section {
-            width: 378px;
+            width: 360px;
             padding: 70px 0;
             padding-right: 15px;
             display: flex;
@@ -162,8 +160,14 @@
             text-align: left;
         }
 
-        .resumeFive-dates {
-            display: flex;
+        .resumeFive-inputs span {
+            display: block;
+            text-align: left;
+            margin-bottom: 3px;
+        }
+
+        .resumeFive-dates span {
+            display: inline-block;
         }
 
         .resumeFive-date {
@@ -194,33 +198,31 @@
                 <span class="resumeFive-capBox resumeFive-positionBox">
                     {{ data.position }}
                 </span>
+                <span class="resumeFive-inputs">
+                    <span>{{ data.email }}</span>
+                    <span>{{ data.phone }}</span>
+                    <span>{{ data.url }}</span>
+                    <span>{{ data.address}}</span>
+                </span>
             </div>
         </div>
 
         <div class="resumeFive-section-2">
             <div class="resumeFive-left-section">
-                <span class="resumeFive-section-title">PERSONAL PROFILE</span>
-                <span class="resumeFive-inputs">
-                    {{ data.profile }}
-                </span>
 
-                <div class="resumeFive-section">
-                    <p class="resumeFive-section-title">SPECIALIZATION</p>
+                <div>
+                    <p class="resumeFive-section-title">PERSONAL PROFILE</p>
                     <span class="resumeFive-inputs">
-                        {% for item in interests %}
-                        <span>{{ item }}</span>
-                        {% endfor %}
+                        {{ data.profile }}
                     </span>
                 </div>
 
-
                 <div class="resumeFive-section">
-                    <p class="resumeFive-section-title">CONTACT INFO</p>
+                    <p class="resumeFive-section-title">ACHIEVEMENTS</p>
                     <span class="resumeFive-inputs">
-                        <span>{{ data.email }}</span>
-                        <span>{{ data.phone }}</span>
-                        <span>{{ data.url }}</span>
-                        <span>{{ data.address}}</span>
+                        {% for item in achievements %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
                     </span>
                 </div>
 
@@ -233,20 +235,31 @@
                     </span>
                 </div>
 
+                <div class="resumeFive-section">
+                    <p class="resumeFive-section-title">INTERESTS</p>
+                    <span class="resumeFive-inputs">
+                        {% for item in interests %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+
             </div>
             <div class="resumeFive-right-section">
 
-                <span class="resumeFive-right-section-title">ACADEMIC HISTORY</span>
-                <span class="resumeFive-inputs">
-                    <span>{{ data.education_institute }}</span>
-                    <span>{{ data.education_degree }}</span>
-                    <span>{{ data.education_course }}</span>
-                    <div class="resumeFive-dates">
-                        <span class="resumeFive-date">{{ data.education_start }}</span>
-                        <span class="resumeFive-date">{{ data.education_end }}</span>
-                    </div>
-                    <span>GPA: {{ data.education_score }}</span>
-                </span>
+                <div>
+                    <p class="resumeFive-right-section-title">ACADEMIC HISTORY</p>
+                    <span class="resumeFive-inputs">
+                        <span>{{ data.education_institute }}</span>
+                        <span>{{ data.education_degree }}</span>
+                        <span>{{ data.education_course }}</span>
+                        <div class="resumeFive-dates">
+                            <span class="resumeFive-date">{{ data.education_start }}</span>
+                            <span class="resumeFive-date">{{ data.education_end }}</span>
+                        </div>
+                        <span>GPA: {{ data.education_score }}</span>
+                    </span>
+                </div>
 
                 <div class="resumeFive-section">
                     {% if data.internActive == 'true' %}

@@ -2,10 +2,15 @@ from weasyprint import HTML, CSS
 from weasyprint.fonts import FontConfiguration
 from django.template.loader import render_to_string, get_template
 from mysite.settings import BASE_DIR
-from xhtml2pdf import pisa
+#from xhtml2pdf import pisa
 from django.template import Context
-from wkhtmltopdf.utils import render_pdf_from_template
-import pdfkit
+# from wkhtmltopdf.utils import render_pdf_from_template
+# import pdfkit
+
+from django.http import HttpResponse
+import logging
+logger = logging.getLogger('weasyprint')
+logger.addHandler(logging.FileHandler(BASE_DIR + '/weasyprint.log'))
 
 
 def pdf(request, name, resume_number):
@@ -100,9 +105,8 @@ def pdf(request, name, resume_number):
                                                                          'certificates': cerificates,
                                                                          'experiences': experiences,
                                                                          'page2active': page2active})
-    print("render to string done")
 
-    htmlObject = HTML(string=htmlobj)
+    htmlObject = HTML(string=htmlobj, base_url=request.build_absolute_uri())
     # cssStyle = CSS(BASE_DIR+'/templates/resume' +
     #                resume_number + '/resume' + resume_number + '.css')
     font_config = FontConfiguration()
@@ -116,6 +120,9 @@ def pdf(request, name, resume_number):
         pdfCreatePath,
         # stylesheets=[cssStyle],
         font_config=font_config)
+
+    # response = HttpResponse(pdfURL, content_type='application/pdf')
+    # response['Content-Disposition'] = 'attachment; filename="ResumeFile.pdf"'
 
     return pdfURL
 
@@ -149,7 +156,7 @@ def png(request, name, resume_number):
                                                                          'intern_description': intern_description,
                                                                          'experiences': experiences,
                                                                          'page2active': 'false'})
-    htmlObject = HTML(string=htmlobj)
+    htmlObject = HTML(string=htmlobj, base_url=request.build_absolute_uri())
     # cssStyle = CSS(BASE_DIR+'/templates/resume' +
     #                resume_number + '/resume' + resume_number + '.css')
     font_config = FontConfiguration()

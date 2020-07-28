@@ -16,7 +16,7 @@
         }
 
         span {
-            margin-bottom: 3px;
+            word-wrap: break-word;
         }
 
         ul li {
@@ -78,26 +78,34 @@
         }
 
         .resumeNine-left-section {
-            width: 300px;
+            width: 280px;
             padding: 0 45px;
             display: flex;
             flex-direction: column;
+        }
+
+        .resumeNine-left-section div {
+            display: block;
         }
 
         .resumeNine-right-section {
-            width: 445px;
+            width: 390px;
             padding: 0 45px;
             display: flex;
             flex-direction: column;
         }
 
-        .resumeNine-inputs {
-            display: flex;
-            flex-direction: column;
+        .resumeNine-right-section div {
+            display: block;
+        }
+
+        .resumeNine-inputs span {
+            display: block;
+            margin-bottom: 5px;
         }
 
         .resumeNine-section {
-            margin-top: 25px;
+            margin-top: 10px;
         }
 
         .resumeNine-section-title {
@@ -110,8 +118,8 @@
             color: #ff8882;
         }
 
-        .resumeNine-dates {
-            display: flex;
+        .resumeNine-dates span {
+            display: inline-block;
         }
 
         .resumeNine-date {
@@ -141,17 +149,11 @@
 
         <div class="resumeNine-section-2">
             <div class="resumeNine-left-section">
-                <p class="resumeNine-section-title">PERSONAL SUMMARY</p>
-                <span class="resumeNine-inputs">
-                    {{ data.profile }}
-                </span>
 
-                <div class="resumeNine-section">
-                    <p class="resumeNine-section-title">KEY COMPETENCIES</p>
+                <div>
+                    <p class="resumeNine-section-title">PERSONAL SUMMARY</p>
                     <span class="resumeNine-inputs">
-                        {% for item in skills %}
-                        <span>{{ item }}</span>
-                        {% endfor %}
+                        {{ data.profile }}
                     </span>
                 </div>
 
@@ -162,6 +164,15 @@
                         <span>{{ data.phone }}</span>
                         <span>{{ data.url }}</span>
                         <span>{{ data.address}}</span>
+                    </span>
+                </div>
+
+                <div class="resumeNine-section">
+                    <p class="resumeNine-section-title">COMPETENCIES</p>
+                    <span class="resumeNine-inputs">
+                        {% for item in skills %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
                     </span>
                 </div>
 
@@ -177,17 +188,19 @@
             </div>
             <div class="resumeNine-right-section">
 
-                <p class="resumeNine-section-title">ACADEMIC BACKGROUND</p>
-                <span class="resumeNine-inputs">
-                    <span>{{ data.education_institute }}</span>
-                    <span>{{ data.education_degree }}</span>
-                    <span>{{ data.education_course }}</span>
-                    <div class="resumeNine-dates">
-                        <span class="resumeNine-date">{{ data.education_start }}</span>
-                        <span class="resumeNine-date">{{ data.education_end }}</span>
-                    </div>
-                    <span>GPA: {{ data.education_score }}</span>
-                </span>
+                <div>
+                    <p class="resumeNine-section-title">ACADEMIC BACKGROUND</p>
+                    <span class="resumeNine-inputs">
+                        <span>{{ data.education_institute }}</span>
+                        <span>{{ data.education_degree }}</span>
+                        <span>{{ data.education_course }}</span>
+                        <div class="resumeNine-dates">
+                            <span class="resumeNine-date">{{ data.education_start }}</span>
+                            <span class="resumeNine-date">{{ data.education_end }}</span>
+                        </div>
+                        <span>GPA: {{ data.education_score }}</span>
+                    </span>
+                </div>
 
                 <div class="resumeNine-section">
                     {% if data.internActive == 'true' %}
