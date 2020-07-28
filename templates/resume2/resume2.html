@@ -77,7 +77,14 @@
             font-size: 1.2em;
             color: #5666ad;
             letter-spacing: 2px;
+            margin-top: 8px;
             width: 550px;
+        }
+
+        .resumeTwo-descriptionBox {
+            width: 500px;
+            margin-top: 8px;
+            line-break: 1.4;
         }
 
         .resumeTwo-section-2 {
@@ -171,6 +178,9 @@
                 <span class="resumeTwo-capBox resumeTwo-positionBox">
                     {{ data.position }}
                 </span>
+                <span class="resumeTwo-descriptionBox">
+                    {{ data.profile }}
+                </span>
             </div>
             <div class="resumeTwo-image">
                 <img src="{{ data.user_resume_image }}" class="resumeTwo-Imageholder" />
@@ -238,11 +248,6 @@
 
             </div>
             <div class="resumeTwo-right-section">
-
-                <p class="resumeTwo-section-title">CAREER OVERVIEW</p>
-                <span class="resumeTwo-inputs">
-                    {{ data.profile }}
-                </span>
 
                 <div class="resumeTwo-section">
                     <p class="resumeTwo-section-title">CONTACT INFO</p>

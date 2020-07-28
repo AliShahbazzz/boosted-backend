@@ -113,7 +113,7 @@ def pdf(request, name, resume_number):
 
     pdfCreatePath = BASE_DIR+'/media/resumes/' + name + \
         '_' + resume_number + '_' + 'Resume.pdf'
-    pdfURL = 'http://localhost:8000/media/resumes/' + \
+    pdfURL = 'media/resumes/' + \
         name + '_' + resume_number + '_' + 'Resume.pdf'
 
     htmlObject.write_pdf(
@@ -162,7 +162,7 @@ def png(request, name, resume_number):
     font_config = FontConfiguration()
     pngCreatePath = BASE_DIR+'/media/thumbnails/' + name + \
         '_' + resume_number + '_' + 'Resume.png'
-    pngURL = 'http://localhost:8000/media/thumbnails/' + \
+    pngURL = 'media/thumbnails/' + \
         name + '_' + resume_number + '_' + 'Resume.png'
 
     htmlObject.write_png(

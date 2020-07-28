@@ -19,6 +19,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include, re_path
 from django.views.generic import TemplateView
+from django.conf.urls import url
 # API DOCS
 from rest_framework_swagger.views import get_swagger_view
 from rest_framework.documentation import include_docs_urls
@@ -41,11 +42,18 @@ urlpatterns = [
     path('contact/api/', include('contact.urls', namespace='contact')),
 
     # React urls
-    # re_path(r'^.*', TemplateView.as_view(template_name='index.html')),
-]
+    # path('', TemplateView.as_view(template_name='index.html')),
 
+    # re_path(r'^(?!media/$)(?!static/$)[a-z0-9]+$',
+    #         TemplateView.as_view(template_name='index.html')),
+]
 
 urlpatterns = urlpatterns + \
     static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns = urlpatterns + \
     static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns = urlpatterns + \
+    [
+        re_path(r'^.*', TemplateView.as_view(template_name='index.html')),
+    ]

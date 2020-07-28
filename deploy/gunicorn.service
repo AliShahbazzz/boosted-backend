@@ -1,0 +1,13 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=shahabzz
+Group=www-data
+WorkingDirectory=/home/shahbazz/resume-builder
+ExecStart=/home/shahbazz/resume-builder/gunicorn_start
+
+[Install]
+WantedBy=multi-user.target
+
