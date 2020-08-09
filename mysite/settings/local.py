@@ -2,21 +2,14 @@ from .base import *
 
 DEBUG = True
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'lbqjychj',
-        'HOST': 'ruby.db.elephantsql.com',
-        'USER': 'lbqjychj',
-        'PASSWORD': 'zEDU_8yJ-sw22rt7O_RtZ_yL3Q9Fn_yb',
-        'PORT': '5432'
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'lbqjychj',
+#         'HOST': 'ruby.db.elephantsql.com',
+#         'USER': 'lbqjychj',
+#         'PASSWORD': 'zEDU_8yJ-sw22rt7O_RtZ_yL3Q9Fn_yb',
+#         'PORT': '5432'
 #     }
 # }
 

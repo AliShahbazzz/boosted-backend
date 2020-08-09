@@ -1,0 +1,260 @@
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
+
+    @page :first {
+        size: A4;
+        margin: -10px;
+    }
+
+    @page {
+        size: A4;
+        margin-left: -10px;
+        margin-top: 0px;
+    }
+
+    span {
+        word-wrap: break-word;
+    }
+
+    ul li {
+        margin-bottom: 4px;
+    }
+
+    .resume12Main {
+        font-family: 'Montserrat';
+        font-size: 13px;
+        width: 796px;
+        height: 1126px;
+        line-height: 1.4;
+    }
+
+    .resume12-resumeHeader {
+        display: flex;
+        background-color: #6cc3e5;
+        padding: 22px 38px;
+    }
+
+    .resume12-image-section {
+        width: 150px;
+        height: 150px;
+        border: 1px solid #0c2e4d;
+        border-radius: 50%;
+    }
+
+    .resume12-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+    }
+
+    .resume12-name-position {
+        align-self: center;
+        margin-left: 25px;
+    }
+
+    .resume12-nameBox {
+        font-size: 40px;
+        font-weight: 500;
+        color: #fff;
+        width: 500px;
+        text-align: left;
+        display: block;
+    }
+
+    .resume12-positionBox {
+        width: 500px;
+        font-size: 1.2em;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-top: 5px;
+        text-align: left;
+        display: block;
+    }
+
+    .resume12-section-2 {
+        display: flex;
+    }
+
+    .resume12-left-section {
+        width: 280px;
+        padding: 0 45px;
+        padding-top: 20px;
+    }
+
+    .resume12-left-section div {
+        display: block;
+    }
+
+    .resume12-right-section {
+        width: 390px;
+        padding: 0 45px;
+        padding-top: 20px;
+    }
+
+    .resume12-right-section div {
+        display: block;
+    }
+
+    .resume12-inputs span {
+        display: block;
+        margin-top: 5px;
+    }
+
+    .resume12-section {
+        padding-bottom: 15px;
+        border-top: 1px solid #d2d1d4;
+    }
+
+    .resume12-section-title {
+        font-weight: 500;
+        font-size: 16px;
+        color: #f48237;
+    }
+
+    .resume12-dates span {
+        display: inline-block;
+    }
+
+    .resume12-date {
+        width: 100px;
+        margin-right: 5px;
+    }
+
+    .resume12-section-certificate {
+        margin-bottom: 10px;
+        margin-top: 8px;
+    }
+
+    .resume12-position {
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .resume12-text-color {
+        color: #6cc3e5;
+    }
+</style>
+
+<div class="resume12Main">
+    <div class="resume12-resumeHeader">
+        <div class="resume12-image-section">
+            <img class="resume12-image" src="{{ data.user_resume_image }}" />
+        </div>
+        <div class="resume12-name-position">
+            <span class="resume12-capBox resume12-nameBox">
+                {{ data.name}}
+            </span>
+            <span class="resume12-capBox resume12-positionBox">
+                {{ data.position }}
+            </span>
+        </div>
+    </div>
+
+    <div class="resume12-section-2">
+        <div class="resume12-left-section">
+
+            <div>
+                <p class="resume12-section-title">Personal History</p>
+                <p class="resume12-inputs">
+                    <span>{{ data.profile }}</span>
+                </p>
+            </div>
+
+            <div class="resume12-section">
+                <p class="resume12-section-title">Contact Info</p>
+                <span class="resume12-inputs">
+                    <span>{{ data.email }}</span>
+                    <span>{{ data.phone }}</span>
+                    <span>{{ data.url }}</span>
+                    <span>{{ data.address}}</span>
+                </span>
+            </div>
+
+            <div class="resume12-section">
+                <p class="resume12-section-title">Skills and Abilities</p>
+                <span class="resume12-inputs">
+                    {% for item in skills %}
+                    <span>{{ item }}</span>
+                    {% endfor %}
+                </span>
+            </div>
+
+            <div class="resume12-section">
+                <p class="resume12-section-title">Achievements</p>
+                <span class="resume12-inputs">
+                    {% for item in achievements %}
+                    <span>{{ item }}</span>
+                    {% endfor %}
+                </span>
+            </div>
+
+            <div class="resume12-section">
+                <p class="resume12-section-title">Hobbies & Interests</p>
+                <span class="resume12-inputs">
+                    {% for item in interests%}
+                    <span>{{ item }}</span>
+                    {% endfor %}
+                </span>
+            </div>
+
+        </div>
+        <div class="resume12-right-section">
+
+            <div>
+                <p class="resume12-section-title">Highest Education</p>
+                <p class="resume12-inputs">
+                    <span>{{ data.education_institute }}</span>
+                    <span class="resume12-text-color">{{ data.education_degree }}</span>
+                    <span>{{ data.education_course }}</span>
+                    <span class="resume12-dates">
+                        <span class="resume12-date">{{ data.education_start }}</span>
+                        <span class="resume12-date">{{ data.education_end }}</span>
+                    </span>
+                    <span>GPA: {{ data.education_score }}</span>
+                </p>
+            </div>
+
+            <div class="resume12-section">
+                {% if data.internActive == 'true' %}
+                <p class="resume12-section-title">Internship / Course</p>
+                <span class="resume12-inputs">
+                    <span class="resume12-position">{{ data.intern_position }}</span>
+                    <span class="resume12-text-color">{{ data.intern_company }}</span>
+                    <div class="resume12-dates">
+                        <span class="resume12-date">{{ data.intern_start }}</span>
+                        <span class="resume12-date">{{ data.intern_end }}</span>
+                    </div>
+                    <ul>
+                        {% for item in intern_description %}
+                        {% if item != '' %}
+                        <li>{{ item }}</li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </span>
+                {% else %}
+                <p class="resume12-section-title">WORK HISTORY</p>
+                {% for i in experiences %}
+                {% if loop.first %}
+                <span class="resume12-inputs">
+                    <span>{{ i.position }}</span>
+                    <span class="resume12-text-color">{{ i.company }}</span>
+                    <div class="resume12-dates">
+                        <span class="resume12-date">{{ i.start }}</span>
+                        <span class="resume12-date">{{ i.end }}</span>
+                    </div>
+                    <ul class="resume12-inputs">
+                        {% for item in i.description %}
+                        {% if item != '' %}
+                        <li>{{ item }}</li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </span>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

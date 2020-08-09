@@ -1,0 +1,311 @@
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
+
+    @page :first {
+        size: A4;
+        margin: -10px;
+    }
+
+    @page {
+        size: A4;
+        margin-left: -10px;
+        margin-top: 0px;
+    }
+
+    span {
+        word-wrap: break-word;
+    }
+
+    ul li {
+        margin-bottom: 4px;
+    }
+
+    .resume15Main {
+        font-family: 'Montserrat';
+        font-size: 13px;
+        background-color: #f5f5ef;
+        width: 766px;
+        height: 1096px;
+        padding: 55px 45px;
+        line-height: 1.4;
+    }
+
+    .resume15-resumeHeader {
+        display: flex;
+    }
+
+    .resume15-Image {
+        border: 1px solid #318ba2;
+        height: 170px;
+        width: 160px;
+        margin-right: 15px;
+    }
+
+    .resume15-Imageholder {
+        border: 1px solid #318ba2;
+        height: 170px;
+        width: 160px;
+        margin-right: 15px;
+    }
+
+    .resume15-name-position {
+        display: flex;
+        flex-direction: column;
+        width: 540px;
+    }
+
+    .resume15-nameBox {
+        font-size: 40px;
+        font-weight: 600;
+        color: #318ba2;
+        height: 60px;
+    }
+
+    .resume15-positionBox {
+        font-size: 1em;
+    }
+
+    .resume15-contact-section {
+        margin-top: 15px;
+        border-top: 1px solid #318ba2;
+        border-bottom: 1px solid #318ba2;
+        display: flex;
+        font-size: 10px;
+        padding-top: 10px;
+    }
+
+    .resume15-contact-title {
+        font-weight: 600;
+        font-size: 10px;
+        color: #263547;
+        margin-bottom: 5px;
+    }
+
+    .resume15-contact-address {
+        width: 220px;
+        border-right: 1px solid #318ba2;
+    }
+
+    .resume15-contact-address span {
+        display: block;
+    }
+
+    .resume15-contact-phone {
+        width: 120px;
+        padding-left: 10px;
+        border-right: 1px solid #318ba2;
+    }
+
+    .resume15-contact-phone span {
+        display: block;
+    }
+
+    .resume15-contact-website {
+        width: 180px;
+        padding-left: 10px;
+    }
+
+    .resume15-contact-website span {
+        display: block;
+    }
+
+    .resume15-profile {
+        margin-top: 30px;
+    }
+
+    .resume15-descriptionBox {
+        width: 710px;
+        margin-bottom: 15px;
+    }
+
+    .resume15-section-2 {
+        display: flex;
+        border-top: 1px solid #318ba2;
+        padding: 25px 0;
+    }
+
+    .resume15-section-3 {
+        display: flex;
+        border-top: 1px solid #318ba2;
+        padding: 25px 0;
+    }
+
+    .resume15-section-2-P2 {
+        display: flex;
+    }
+
+    .resume15-left-section {
+        width: 310px;
+        border-right: 1px solid #318ba2;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .resume15-right-section {
+        width: 310px;
+        margin-left: 25px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .resume15-inputs {
+        width: 450px;
+    }
+
+    .resume15-inputs span {
+        display: block;
+        margin-bottom: 3px;
+    }
+
+    .resume15-inputs div {
+        display: block;
+    }
+
+    .resume15-section {
+        margin-top: 20px;
+    }
+
+    .resume15-section-title {
+        font-weight: 500;
+        font-size: 18px;
+        color: #263547;
+        margin-top: 0;
+        margin-bottom: 8px;
+        letter-spacing: 0px;
+    }
+
+    .resume15-section-title-education {
+        margin-bottom: 15px;
+        font-weight: 500;
+        font-size: 18px;
+        color: #263547;
+        margin-top: 0;
+    }
+
+    .resume15-capBox {
+        text-transform: uppercase;
+    }
+
+    .resume15-dates span {
+        display: inline-block;
+    }
+
+    .resume15-date {
+        width: 100px;
+        margin-right: 10px;
+    }
+
+    .resume15-position {
+        font-size: 15px;
+        font-weight: 500;
+    }
+</style>
+<div class="resume15Main">
+    <div class="resume15-resumeHeader">
+
+        <div class="resume15-Image">
+            <label class="resume15-image-label">
+                <img class="resume15-Imageholder" src="{{ data.user_resume_image }}" alt="" />
+            </label>
+        </div>
+        <div class="resume15-name-position">
+            <span class="resume15-capBox resume15-nameBox">
+                {{data.name}}
+            </span>
+            <span class="resume15-capBox resume15-positionBox">
+                {{data.position}}
+            </span>
+            <div class="resume15-contact-section">
+                <div class="resume15-contact-address">
+                    <span class="resume15-contact-title">ADDRESS</span>
+                    <span>{{ data.address }}</span>
+                </div>
+                <div class="resume15-contact-phone">
+                    <span class="resume15-contact-title">PHONE</span>
+                    <span>{{ data.phone }}</span>
+                </div>
+                <div class="resume15-contact-website">
+                    <span class="resume15-contact-title">EMAIL</span>
+                    <span>{{ data.email }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="resume15-profile">
+        <p class="resume15-section-title">PROFILE</p>
+        <p class="resume15-descriptionBox">{{ data.profile }}</p>
+    </div>
+
+    <div class="resume15-section-2">
+        <div class="resume15-left-section">
+
+            <p class="resume15-section-title">SKILLS</p>
+            <span class="resume15-inputs">
+                {% for item in skills %}
+                <span>{{ item }}</span>
+                {% endfor %}
+            </span>
+
+        </div>
+        <div class="resume15-right-section">
+
+            <p class="resume15-section-title">HOBBIES</p>
+            <span class="resume15-inputs">
+                {% for item in interests%}
+                <span>{{ item }}</span>
+                {% endfor %}
+            </span>
+
+        </div>
+    </div>
+    <div class="resume15-section-3">
+        <div class="resume15-left-section">
+
+            <p class="resume15-section-title">INTERNSHIP/COURSES</p>
+            <div class="resume15-input-section">
+                <span class="resume15-inputs">
+                    <span class="resume15-position">{{ data.intern_position }}</span>
+                    <span class="resume15-text-color">{{ data.intern_company }}</span>
+                    <div class="resume15-dates">
+                        <span class="resume15-date">{{ data.intern_start }}</span>
+                        <span class="resume15-date">{{ data.intern_end }}</span>
+                    </div>
+                    <ul>
+                        {% for item in intern_description %}
+                        {% if item != '' %}
+                        <li>{{ item }}</li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </span>
+            </div>
+
+        </div>
+
+        <div class="resume15-right-section">
+
+
+            <p class="resume15-section-title">ACHIEVEMENTS</p>
+            <span class="resume15-inputs">
+                {% for item in achievements %}
+                <span>{{ item }}</span>
+                {% endfor %}
+            </span>
+
+            <div class="resume15-section">
+                <p class="resume15-section-title-education">ACADEMIC BACKGROUND</p>
+                <span class="resume15-inputs">
+                    <span>{{ data.education_institute }}</span>
+                    <span>{{ data.education_degree }}</span>
+                    <span>{{ data.education_course }}</span>
+                    <span class="resume15-dates">
+                        <span class="resume15-date">{{ data.education_start }}</span>
+                        <span class="resume15-date">{{ data.education_end }}</span>
+                    </span>
+                    <span>GPA: {{ data.education_score }}</span>
+                </span>
+            </div>
+
+        </div>
+    </div>
+</div>

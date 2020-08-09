@@ -113,7 +113,7 @@ def pdf(request, name, resume_number):
 
     pdfCreatePath = BASE_DIR+'/media/resumes/' + name + \
         '_' + resume_number + '_' + 'Resume.pdf'
-    pdfURL = 'media/resumes/' + \
+    pdfURL = 'http://localhost:8000/media/resumes/' + \
         name + '_' + resume_number + '_' + 'Resume.pdf'
 
     htmlObject.write_pdf(

@@ -1,0 +1,270 @@
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
+
+    @page :first {
+        size: A4;
+        margin: -10px;
+    }
+
+    @page {
+        size: A4;
+        margin-left: -10px;
+        margin-top: 0px;
+    }
+
+    span {
+        word-wrap: break-word;
+    }
+
+    ul li {
+        margin-bottom: 4px;
+    }
+
+    .resume13Main {
+        font-family: 'Montserrat';
+        font-size: 13px;
+        background-color: white;
+        width: 796px;
+        height: 1126px;
+        line-height: 1.3;
+    }
+
+    .resume13-resumeHeader {
+        display: flex;
+        padding-top: 65px;
+        padding-left: 35px;
+        height: 200px;
+    }
+
+    .resume13-image {
+        width: 225px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .resume13-Imageholder {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+    }
+
+    .resume13-name-position {
+        margin-left: 30px;
+        width: 460px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .resume13-nameBox {
+        line-height: normal;
+        font-size: 38px;
+        font-weight: 600;
+        width: 400px;
+    }
+
+    .resume13-positionBox {
+        font-size: 1.5em;
+        font-weight: 500;
+        letter-spacing: 1px;
+        margin-top: 10px;
+        width: 400px;
+        color: #c8aa8c;
+    }
+
+    .resume13-contact-inputs {
+        margin-top: 15px;
+    }
+
+    .resume13-contact span {
+        width: 210px;
+    }
+
+    .resume13-contact {
+        display: flex;
+        margin-bottom: 15px;
+    }
+
+    .resume13-capBox {
+        text-transform: uppercase;
+    }
+
+    .resume13-text-color {
+        color: #c8aa8c;
+    }
+
+    .resume13-section-2 {
+        padding-left: 25px;
+    }
+
+    .resume13-section-2-P2 {
+        margin-top: 30px;
+    }
+
+    .resume13-section {
+        display: flex;
+        margin-bottom: 10px;
+    }
+
+    .resume13-section-title {
+        font-size: 15px;
+        font-weight: 600;
+        text-align: center;
+        width: 240px;
+    }
+
+    .resume13-input-section {
+        margin-left: 30px;
+        margin-top: 10px;
+        padding-top: 10px;
+        width: 430px;
+        border-top: 3px solid #c8aa8c;
+    }
+
+    .resume13-inputs {
+        width: 450px;
+    }
+
+    .resume13-inputs span {
+        display: block;
+        margin-bottom: 3px;
+    }
+
+    .resume13-experience-inputs {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+        margin-left: 40px;
+    }
+
+    .resume13-experience-inputs span {
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    .resume13-position {
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .resume13-dates span {
+        display: inline-block;
+    }
+
+    .resume13-date {
+        width: 100px;
+        margin-right: 10px;
+    }
+
+    .resume13-contact-img {
+        margin-right: 10px;
+        width: 20px;
+        color: #c8aa8c;
+        fill: currentColor;
+    }
+
+    .resume13-position {
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .resume13-text-color {
+        color: #c8aa8c;
+    }
+</style>
+
+<div class="resume13Main">
+    <div class="resume13-resumeHeader">
+
+        <div class="resume13-image">
+            <div class="resume13-image-label">
+                <img class="resume13-Imageholder" src="{{ data.user_resume_image }}" alt="" />
+            </div>
+        </div>
+        <div class="resume13-name-position">
+            <span class="resume13-nameBox">
+                {{ data.name }}
+            </span>
+            <span class="resume13-positionBox">
+                {{ data.position }}
+            </span>
+
+            <span class="resume13-contact-inputs">
+                <div class="resume13-contact">
+                    <img class="resume13-contact-img" src="{{ static('template-icons/resume13-email.png') }}" alt="" />
+                    <span>{{ data.email }}</span>
+                    <img class="resume13-contact-img" src="{{ static('template-icons/resume13-url.png') }}" alt="" />
+                    <span>{{ data.url }}</span>
+                </div>
+                <div class="resume13-contact">
+                    <img class="resume13-contact-img" src="{{ static('template-icons/resume13-phone.png') }}" alt="" />
+                    <span>{{ data.phone }}</span>
+                    <img class="resume13-contact-img" src="{{ static('template-icons/resume13-address.png') }}"
+                        alt="" />
+                    <span>{{ data.address}}</span>
+                </div>
+            </span>
+        </div>
+    </div>
+
+    <div class="resume13-section-2">
+        <div class="resume13-section">
+            <div class="resume13-section-title">
+                SUMMARY
+            </div>
+            <div class="resume13-input-section">
+                <div class="resume13-inputs">
+                    {{ data.profile }}
+                </div>
+            </div>
+        </div>
+
+        <div class="resume13-section">
+
+            <div class="resume13-section-title">SKILLS</div>
+            <div class="resume13-input-section">
+                <span class="resume13-inputs">
+                    {% for item in skills %}
+                    <span>{{ item }}</span>
+                    {% endfor %}
+                </span>
+            </div>
+        </div>
+
+        <div class="resume13-section">
+            <div class="resume13-section-title">EDUCATION</div>
+            <div class="resume13-input-section">
+                <span class="resume13-inputs">
+                    <span>{{ data.education_institute }}</span>
+                    <span class="resume13-text-color">{{ data.education_degree }}</span>
+                    <span>{{ data.education_course }}</span>
+                    <div class="resume13-dates">
+                        <span class="resume13-date">{{ data.education_start }}</span>
+                        <span class="resume13-date">{{ data.education_end }}</span>
+                    </div>
+                    <span>GPA: {{ data.education_score }}</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="resume13-section">
+            <p class="resume13-section-title">INTERNSHIP/COURSES</p>
+            <div class="resume13-input-section">
+                <span class="resume13-inputs">
+                    <span class="resume13-position">{{ data.intern_position }}</span>
+                    <span class="resume13-text-color">{{ data.intern_company }}</span>
+                    <div class="resume13-dates">
+                        <span class="resume13-date">{{ data.intern_start }}</span>
+                        <span class="resume13-date">{{ data.intern_end }}</span>
+                    </div>
+                    <ul>
+                        {% for item in intern_description %}
+                        {% if item != '' %}
+                        <li>{{ item }}</li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

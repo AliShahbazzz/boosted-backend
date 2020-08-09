@@ -1,3 +1,5 @@
+# from rest_auth.registration.views import SocialLoginView
+# from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
@@ -51,7 +53,7 @@ class RegisterView(CreateAPIView):
             }, status=status.HTTP_201_CREATED)
 
         return Response({
-            'detail': user.errors
+            'detail': user.errors['username'][0]
         }, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -78,3 +80,7 @@ class LoginView(CreateAPIView):
             'user': user,
             'token': token.key
         }, status=status.HTTP_200_OK)
+
+
+# class GoogleLogin(SocialLoginView):
+#     adapter_class = GoogleOAuth2Adapter

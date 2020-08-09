@@ -131,6 +131,11 @@
             margin-bottom: 10px;
             margin-top: 8px;
         }
+
+        .resumeNine-position {
+            font-size: 15px;
+            font-weight: 500;
+        }
     </style>
 </head>
 
@@ -206,7 +211,7 @@
                     {% if data.internActive == 'true' %}
                     <p class="resumeNine-section-title">INTERNSHIP / COURSE</p>
                     <span class="resumeNine-inputs">
-                        <span>{{ data.intern_position }}</span>
+                        <span class="resumeNine-position">{{ data.intern_position }}</span>
                         <span class="resumeNine-text-color">{{ data.intern_company }}</span>
                         <div class="resumeNine-dates">
                             <span class="resumeNine-date">{{ data.intern_start }}</span>
@@ -225,7 +230,7 @@
                     {% for i in experiences %}
                     {% if loop.first %}
                     <span class="resumeNine-inputs">
-                        <span>{{ i.position }}</span>
+                        <span class="resumeNine-position">{{ i.position }}</span>
                         <span class="resumeNine-text-color">{{ i.company }}</span>
                         <div class="resumeNine-dates">
                             <span class="resumeNine-date">{{ i.start }}</span>

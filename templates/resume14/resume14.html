@@ -1,0 +1,233 @@
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
+
+    @page :first {
+        size: A4;
+        margin: -10px;
+    }
+
+    @page {
+        size: A4;
+        margin-left: -10px;
+        margin-top: 0px;
+    }
+
+    span {
+        word-wrap: break-word;
+    }
+
+    ul li {
+        margin-bottom: 4px;
+    }
+
+    .resume14Main {
+        font-family: 'Montserrat';
+        font-size: 13px;
+        border: 5px solid #547c9a;
+        background-color: #f5f5ef;
+        width: 786px;
+        height: 1116px;
+        color: #263547;
+        line-height: 1.3;
+    }
+
+    .resume14-resumeHeader {
+        padding: 85px 35px;
+        text-align: center;
+    }
+
+    .resume14-resumeHeader span {
+        display: block;
+    }
+
+    .resume14-nameBox {
+        font-size: 40px;
+        font-weight: 600;
+        color: #547c9a;
+    }
+
+    .resume14-positionBox {
+        font-size: 1.2em;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        margin-top: 5px;
+    }
+
+    .resume14-section-2 {
+        display: flex;
+    }
+
+    .resume14-left-section {
+        width: 260px;
+        border-right: 1px solid #547c9a;
+        padding-right: 10px;
+        padding-left: 65px;
+    }
+
+    .resume14-left-section div {
+        display: block;
+    }
+
+    .resume14-right-section {
+        width: 390px;
+        padding: 0 15px;
+    }
+
+    .resume14-right-section div {
+        display: block;
+    }
+
+    .resume14-inputs span {
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    .resume14-section {
+        margin-bottom: 15px;
+    }
+
+    .resume14-section-title {
+        font-weight: 500;
+        font-size: 14px;
+        color: #263547;
+        margin-bottom: 8px;
+    }
+
+    .resume14-capBox {
+        text-transform: uppercase;
+    }
+
+    .resume14-dates span {
+        display: inline-block;
+    }
+
+    .resume14-date {
+        width: 100px;
+        margin-right: 5px;
+    }
+
+    .resume14-position {
+        font-size: 15px;
+        font-weight: 500;
+    }
+</style>
+
+<div class="resume14Main">
+    <div class="resume14-resumeHeader">
+        <span class="resume14-capBox resume14-nameBox">
+            {{ data.name }}
+        </span>
+        <span class="resume14-capBox resume14-positionBox">
+            {{ data.position }}
+        </span>
+    </div>
+
+    <div class="resume14-section-2">
+        <div class="resume14-left-section">
+
+            <div class="resume14-section">
+                <p class="resume14-section-title">Personal Profile</p>
+                <span>{{ data.profile }}</span>
+            </div>
+
+
+            <div class="resume14-section">
+                <p class="resume14-section-title">Contact Details</p>
+                <span class="resume14-inputs">
+                    <span>{{ data.email }}</span>
+                    <span>{{ data.phone }}</span>
+                    <span>{{ data.url }}</span>
+                    <span>{{ data.address}}</span>
+                </span>
+            </div>
+
+
+            <div class="resume14-section">
+                <p class="resume14-section-title">Skills</p>
+                <span class="resume14-inputs">
+                    {% for item in skills %}
+                    <span>{{ item }}</span>
+                    {% endfor %}
+                </span>
+            </div>
+
+
+            <div class="resume14-section">
+                <p class="resume14-section-title">Interest</p>
+                <span class="resume14-inputs">
+                    {% for item in interests%}
+                    <span>{{ item }}</span>
+                    {% endfor %}
+                </span>
+            </div>
+
+
+            <div class="resume14-section">
+                <p class="resume14-section-title">Achievements</p>
+                <span class="resume14-inputs">
+                    {% for item in achievements %}
+                    <span>{{ item }}</span>
+                    {% endfor %}
+                </span>
+            </div>
+
+        </div>
+        <div class="resume14-right-section">
+
+            <p class="resume14-section-title">Highest Background</p>
+            <span class="resume14-inputs">
+                <span>{{ data.education_institute }}</span>
+                <span>{{ data.education_degree }}</span>
+                <span>{{ data.education_course }}</span>
+                <span class="resume14-dates">
+                    <span class="resume14-date">{{ data.education_start }}</span>
+                    <span class="resume14-date">{{ data.education_end }}</span>
+                </span>
+                <span>GPA: {{ data.education_score }}</span>
+            </span>
+
+            <div class="resume14-section">
+                {% if data.internActive == 'true' %}
+                <p class="resume14-section-title">Internship / Course</p>
+                <span class="resume14-inputs">
+                    <span class="resume14-position">{{ data.intern_position }}</span>
+                    <span class="resume14-text-color">{{ data.intern_company }}</span>
+                    <div class="resume14-dates">
+                        <span class="resume14-date">{{ data.intern_start }}</span>
+                        <span class="resume14-date">{{ data.intern_end }}</span>
+                    </div>
+                    <ul>
+                        {% for item in intern_description %}
+                        {% if item != '' %}
+                        <li>{{ item }}</li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </span>
+                {% else %}
+                <p class="resume14-section-title">WORK HISTORY</p>
+                {% for i in experiences %}
+                {% if loop.first %}
+                <span class="resume14-inputs">
+                    <span>{{ i.position }}</span>
+                    <span class="resume14-text-color">{{ i.company }}</span>
+                    <div class="resume14-dates">
+                        <span class="resume14-date">{{ i.start }}</span>
+                        <span class="resume14-date">{{ i.end }}</span>
+                    </div>
+                    <ul class="resume14-inputs">
+                        {% for item in i.description %}
+                        {% if item != '' %}
+                        <li>{{ item }}</li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </span>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</div>
