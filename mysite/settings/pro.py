@@ -4,17 +4,6 @@ from .base import *
 
 DEBUG = False
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'lbqjychj',
-        'HOST': 'ruby.db.elephantsql.com',
-        'USER': 'lbqjychj',
-        'PASSWORD': 'zEDU_8yJ-sw22rt7O_RtZ_yL3Q9Fn_yb',
-        'PORT': '5432'
-    }
-}
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',

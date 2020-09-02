@@ -1,5 +1,3 @@
-# from rest_auth.registration.views import SocialLoginView
-# from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
@@ -69,18 +67,19 @@ class LoginView(CreateAPIView):
     def post(self, request):
         username = request.data['username']
         password = request.data['password']
-        user = authenticate(username=username, password=password)
-        if user is None:
+        user_qs = User.objects.filter(username=username)
+        if user_qs.count() == 0:
             return Response({
                 'detail': 'User not found.'
             }, status=status.HTTP_404_NOT_FOUND)
+        user = authenticate(username=username, password=password)
+        if user is None:
+            return Response({
+                'detail': 'Incorrect Password'
+            }, status=status.HTTP_401_UNAUTHORIZED)
         token, _ = Token.objects.get_or_create(user=user)
         user = UserDataSerializer(user).data
         return Response({
             'user': user,
             'token': token.key
         }, status=status.HTTP_200_OK)
-
-
-# class GoogleLogin(SocialLoginView):
-#     adapter_class = GoogleOAuth2Adapter

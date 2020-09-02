@@ -24,9 +24,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(
 SECRET_KEY = '-s_1_t6&!uc3s#aefs75ane$ffcx)^0raqz#((k4x^!gja$dv8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['www.hiredin.co', '*.hiredin.co', '52.250.108.61']
+# 'www.hiredin.co', '*.hiredin.co', '52.250.108.61', '*']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -140,17 +141,13 @@ CORS_ORIGIN_WHITELIST = (
 
 # REST_FRAMEWORK = {
 
-#     #     'DEFAULT_PERMISSION_CLASSES': (
-#     #         # 'rest_framework.permissions.IsAuthenticated',
-#     #     ),
-#     'DEFAULT_AUTHENTICATION_CLASSES': (
-#         #         # 'rest_framework_simplejwt.authentication.JWTAuthentication',
-#         'rest_framework.authentication.TokenAuthentication',
+#     'DEFAULT_PERMISSION_CLASSES': (
+#         'rest_framework.permissions.IsAuthenticated',
 #     ),
-#     #     'DEFAULT_PARSER_CLASSES': (
-#     #         # 'rest_framework.parsers.FormParser',
-#     #         # 'rest_framework.parsers.MultiPartParser'
-#     #     )
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         'rest_framework_simplejwt.authentication.JWTAuthentication',
+#         'rest_framework.authentication.TokenAuthentication',
+#     )
 # }
 
 REST_FRAMEWORK = {
@@ -177,6 +174,9 @@ AUTHENTICATION_BACKENDS = (
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+FONT_URL = '/templates/fonts/'
+FONT_ROOT = os.path.join(BASE_DIR, 'templates/fonts/')
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
@@ -190,21 +190,21 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': 'debug.log',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-    },
-}
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'file': {
+#             'level': 'DEBUG',
+#             'class': 'logging.FileHandler',
+#             'filename': 'debug.log',
+#         },
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['file'],
+#             'level': 'DEBUG',
+#             'propagate': True,
+#         },
+#     },
+# }

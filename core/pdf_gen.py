@@ -162,7 +162,7 @@ def png(request, name, resume_number):
     font_config = FontConfiguration()
     pngCreatePath = BASE_DIR+'/media/thumbnails/' + name + \
         '_' + resume_number + '_' + 'Resume.png'
-    pngURL = 'media/thumbnails/' + \
+    pngURL = 'http://localhost:8000/media/thumbnails/' + \
         name + '_' + resume_number + '_' + 'Resume.png'
 
     htmlObject.write_png(

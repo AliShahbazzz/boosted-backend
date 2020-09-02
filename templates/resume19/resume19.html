@@ -1,0 +1,266 @@
+<html>
+
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
+
+        @page :first {
+            size: A4;
+            margin: -10px;
+        }
+
+        @page {
+            size: A4;
+            margin-left: -10px;
+            margin-top: 0px;
+        }
+
+        span {
+            word-wrap: break-word;
+        }
+
+        ul li {
+            margin-bottom: 4px;
+        }
+
+        .resume19Main {
+            margin: 15px;
+            margin-top: 25px;
+            background-color: #ffffff;
+            width: 766px;
+            height: 1096px;
+            line-height: 1.5;
+        }
+
+        .resume19Main div {
+            font-family: 'Montserrat';
+            font-size: 13px;
+        }
+
+        .resume19-head {
+            width: 315px;
+            height: 40px;
+            background-color: #179498;
+        }
+
+        .resume19-resumeHeader {
+            height: 100px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resume19-nameBox {
+            font-size: 45px;
+            font-weight: 600;
+        }
+
+        .resume19-positionBox {
+            font-size: 1.2em;
+            letter-spacing: 2px;
+            margin-top: 1%;
+        }
+
+        .resume19-section-2 {
+            display: flex;
+        }
+
+        .resume19-section-2-P2 {
+            display: flex;
+            margin: 35px 0;
+        }
+
+        .resume19-left-section {
+            width: 245px;
+            height: 855px;
+            color: #fff;
+            background-color: #179498;
+            padding: 35px;
+            padding-top: 15px;
+        }
+
+        .resume19-left-section div {
+            display: block;
+        }
+
+        .resume19-right-section {
+            width: 330px;
+            padding: 35px;
+            padding-top: 15px;
+        }
+
+        .resume19-right-section div {
+            display: block;
+        }
+
+        .resume19-section {
+            margin-top: 16px;
+        }
+
+        .resume19-section-title {
+            color: white;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 1.8px;
+        }
+
+        .resume19-right-section-title {
+            color: #179498;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 1.8px;
+        }
+
+        .resume19-capBox {
+            text-transform: uppercase;
+        }
+
+        .resume19-inputs span {
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .resume19-dates span {
+            display: inline-block;
+        }
+
+        .resume19-date {
+            width: 100px;
+            margin-right: 10px;
+        }
+
+        .resume19-text-color {
+            color: #179498;
+        }
+
+        .resume19-highlight {
+            font-size: 15px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="resume19Main">
+        <div class="resume19-head"></div>
+        <div class="resume19-resumeHeader">
+            <span class="resume19-capBox resume19-nameBox">
+                {{ data.name }}
+            </span>
+            <span class="resume19-capBox resume19-positionBox">
+                {{ data.position }}
+            </span>
+        </div>
+
+        <div class="resume19-section-2">
+            <div class="resume19-left-section">
+
+                <div>
+                    <p class="resume19-section-title">PROFILE</p>
+                    <span class="resume19-inputs">
+                        {{ data.profile }}
+                    </span>
+                </div>
+
+                <div class="resume19-section">
+                    <p class="resume19-section-title">CONTACT INFO</p>
+                    <span class="resume19-inputs">
+                        <span>{{ data.email }}</span>
+                        <span>{{ data.phone }}</span>
+                        <span>{{ data.url }}</span>
+                        <span>{{ data.address}}</span>
+                    </span>
+                </div>
+
+                <div class="resume19-section">
+                    <p class="resume19-section-title">SKILLS</p>
+                    <span class="resume19-inputs">
+                        {% for item in skills %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+
+
+                <div class="resume19-section">
+                    <p class="resume19-section-title">ACHIEVEMENTS</p>
+                    <span class="resume19-inputs">
+                        {% for item in achievements %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+
+                <div class="resume19-section">
+                    <p class="resume19-section-title">HOBBIES</p>
+                    <span class="resume19-inputs">
+                        {% for item in interests %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+
+            </div>
+            <div class="resume19-right-section">
+
+                <div>
+                    <p class="resume19-right-section-title">HIGHEST EDUCATION</p>
+                    <span class="resume19-inputs">
+                        <span>{{ data.education_institute }}</span>
+                        <span class="resume19-text-color resume19-highlight">{{ data.education_degree }}</span>
+                        <span>{{ data.education_course }}</span>
+                        <div class="resume19-dates">
+                            <span class="resume19-date">{{ data.education_start }}</span>
+                            <span class="resume19-date">{{ data.education_end }}</span>
+                        </div>
+                        <span class="resume19-text-color">GPA: {{ data.education_score }}</span>
+                    </span>
+                </div>
+
+                <div class="resume19-section">
+                    {% if data.internActive == 'true' %}
+                    <p class="resume19-right-section-title">INTERNSHIP / COURSE</p>
+                    <span class="resume19-inputs">
+                        <span class="resume19-highlight">{{ data.intern_position }}</span>
+                        <span class="resume19-text-color">{{ data.intern_company }}</span>
+                        <div class="resume19-dates">
+                            <span class="resume19-date">{{ data.intern_start }}</span>
+                            <span class="resume19-date">{{ data.intern_end }}</span>
+                        </div>
+                        <ul>
+                            {% for item in intern_description %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </span>
+                    {% else %}
+                    <p class="resume19-right-section-title">WORK EXPERIENCE</p>
+                    {% for i in experiences %}
+                    {% if loop.first %}
+                    <span class="resume19-inputs">
+                        <span>{{ i.position }}</span>
+                        <span class="resume19-text-color">{{ i.company }}</span>
+                        <div class="resume19-dates">
+                            <span class="resume19-date">{{ i.start }}</span>
+                            <span class="resume19-date">{{ i.end }}</span>
+                        </div>
+                        <ul class="resume19-inputs">
+                            {% for item in i.description %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </span>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

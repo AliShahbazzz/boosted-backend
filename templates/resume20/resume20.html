@@ -1,0 +1,304 @@
+<html>
+
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
+
+        @page :first {
+            size: A4;
+            margin: -10px;
+        }
+
+        @page {
+            size: A4;
+            margin-left: -10px;
+            margin-top: 0px;
+        }
+
+
+        @font-face {
+            font-family: resume20-name;
+            src: url(http://localhost:8000/templates/fonts/Oswald/Oswald-Light.ttf);
+        }
+
+        @font-face {
+            font-family: resume20-title;
+            src: url(http://localhost:8000/templates/fonts/Oswald/Oswald-ExtraLight.ttf);
+        }
+
+        span {
+            word-wrap: break-word;
+        }
+
+        li {
+            margin-bottom: 3px;
+        }
+
+        .resume20Main {
+            background-color: #ffffff;
+            width: 796px;
+            height: 1125px;
+            line-height: 1.3;
+        }
+
+        .resume20Main div {
+            font-family: 'Montserrat';
+            font-size: 13px;
+        }
+
+        .resume20-section-2 {
+            display: flex;
+            margin-top: 80px;
+        }
+
+        .resume20-nameBox {
+            font-family: resume20-name;
+            line-height: 1.3;
+            font-size: 43px;
+            font-weight: bold;
+            display: inline-block;
+            padding-top: 15px;
+            color: #5ba49f;
+            text-align: center;
+        }
+
+        .resume20-position {
+            margin-bottom: 55px;
+            text-align: center;
+        }
+
+        .resume20-positionBox {
+            margin-top: 10px;
+            letter-spacing: 2px;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        .resume20-capBox {
+            text-transform: uppercase;
+        }
+
+        .resume20-inputs span {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .resume20-inputs-margin {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .resume20-section {
+            margin-top: 25px;
+        }
+
+        .resume20-left-section {
+            width: 250px;
+            padding-right: 5px;
+            padding-left: 55px;
+            font-size: 15px;
+        }
+
+        .resume20-left-ul {
+            position: relative;
+            list-style: none;
+            padding-right: 1.2em;
+            text-align: right;
+            margin-top: 2px;
+            margin-bottom: 3px;
+        }
+
+        .resume20-left-ul li {
+            margin-bottom: 4px;
+        }
+
+        .resume20-left-ul li:before {
+            content: "\2022";
+            position: absolute;
+            right: 0;
+        }
+
+        .resume20-right-section {
+            width: 350px;
+            padding-left: 35px;
+            padding-right: 35px;
+            font-size: 15px;
+        }
+
+        .resume20-dates span {
+            display: inline-block;
+        }
+
+        .resume20-date {
+            width: 100px;
+            margin-right: 10px;
+        }
+
+        .resume20-date-left {
+            text-align: right;
+            width: 100px;
+        }
+
+        .resume20-image {
+            height: 120px;
+        }
+
+        .resume20-image-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .resume20-section-title {
+            font-family: resume20-title;
+            letter-spacing: 1.5px;
+            font-size: 15px;
+            font-weight: 700;
+            color: #5ba49f;
+        }
+
+        .resume20-text-color {
+            color: #5ba49f;
+        }
+
+        .resume20-highlight {
+            font-size: 15px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="resume20Main">
+        <div class="resume20-section-2">
+            <div class="resume20-left-section">
+
+                <div class="resume20-image-section">
+                    <img src="http://localhost:8000/static/template-icons/resume20.png" class="resume20-image" />
+                </div>
+
+                <div>
+                    <span class="resume20-capBox resume20-nameBox">
+                        syed shahbaz ali
+                    </span>
+                </div>
+
+                <div class="resume20-section resume20-position">
+                    <span class="resume20-capBox resume20-positionBox">
+                        {{ data.position }}
+                    </span>
+                </div>
+
+                <div class="resume20-section">
+                    <p class="resume20-section-title">PROFILE SUMMARY</p>
+                    <span class="resume20-inputs">
+                        {{ data.profile }}
+                    </span>
+                </div>
+
+                <div class="resume20-section">
+                    <p class="resume20-section-title">FIND ME HERE</p>
+                    <span class="resume20-inputs">
+                        <span>{{ data.email }}</span>
+                        <span>{{ data.phone }}</span>
+                        <span>{{ data.url }}</span>
+                        <span>{{ data.address}}</span>
+                    </span>
+                </div>
+
+                <div class="resume20-section">
+                    <p class="resume20-section-title">ACHIEVEMENTS</p>
+                    <span class="resume20-inputs">
+                        {% for item in achievements %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+
+
+                <div class="resume20-section">
+                    <p class="resume20-section-title">HOBBIES & INTEREST</p>
+                    <span class="resume20-inputs">
+                        {% for item in interests %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+            </div>
+            <div class="resume20-right-section">
+
+                <div>
+                    <p class="resume20-section-title">SKILLS</p>
+                    <span class="resume20-inputs">
+                        {% for item in skills %}
+                        <span>{{ item }}</span>
+                        {% endfor %}
+                    </span>
+                </div>
+
+                <div class="resume20-section">
+                    <p class="resume20-section-title">HIGHEST EDUCATION</p>
+                    <span class="resume20-inputs">
+                        <span>{{ data.education_institute }}</span>
+                        <span class="resume20-text-color resume20-highlight">{{ data.education_degree }}</span>
+                        <span>{{ data.education_course }}</span>
+                        <div class="resume20-dates">
+                            <span class="resume20-date">{{ data.education_start }}</span>
+                            <span class="resume20-date">{{ data.education_end }}</span>
+                        </div>
+                        <span>
+                            <span class="resume20-text-color">
+                                GPA:
+                            </span>
+                            {{ data.education_score }}
+                        </span>
+                    </span>
+                </div>
+
+                <div class="resume20-section">
+                    {% if data.internActive == 'true' %}
+                    <p class="resume20-section-title">INTERNSHIP / COURSES</p>
+                    <span class="resume20-inputs">
+                        <span class="resume20-highlight">{{ data.intern_position }}</span>
+                        <span class="resume20-text-color">{{ data.intern_company }}</span>
+                        <div class="resume20-dates">
+                            <span class="resume20-date">{{ data.intern_start }}</span>
+                            <span class="resume20-date">{{ data.intern_end }}</span>
+                        </div>
+                        <ul>
+                            {% for item in intern_description %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </span>
+                    {% else %}
+                    <p class="resume20-section-title">WORK EXPERIENCE</p>
+                    {% for i in experiences %}
+                    {% if loop.first %}
+                    <span class="resume20-inputs">
+                        <span>{{ i.position }}</span>
+                        <span class="resume20-text-color">{{ i.company }}</span>
+                        <div class="resume20-dates">
+                            <span class="resume20-date">{{ i.start }}</span>
+                            <span class="resume20-date">{{ i.end }}</span>
+                        </div>
+                        <ul>
+                            {% for item in i.description %}
+                            {% if item != '' %}
+                            <li>{{ item }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </span>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
