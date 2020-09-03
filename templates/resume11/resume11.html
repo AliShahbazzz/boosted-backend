@@ -1,6 +1,11 @@
 <style>
     @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
 
+    @font-face {
+        font-family: resume11-name;
+        src: url(http://localhost:8000/templates/fonts/Archivo_Black/ArchivoBlack-Regular.ttf);
+    }
+
     @page :first {
         size: A4;
         margin: -10px;
@@ -46,8 +51,8 @@
     }
 
     .resume11-image {
-        width: 240px;
-        height: 240px;
+        width: 230px;
+        height: 230px;
         border: 2px solid #0c2e4d;
         border-radius: 50%;
     }
@@ -64,38 +69,29 @@
     }
 
     .resume11-nameBox {
-        font-size: 46px;
-        font-weight: 600;
-        letter-spacing: 0.5px;
+        font-family: resume11-name;
+        line-height: 1.2;
+        font-size: 48px;
         color: #0c2e4d;
-        width: 380px;
+        width: 350px;
         line-height: 1.2;
     }
 
     .resume11-positionBox {
-        width: 380px;
-        font-size: 1.2em;
-        font-weight: 600;
-        letter-spacing: 2.8px;
-        margin-top: 20px;
-        line-height: 1.2;
+        width: 350px;
+        font-size: 1em;
+        letter-spacing: 3px;
+        margin-top: 16px;
     }
 
     .resume11-section-2 {
         display: flex;
     }
 
-    .resume11-section-2-P2 {
-        display: flex;
-        padding-top: 45px;
-    }
-
     .resume11-left-section {
         width: 280px;
-        height: 790px;
-        padding: 25px 40px;
-        display: flex;
-        flex-direction: column;
+        height: 750px;
+        padding: 45px;
         background-color: #e8f1f8;
     }
 
@@ -105,9 +101,7 @@
 
     .resume11-right-section {
         width: 390px;
-        padding: 25px 40px;
-        display: flex;
-        flex-direction: column;
+        padding: 45px;
     }
 
     .resume11-right-section div {
@@ -120,13 +114,14 @@
     }
 
     .resume11-section {
-        margin-top: 10px;
+        margin-top: 25px;
     }
 
     .resume11-section-title {
-        font-weight: 900;
+        font-family: resume11-name;
         letter-spacing: 2px;
         color: #0c2e4d;
+        font-weight: 900;
     }
 
     .resume11-dates span {
@@ -171,7 +166,7 @@
         <div class="resume11-left-section">
 
             <div>
-                <p class="resume11-section-title">EXECUTIVE SUMMARY</p>
+                <p class="resume11-section-title">PROFILE SUMMARY</p>
                 <span class="resume11-inputs">
                     {{ data.profile }}
                 </span>
@@ -188,7 +183,7 @@
             </div>
 
             <div class="resume11-section">
-                <p class="resume11-section-title">SKILLS AND ABILITIES</p>
+                <p class="resume11-section-title">SKILLS</p>
                 <span class="resume11-inputs">
                     {% for item in skills %}
                     <span>{{ item }}</span>

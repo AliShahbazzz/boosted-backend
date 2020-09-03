@@ -82,8 +82,8 @@
 
         .resumeThree-positionBox {
             font-family: resume3-font;
-            font-size: 14px;
-            letter-spacing: 5px;
+            font-size: 13px;
+            letter-spacing: 3px;
             text-align: left;
             margin-top: 8px;
             width: 100%;
@@ -209,7 +209,7 @@
         <div class="resumeThree-section-2">
             <div class="resumeThree-left-section">
                 <div>
-                    <p class="resumeThree-left-section-title">PERSONAL PROFILE</p>
+                    <p class="resumeThree-left-section-title">PROFILE</p>
                     <span class="resumeThree-inputs">
                         {{ data.profile }}
                     </span>
@@ -225,7 +225,7 @@
                 </div>
 
                 <div class="resumeThree-section">
-                    <p class="resumeThree-left-section-title">SKILLS AND ABILITIES</p>
+                    <p class="resumeThree-left-section-title">SKILLS</p>
                     <span class="resumeThree-inputs">
                         {% for item in skills %}
                         <span>{{ item }}</span>
@@ -246,7 +246,7 @@
             <div class="resumeThree-right-section">
 
                 <div>
-                    <p class="resumeThree-right-section-title">ACADEMIC PROFILE</p>
+                    <p class="resumeThree-right-section-title">HIGHEST EDUCATION</p>
                     <span class="resumeThree-inputs">
                         <span>{{ data.education_institute }}</span>
                         <span>{{ data.education_degree }}</span>
@@ -260,7 +260,7 @@
 
                     <div class='resumeThree-section'>
                         {% if data.internActive == 'true' %}
-                        <p class="resumeThree-right-section-title">INTERNSHIP/COURSES</p>
+                        <p class="resumeThree-right-section-title">INTERNSHIP / COURSES</p>
                         <span class="resumeThree-inputs">
                             <span class="resumeThree-position">{{ data.intern_position }}</span>
                             <span class="resumeThree-text-color">{{ data.intern_company }}</span>

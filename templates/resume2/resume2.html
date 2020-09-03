@@ -2,6 +2,11 @@
 
 <head>
     <style>
+        @font-face {
+            font-family: resume2-name;
+            src: url(http://localhost:8000/templates/fonts/Lato/Lato-Bold.ttf);
+        }
+
         @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
 
         @page :first {
@@ -29,14 +34,13 @@
             background-color: white;
             width: 796px;
             height: 1125px;
-            line-height: 1.3;
         }
 
         .resumeTwo-resumeHeader {
-            height: 180px;
-            margin-top: 36px;
-            padding: 8px 48px;
+            height: 190px;
             display: flex;
+            margin-top: 40px;
+            padding: 8px 48px;
             background-color: #eff9ff;
             border-bottom: 15px solid #d3e4ef;
             border-radius: 0px 150px 150px 0px;
@@ -62,22 +66,22 @@
             display: flex;
             flex-direction: column;
             width: 566px;
-            align-self: center;
         }
 
         .resumeTwo-nameBox {
+            font-family: resume2-name;
             line-height: normal;
             color: #5666ad;
-            font-size: 46px;
+            font-size: 40px;
             width: 550px;
-            font-weight: 600;
         }
 
         .resumeTwo-positionBox {
             font-size: 1.2em;
             color: #5666ad;
             letter-spacing: 2px;
-            margin-top: 8px;
+            padding-top: 14px;
+            padding-bottom: 5px;
             width: 550px;
         }
 
@@ -93,7 +97,9 @@
 
         .resumeTwo-left-section {
             width: 344px;
-            padding: 38px 48px;
+            padding-top: 15px;
+            padding-left: 48px;
+            padding-right: 48px;
         }
 
         .resumeTwo-left-section div {
@@ -101,12 +107,12 @@
         }
 
         .resumeTwo-right-section {
-            width: 275px;
+            width: 280px;
             height: 790px;
             background-color: #f6fafd;
-            margin-top: 25px;
+            margin-top: 15px;
             margin-right: 25px;
-            padding: 15px 25px;
+            padding: 0px 25px;
             border-radius: 2%;
         }
 
@@ -138,6 +144,7 @@
         }
 
         .resumeTwo-section-title {
+            font-family: resume2-name;
             width: 410px;
             font-size: 18px;
             font-weight: 600;
@@ -191,10 +198,10 @@
             <div class="resumeTwo-left-section">
 
                 <div class='resumeTwo-section'>
-                    <p class="resumeTwo-section-title">ACADEMIC PROFILE</p>
+                    <p class="resumeTwo-section-title">HIGHEST EDUCATION</p>
                     <span class="resumeTwo-inputs">
                         <span>{{ data.education_institute }}</span>
-                        <span>{{ data.education_degree }}</span>
+                        <span class="resumeTwo-position">{{ data.education_degree }}</span>
                         <span>{{ data.education_course }}</span>
                         <div class="resumeTwo-dates">
                             <span class="resumeTwo-date">{{ data.education_start }}</span>
@@ -206,7 +213,7 @@
 
                 <div class='resumeTwo-section'>
                     {% if data.internActive == 'true' %}
-                    <p class="resumeTwo-section-title">INTERNSHIP/COURSES</p>
+                    <p class="resumeTwo-section-title">INTERNSHIP / COURSES</p>
                     <span class="resumeTwo-inputs">
                         <span class="resumeTwo-position">{{ data.intern_position }}</span>
                         <span class="resumeTwo-text-color">{{ data.intern_company }}</span>
@@ -260,7 +267,7 @@
                 </div>
 
                 <div class="resumeTwo-section">
-                    <p class="resumeTwo-section-title">COMPETENCIES</p>
+                    <p class="resumeTwo-section-title">SKILLS</p>
                     <span class="resumeTwo-inputs">
                         {% for item in skills %}
                         <span>{{ item }}</span>
@@ -269,7 +276,7 @@
                 </div>
 
                 <div class="resumeTwo-section">
-                    <p class="resumeTwo-section-title">INTERESTS</p>
+                    <p class="resumeTwo-section-title">HOBBIES & INTERESTS</p>
                     <span class="resumeTwo-inputs">
                         {% for item in interests %}
                         <span>{{ item }}</span>
@@ -278,7 +285,7 @@
                 </div>
 
                 <div class="resumeTwo-section">
-                    <p class="resumeTwo-section-title">ACCOMPLISHMENTS</p>
+                    <p class="resumeTwo-section-title">ACHIEVEMENTS</p>
                     <span class="resumeTwo-inputs">
                         {% for item in achievements %}
                         <span>{{ item }}</span>

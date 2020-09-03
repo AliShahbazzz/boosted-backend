@@ -1,5 +1,8 @@
 <style>
-    @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
+    @font-face {
+        font-family: resume12-font;
+        src: url(http://localhost:8000/templates/fonts/Open_Sans/OpenSans-Regular.ttf);
+    }
 
     @page :first {
         size: A4;
@@ -21,17 +24,17 @@
     }
 
     .resume12Main {
-        font-family: 'Montserrat';
         font-size: 13px;
         width: 796px;
         height: 1126px;
         line-height: 1.4;
+        font-family: resume12-font;
     }
 
     .resume12-resumeHeader {
         display: flex;
         background-color: #6cc3e5;
-        padding: 22px 38px;
+        padding: 20px 38px;
     }
 
     .resume12-image-section {
@@ -49,12 +52,13 @@
 
     .resume12-name-position {
         align-self: center;
-        margin-left: 25px;
+        margin-left: 30px;
     }
 
     .resume12-nameBox {
         font-size: 40px;
         font-weight: 500;
+        font-family: resume12-font;
         color: #fff;
         width: 500px;
         text-align: left;
@@ -66,19 +70,21 @@
         font-size: 1.2em;
         font-weight: 600;
         letter-spacing: 1px;
-        margin-top: 5px;
+        margin-top: 8px;
         text-align: left;
         display: block;
+        font-family: resume12-font;
     }
 
     .resume12-section-2 {
         display: flex;
+        padding-top: 15px;
     }
 
     .resume12-left-section {
-        width: 280px;
-        padding: 0 45px;
-        padding-top: 20px;
+        width: 240px;
+        padding-left: 40px;
+        padding-right: 40px;
     }
 
     .resume12-left-section div {
@@ -86,9 +92,7 @@
     }
 
     .resume12-right-section {
-        width: 390px;
-        padding: 0 45px;
-        padding-top: 20px;
+        width: 470px;
     }
 
     .resume12-right-section div {

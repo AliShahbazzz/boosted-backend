@@ -1,5 +1,13 @@
 <style>
-    @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
+    @font-face {
+        font-family: resume10-name;
+        src: url(http://localhost:8000/templates/fonts/Archivo_Black/ArchivoBlack-Regular.ttf);
+    }
+
+    @font-face {
+        font-family: resume10-font;
+        src: url(http://localhost:8000/templates/fonts/Space_Mono/SpaceMono-Regular.ttf);
+    }
 
     @page :first {
         size: A4;
@@ -14,20 +22,21 @@
 
     span {
         word-wrap: break-word;
+        font-family: resume10-font;
     }
 
     ul li {
         margin-bottom: 4px;
+        font-family: resume10-font;
     }
 
     .resumeTenMain {
-        font-family: 'Montserrat';
         font-size: 13px;
         background-color: #9ad3d5;
         width: 796px;
         height: 1125px;
         color: black;
-        line-height: 1.3;
+        font-family: resume10-font;
     }
 
     .resumeTen-section-2 {
@@ -37,29 +46,21 @@
 
     .resumeTen-left-section {
         width: 250px;
-        height: 996px;
+        height: 1006px;
         background-color: #fff5b0;
-        padding: 25px;
-        display: flex;
-        flex-direction: column;
+        padding: 30px;
+        margin-right: 35px;
         text-align: center;
     }
 
-    .resumeTen-left-section-P2 {
-        width: 280px;
-        height: 1010px;
-        background-color: #fff5b0;
-        padding: 30px;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
+    .resumeTen-left-section div {
+        display: block;
     }
 
     .resumeTen-right-section {
-        width: 340px;
-        padding: 0 30px;
+        width: 350px;
+        padding-left: 30px;
         border-left: 10px solid black;
-        margin-left: 30px;
     }
 
     .resumeTen-right-section div {
@@ -92,12 +93,16 @@
     }
 
     .resumeTen-nameBox {
+        font-family: resume10-name;
+        line-height: 1.5;
         font-size: 40px;
-        font-weight: 600;
         margin-top: 16px;
+        text-align: center;
+        align-self: center;
     }
 
     .resumeTen-positionBox {
+        font-family: resume10-font;
         font-size: 1.0em;
         font-weight: 600;
         letter-spacing: 2.8px;
@@ -114,7 +119,7 @@
     }
 
     .resumeTen-section-title {
-        font-weight: 600;
+        font-family: resume10-name;
         font-size: 20px;
         color: black;
     }
@@ -125,7 +130,7 @@
 
 
     .resumeTen-flex {
-        margin-top: 80px;
+        margin-top: 50px;
     }
 
     .resumeTen-dates span {
@@ -223,7 +228,8 @@
                     <ul>
                         {% for item in intern_description %}
                         {% if item != '' %}
-                        <li>{{ item }}</li>
+                        <li>Intern Description Intern Description Intern Description Intern Description Intern
+                            Description Intern Description </li>
                         {% endif %}
                         {% endfor %}
                     </ul>
