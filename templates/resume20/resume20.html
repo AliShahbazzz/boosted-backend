@@ -18,12 +18,12 @@
 
         @font-face {
             font-family: resume20-name;
-            src: url(https://www.hiredin.co/templates/fonts/Oswald/Oswald-Light.ttf);
+            src: url("{{ static ('print-fonts/Oswald/Oswald-Light.ttf') }}");
         }
 
         @font-face {
             font-family: resume20-title;
-            src: url(https://www.hiredin.co/templates/fonts/Oswald/Oswald-ExtraLight.ttf);
+            src: url("{{ static ('print-fonts/Oswald/Oswald-ExtraLight.ttf') }}");
         }
 
         span {
@@ -60,6 +60,7 @@
             padding-top: 15px;
             color: #5ba49f;
             text-align: center;
+            width: 210px;
         }
 
         .resume20-position {
@@ -174,12 +175,12 @@
             <div class="resume20-left-section">
 
                 <div class="resume20-image-section">
-                    <img src="https://www.hiredin.co/static/template-icons/resume20.png" class="resume20-image" />
+                    <img src="{{ static ('template-icons/resume20.png') }}" class="resume20-image" />
                 </div>
 
                 <div>
                     <span class="resume20-capBox resume20-nameBox">
-                        syed shahbaz ali
+                        {{ data.name }}
                     </span>
                 </div>
 
