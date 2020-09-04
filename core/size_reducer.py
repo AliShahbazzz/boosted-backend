@@ -34,6 +34,6 @@ def img_size_reducer(image_data, name, resume_number):
 
 
 def imgpath_to_base64(imgpath):
-    image = 'http://127.0.0.1:8000'+imgpath
+    image = imgpath
     base64img = base64.b64encode(requests.get(image).content)
     return base64img

@@ -24,10 +24,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(
 SECRET_KEY = '-s_1_t6&!uc3s#aefs75ane$ffcx)^0raqz#((k4x^!gja$dv8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # 'www.hiredin.co', '*.hiredin.co', '52.250.108.61', '*']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['www.hiredin.co', '*.hiredin.co', '52.250.108.61']
 
 
 # Application definition
@@ -194,21 +194,21 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
-# LOGGING = {
-#     'version': 1,
-#     'disable_existing_loggers': False,
-#     'handlers': {
-#         'file': {
-#             'level': 'DEBUG',
-#             'class': 'logging.FileHandler',
-#             'filename': 'debug.log',
-#         },
-#     },
-#     'loggers': {
-#         'django': {
-#             'handlers': ['file'],
-#             'level': 'DEBUG',
-#             'propagate': True,
-#         },
-#     },
-# }
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
