@@ -7,6 +7,9 @@ from rest_framework.generics import (
 from rest_framework import status
 from django.contrib.auth import authenticate
 
+from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
+from rest_auth.registration.views import SocialLoginView
+
 # Local Import her
 from .serializers import (
     # UserSerializer,
@@ -83,3 +86,7 @@ class LoginView(CreateAPIView):
             'user': user,
             'token': token.key
         }, status=status.HTTP_200_OK)
+
+
+class GoogleLogin(SocialLoginView):
+    adapter_class = GoogleOAuth2Adapter

@@ -8,4 +8,5 @@ urlpatterns = [
     path('signup/', views.RegisterView.as_view(), name='signup'),
     path('login/', views.LoginView.as_view(), name='login'),
     path('contact/', views.ContactUsAPIView.as_view(), name='contact'),
+    path('rest-auth/google/', views.GoogleLogin.as_view(), name='google_login')
 ]

@@ -50,6 +50,10 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
 
+    # for social login
+    'rest_auth.registration',
+    'allauth.socialaccount.providers.google',
+
     # api docs
     'rest_framework_swagger',  # swagger
 
