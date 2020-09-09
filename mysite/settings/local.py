@@ -6,9 +6,9 @@ DEBUG = True
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 #         'NAME': 'postgres',
-#         'HOST': 'hiredin-db.postgres.database.azure.com',
-#         'USER': 'hiredin@hiredin-db',
-#         'PASSWORD': 'mbgdesk@123@098',
+#         'HOST': 'hiredin-db.cbjmo0koiyrt.us-east-2.rds.amazonaws.com',
+#         'USER': 'hiredin',
+#         'PASSWORD': 'mbgdesk123098',
 #         'PORT': '5432'
 #     }
 # }
